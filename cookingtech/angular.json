@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "cookingtech"
+  "defaultProject": "cookingtech",
+  "cli": {
+    "analytics": false
+  }
 }

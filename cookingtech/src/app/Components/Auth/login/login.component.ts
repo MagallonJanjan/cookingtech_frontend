@@ -37,13 +37,4 @@ onSubmit():void  {
         window.localStorage.setItem('token', this.usertype.token);
       })
 }
-
-//test
-addComment():void {
-  this.validation.apiRequest('https://cookingtech.herokuapp.com/api/comments', "post",
-    {"content": "test", "user_id": 1, "recipe_id": 1})
-      .subscribe(test => {
-        console.log(test);
-      });
-} 
 }

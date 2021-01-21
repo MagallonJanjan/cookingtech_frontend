@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  
+  showSideBar:boolean = true;
 
+  constructor() {
+   }
   ngOnInit(): void {
   }
+
+  
 
 }

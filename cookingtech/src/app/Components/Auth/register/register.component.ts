@@ -77,9 +77,8 @@ onSubmit() {
   }
  
   console.log(this.user.value)
-  this.sample.postData(this.configUrl, this.user.value).subscribe(respond => {
+  this.sample.apiRequest(this.configUrl,"post",this.user.value).subscribe(respond => {
     console.log(respond);
-    
     this.router.navigate(['/login'])
   });
 

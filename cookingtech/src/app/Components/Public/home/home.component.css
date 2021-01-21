@@ -1,0 +1,18 @@
+.form-inline{
+    padding-right: 1%;
+}
+
+#carouselExampleControls img {
+    height: 400px;
+    width:80%;
+}
+
+#carouselExampleControls2 img {
+    height: 450px;
+    width:100%;
+}
+
+#carouselExampleControls3 img {
+    height: 450px;
+    width:100%;
+}

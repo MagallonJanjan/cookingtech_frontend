@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomvalidationService } from '../../../services/customvalidation.service';
+
 
 
 @Component({
@@ -9,13 +11,20 @@ import { CustomvalidationService } from '../../../services/customvalidation.serv
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
+
 export class RegisterComponent implements OnInit {
 
-   
 user: any = FormGroup;
 submitted = false;
 
-constructor(private formBuilder: FormBuilder, private sample: CustomvalidationService) { }
+
+
+constructor(
+  private formBuilder: FormBuilder ,
+  private sample: CustomvalidationService,
+  private router :Router){ }
+
 
 ngOnInit(): void {
    this.user = this.formBuilder.group({
@@ -29,7 +38,14 @@ ngOnInit(): void {
   }, {
     validator: this.MustMatch('password', 'confirmpassword')
   });
+
+  
+
+
 }
+
+
+
 get f() { return this.user.controls; }
 
 MustMatch(controlName: string, matchingControlName: string) {
@@ -59,16 +75,14 @@ onSubmit() {
   if (this.user.invalid) {
     return;
   }
-
-  // this.sample.getData(this.configUrl).subscribe(users => {
-  //   console.log(users);
-  // })
-  // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.user.value))
  
-  //register temporary
-  this.sample.postData('https://cookingtech.herokuapp.com/api/users', this.user.value).subscribe(respond => {
+  console.log(this.user.value)
+  this.sample.postData(this.configUrl, this.user.value).subscribe(respond => {
     console.log(respond);
+    
+    this.router.navigate(['/login'])
   });
+
 }
 
 }

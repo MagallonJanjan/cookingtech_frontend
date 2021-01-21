@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CustomvalidationService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getData(url: string){
     return this.http.get(url);
@@ -15,5 +15,4 @@ export class CustomvalidationService {
   postData(url: string, body:any){
     return this.http.post(url, body);
   }
-  
 }

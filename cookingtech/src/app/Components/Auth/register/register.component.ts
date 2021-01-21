@@ -66,7 +66,7 @@ onSubmit() {
   // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.user.value))
  
   //register temporary
-  this.sample.postData('http://cookingtech.herokuapp.com/api/users', this.user.value).subscribe(respond => {
+  this.sample.postData('https://cookingtech.herokuapp.com/api/users', this.user.value).subscribe(respond => {
     console.log(respond);
   });
 }

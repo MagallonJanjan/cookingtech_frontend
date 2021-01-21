@@ -23,13 +23,15 @@ export class LoginComponent implements OnInit {
 
   })
 
+  user: any;
+
   onSubmit(){
     console.log(this.userLogin.value);
-   this.sample.postData('https://cookingtech.herokuapp.com/api/login', this.userLogin.value)
+   this.sample.postData('https://cookingtech.herokuapp.com/api/users/login', this.userLogin.value)
         .subscribe(userToken => {
-          console.log(userToken); 
+          this.user = userToken;
+          console.log(this.user.user.usertype);
         })
-
   }
 
 

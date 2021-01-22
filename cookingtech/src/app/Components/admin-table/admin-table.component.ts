@@ -10,6 +10,9 @@ export class AdminTableComponent implements OnInit {
   totalUsers:any;
   page: number = 1;
 
+
+  showSearch:boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

@@ -9,3 +9,14 @@
 .tableTable{
     width:100%;
 }
+
+.customized {
+    border: solid 1px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.customized:hoder {
+    background-color: wheat;
+    color: black;
+}

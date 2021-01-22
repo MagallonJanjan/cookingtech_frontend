@@ -12,16 +12,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let user of users;">
+                        <tr *ngFor="let user of users | paginate: { id: 'test',
+                        itemsPerPage: 5,
+                        currentPage: page,
+                        totalItems: totalUsers}">
                             <td class="table-secondary">{{user.firstName + " " + user.lastName}}</td>
                             <td class="table-secondary">
                                 <button type="submit" data-toggle="modal" data-target="#exampleModal" class="btn btn-info mr-2">View</button>
                                 <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal1">Delete</button>
-                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <pagination-controls id="test" maxSize:number="5" (pageChange)="pageChanged($event)"></pagination-controls>
         </div>
     </table>
 

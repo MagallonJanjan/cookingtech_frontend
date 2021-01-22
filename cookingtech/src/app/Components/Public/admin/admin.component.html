@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
 
-<body class="">
+<body>
   <nav class="navbar navbar-expand-sm navbar-dark bg-custom-header border position-fixed main-header">
     <a class="navbar-brand" href="#">CookingTech <strong>Dashboard</strong></a>
   </nav>
@@ -47,23 +47,33 @@
           <div class="col-md-12 ml-3">
             <div class="img-container-ghost">
               <!-- image here -->
+
+              <!-- ghost nav -->
+              <div class="bg-custom-sidebar h-100 position-fixed custom-style-sidebar-ghost">
+                <p class="text-center text-white" (click)="toggleSidebar()"><i class="fas fa-bars custom-style-x"></i></p>
+
+                <div class="row">
+                  <div class="col-md-12 ml-3">
+                    <div class="img-container-ghost">
+                      <!-- image here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="bg-light">
+
+              <div class="container">
+                <!-- navigations -->
+                <span class="btn border navigation-items"><i class="fas fa-columns "></i></span>
+                <span class="btn border navigation-items"><i class="fas fa-users "></i></span>
+                <span class="btn border navigation-items"><i class="fas fa-book-open "></i></span>
+                <span class="btn border navigation-items"><i class="fas fa-thumbs-up "></i></span>
+                <span class="btn border navigation-items"><i class="fas fa-sign-out-alt "></i></span>
+              </div>
             </div>
           </div>
-        </div>
-        <hr class="bg-light">
 
-        <div class="container">
-          <!-- navigations -->
-          <span class="btn border navigation-items"><i class="fas fa-columns "></i></span>
-          <span class="btn border navigation-items"><i class="fas fa-users "></i></span>
-          <span class="btn border navigation-items"><i class="fas fa-book-open "></i></span>
-          <span class="btn border navigation-items"><i class="fas fa-thumbs-up "></i></span>
-          <span class="btn border navigation-items"><i class="fas fa-sign-out-alt "></i></span>
-        </div>
-      </div>
-    </div>
-
-   <!-- <div class="row cardCenter">
+          <!-- <div class="row cardCenter">
       <div class="col-sm-3 ">
         <div class="card text-center w-100 ">
           <div class="card-header headBackground ">
@@ -99,14 +109,16 @@
       </div>
     </div>  -->
 
-    <!-- content -->
-    <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
-      <div class="container">
-          <app-admin-modal></app-admin-modal>
-        <app-admin-table></app-admin-table>
+          <!-- content -->
+          <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
+            <div class="container">
+              <app-admin-modal></app-admin-modal>
+              <app-admin-table></app-admin-table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </body>
-
 </html>

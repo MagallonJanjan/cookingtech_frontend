@@ -68,6 +68,20 @@
     color: gray;
 }
 
+.btn-custom {
+    border-radius: 5px;
+    height: 40px;
+}
+
+.content {
+    margin-top: 80px;
+    margin-left: 225px;
+    /* border: #0066cc solid 4px; */
+}
+
+.content-v2 {
+    margin-left: 85px;
+}
 .cardCenter{
   margin-left:30%;
   margin-top:8%;

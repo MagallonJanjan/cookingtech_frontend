@@ -15,9 +15,17 @@ export class CustomvalidationService {
   postData(url: string, body:any){
     return this.http.post(url, body);
   }
+  
+  updateData(){
+
+  }
+
+  deleteData(){
+    
+  }
 
 
-  loginUrl = 'https://cookingtech.herokuapp.com/api/users/login';
+  //loginUrl = 'https://cookingtech.herokuapp.com/api/users/login';
   
 
 

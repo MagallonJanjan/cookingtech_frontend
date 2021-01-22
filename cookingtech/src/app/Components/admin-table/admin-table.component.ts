@@ -77,8 +77,6 @@ export class AdminTableComponent implements OnInit {
     ]
 
     this.totalUsers = this.users.length;
-    alert(this.totalUsers);
-    
   }
 
   pageChanged(page:any) {

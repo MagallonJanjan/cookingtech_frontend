@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
 
-<body>
+<body class="">
   <nav class="navbar navbar-expand-sm navbar-dark bg-custom-header border position-fixed main-header">
     <a class="navbar-brand" href="#">CookingTech <strong>Dashboard</strong></a>
   </nav>
@@ -15,60 +15,98 @@
   <div class="container-fluid">
     <!-- sidebar -->
     <div class="row h-100">
-      
+
       <div class="bg-custom-sidebar h-100 position-fixed custom-style-sidebar" *ngIf="showSideBar == true">
         <p class="text-right px-2 text-white" (click)="toggleSidebar()"><i class="fas fa-times custom-style-x"></i></p>
-          <div class="row" >
-              <div class="col-md-6 ml-2">
-                <div class="img-container ml-5">
-                  <!-- image here -->
-                </div>
-                <span class="text-white text-center custom-align ml-5">Kyla</span><br>
-                <small class="text-white text-center custom-align ml-5">admin</small>
-              </div>
+        <div class="row">
+          <div class="col-md-6 ml-2">
+            <div class="img-container ml-5">
+              <!-- image here -->
             </div>
-            <hr class="bg-light">
-    
-            <div class="container">
-              <!-- navigations -->
-              <span class="btn-custom border navigation-items"><i class="fas fa-columns pr-2 ml-4"></i>Dashboard</span>
-              <span class="btn-custom border navigation-items"><i class="fas fa-users pr-2 ml-4"></i>Users</span>
-              <span class="btn-custom border navigation-items"><i class="fas fa-book-open pr-2 ml-4"></i>Recipes</span>
-              <span class="btn-custom border navigation-items"><i class="fas fa-thumbs-up pr-2 ml-4"></i>Pendings</span>
-              <span class="btn-custom border navigation-items"><i class="fas fa-sign-out-alt pr-2 ml-4"></i>Logout</span>
-            </div>
-          </div>
-          
-      <!-- ghost nav -->
-      <div class="bg-custom-sidebar h-100 position-fixed custom-style-sidebar-ghost" >
-          <p class="text-center text-white" (click)="toggleSidebar()"><i class="fas fa-bars custom-style-x"></i></p>
-  
-          <div class="row">
-            <div class="col-md-12 ml-3">
-              <div class="img-container-ghost">
-                <!-- image here -->
-              </div>
-            </div>
-          </div>
-          <hr class="bg-light">
-  
-          <div class="container">
-            <!-- navigations -->
-            <span class="btn border navigation-items"><i class="fas fa-columns "></i></span>
-            <span class="btn border navigation-items"><i class="fas fa-users "></i></span>
-            <span class="btn border navigation-items"><i class="fas fa-book-open "></i></span>
-            <span class="btn border navigation-items"><i class="fas fa-thumbs-up "></i></span>
-            <span class="btn border navigation-items"><i class="fas fa-sign-out-alt "></i></span>
+            <span class="text-white text-center custom-align ml-5">Kyla</span><br>
+            <small class="text-white text-center custom-align ml-5">admin</small>
           </div>
         </div>
+        <hr class="bg-light">
+
+        <div class="container">
+          <!-- navigations -->
+          <span class="btn-custom border navigation-items"><i class="fas fa-columns pr-2 ml-4"></i>Dashboard</span>
+          <span class="btn-custom border navigation-items"><i class="fas fa-users pr-2 ml-4"></i>Users</span>
+          <span class="btn-custom border navigation-items"><i class="fas fa-book-open pr-2 ml-4"></i>Recipes</span>
+          <span class="btn-custom border navigation-items"><i class="fas fa-thumbs-up pr-2 ml-4"></i>Pendings</span>
+          <span class="btn-custom border navigation-items"><i class="fas fa-sign-out-alt pr-2 ml-4"></i>Logout</span>
+        </div>
+      </div>
+
+      <!-- ghost nav -->
+      <div class="bg-custom-sidebar h-100 position-fixed custom-style-sidebar-ghost">
+        <p class="text-center text-white" (click)="toggleSidebar()"><i class="fas fa-bars custom-style-x"></i></p>
+
+        <div class="row">
+          <div class="col-md-12 ml-3">
+            <div class="img-container-ghost">
+              <!-- image here -->
+            </div>
+          </div>
+        </div>
+        <hr class="bg-light">
+
+        <div class="container">
+          <!-- navigations -->
+          <span class="btn border navigation-items"><i class="fas fa-columns "></i></span>
+          <span class="btn border navigation-items"><i class="fas fa-users "></i></span>
+          <span class="btn border navigation-items"><i class="fas fa-book-open "></i></span>
+          <span class="btn border navigation-items"><i class="fas fa-thumbs-up "></i></span>
+          <span class="btn border navigation-items"><i class="fas fa-sign-out-alt "></i></span>
+        </div>
+      </div>
     </div>
+
+   <!-- <div class="row cardCenter">
+      <div class="col-sm-3 ">
+        <div class="card text-center w-100 ">
+          <div class="card-header headBackground ">
+            TOTAL RECIPES
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 ">
+        <div class="card text-center">
+          <div class="card-header headBackground1 bg-info">
+            MOST RATED RECIPE
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 ">
+        <div class="card text-center">
+          <div class="card-header headBackground3 ">
+            TOTAL USERS
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+    </div>  -->
 
     <!-- content -->
     <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
       <div class="container">
         <app-admin-table></app-admin-table>
+        <app-admin-modal></app-admin-modal>
       </div>
     </div>
   </div>
 </body>
+
 </html>

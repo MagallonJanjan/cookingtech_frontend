@@ -6,6 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http'; 
 
+
+
 //Import Components
 import { AppComponent } from './app.component';
 import { AdminComponent } from './Components/Public/admin/admin.component';
@@ -26,7 +28,7 @@ import { AdminTableComponent } from './Components/admin-table/admin-table.compon
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

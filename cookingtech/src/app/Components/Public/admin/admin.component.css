@@ -20,11 +20,11 @@
 }
 
 .bg-custom-header {
-    background-color: #84acd8;
+    background-color: #0066cc;
 }
 
 .bg-custom-sidebar {
-    background-color: #84acd8;
+    background-color:#0066cc;
 }
 
 .main-header {
@@ -83,3 +83,20 @@
 .content-v2 {
     margin-left: 85px;
 }
+.cardCenter{
+  margin-left:30%;
+  margin-top:8%;
+}
+
+.headBackground{
+  background-color: #cc3399;
+}
+
+.headBackground1{
+  background-color: #e32929;
+}
+
+.headBackground3{
+  background-color: #ff611d;
+}
+

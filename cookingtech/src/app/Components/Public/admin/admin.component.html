@@ -9,9 +9,41 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-custom-header border">
         <a class="navbar-brand" href="#">CookingTech <strong>Dashboard</strong></a>
-        <button class="btn btn-primary float-right">notification</button>
     </nav>
+
+    <div class="container-fluid">
+      <!-- sidebar -->
+        <div class="row h-100">
+            <div class="bg-custom-sidebar h-100 position-fixed custom-style-sidebar">
+                <p class="text-right px-2 text-white"><i class="fas fa-times custom-style-x"></i></p>
+
+                <div class="row">
+                  <div class="col-md-6 ml-2">
+                    <div class="img-container ml-4">
+
+                    </div>
+                  </div>
+                  <div class="col-md-5">
+                    <br>
+                    <span class="text-white custom-align-middle">Kyla</span><br>
+                    <small class="text-white">admin</small>
+                  </div>
+                </div>
+                <hr class="bg-light">
+
+                <div class="container">
+                    <!-- navigations -->
+                    <span class="navigation-items btn border"><i class="fas fa-columns pr-2"></i><a href="">Dashboard</a></span>
+                    <a href="" class="btn border navigation-items">Users</a>
+                    <a href="" class="btn border navigation-items">Recipes</a>
+                    <a href="" class="btn border navigation-items">Pendings</a>
+                    <a href="" class="btn border navigation-items">Logout</a>
+                  </div>
+            </div>
+            
+        </div>
+    </div>
   </body>
 </html>

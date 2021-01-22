@@ -6,6 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http'; 
 
+
+
 //Import Components
 import { AppComponent } from './app.component';
 import { AdminComponent } from './Components/Public/admin/admin.component';
@@ -16,13 +18,13 @@ import { AdminComponent } from './Components/Public/admin/admin.component';
   declarations: [
     AppComponent,
     routingComponents,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

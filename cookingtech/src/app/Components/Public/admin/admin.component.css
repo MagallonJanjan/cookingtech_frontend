@@ -4,6 +4,14 @@
     margin-top: 58px;
 }
 
+.custom-style-x {
+    cursor: pointer;
+}
+
+.custom-style-x:hover  {
+    color: gray;
+}
+
 .bg-custom-header {
     background-color: #84acd8;
 }

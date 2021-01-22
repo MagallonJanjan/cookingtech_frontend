@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http'; 
 
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 //Import Components
 import { AppComponent } from './app.component';
@@ -29,6 +29,7 @@ import { AdminTableComponent } from './Components/admin-table/admin-table.compon
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

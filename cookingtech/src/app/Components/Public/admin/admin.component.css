@@ -12,18 +12,11 @@
     background-color:#0066cc;
 }
 
-.custom-style-x {
-    cursor: pointer;
-}
-
 .main-header {
     width: 100%;
     z-index: 1;
 }
 
-.custom-style-x:hover {
-    color: gray;
-}
 
 .img-container {
     width: 100px;
@@ -68,4 +61,11 @@
 .headBackground3{
   background-color: #ff611d;
 }
+
+/* .btn-custom {
+    border-radius: 5px;
+    height: 40px;
+} */
+
+
 

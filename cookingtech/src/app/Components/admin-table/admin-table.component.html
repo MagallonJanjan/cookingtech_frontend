@@ -1,0 +1,30 @@
+<div>
+   
+    <table>
+        <div class="row tableInfo mb-5">
+            <div class="table-responsive bg-light">
+                <table class="table table-striped bg-white center" >
+                    <thead class="thead-dark">
+                       <th colspan="2" class="text-center" >USER'S TABLE</th>
+
+                        <tr>
+                            <th scope="col-sm">Full Name</th>
+                            <th scope="col-sm">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users;">
+                            <td class="table-danger">{{user.firstName + " " + user.lastName}}</td>
+                            <td class="table-danger">
+                                <form action="" method="POST">
+                                    <input type="submit" value="View" name="" id="delete" class="btn btn-danger mr-2">
+                                    <a href class="btn btn-info">Delete</a>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </table>
+</div>

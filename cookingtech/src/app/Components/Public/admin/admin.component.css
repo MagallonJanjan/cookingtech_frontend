@@ -12,18 +12,11 @@
     background-color: #84acd8;
 }
 
-.custom-style-x {
-    cursor: pointer;
-}
-
 .main-header {
     width: 100%;
     z-index: 1;
 }
 
-.custom-style-x:hover {
-    color: gray;
-}
 
 .img-container {
     width: 100px;
@@ -55,4 +48,11 @@
 .btn-custom {
     border-radius: 5px;
     height: 40px;
+}
+
+.content {
+    margin-top: 80px;
+    margin-left: 245px;
+    background-color: #527ba7;
+    /* float: right; */
 }

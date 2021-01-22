@@ -1,64 +1,94 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Sidebar Dashboard Template</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 
-  </head>
-  <body>
-    <input type="checkbox" id="check">
-    <!--header area start-->
-    <header>
-    
-      <div class="left_area">
-        <h3>@JOSEPH</h3>
-      </div>
-      <!-- <div class="right_area">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Sidebar Dashboard Template</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+
+</head>
+
+<body> 
+  <input type="checkbox" id="check">
+  <!--header area start-->
+  <header>
+
+    <div class="left_area">
+      <h3>@JOSEPH</h3>
+    </div>
+    <!-- <div class="right_area">
         <a href="#" class="logout_btn">Logout</a>
       </div> -->
-    </header>
-    <!--header area end-->
-    <!--mobile navigation bar start-->
-    <div class="mobile_nav">
-      <div class="nav_bar">
-        <img src="avatar.png" class="mobile_profile_image" alt="">
-        <i class="fa fa-bars nav_btn"></i>
-      </div>
-      <div class="mobile_nav_items">
-        <a href="#"><i class="fas fa-desktop"></i><span>Link</span></a>
-        <a href="#"><i class="fas fa-briefcase"></i><span>Link</span></a>
-        <a href="#"><i class="fas fa-plus"></i><span> Link</span></a>
-        <a href="#"><i class="fas fa-users"></i><span>Link</span></a>
-      </div>
+  </header>
+  <!--header area end-->
+  <!--mobile navigation bar start-->
+  <div class="mobile_nav">
+    <div class="nav_bar">
+      <img src="avatar.png" class="mobile_profile_image" alt="">
+      <i class="fa fa-bars nav_btn"></i>
     </div>
-    <!--mobile navigation bar end-->
-    <!--sidebar start-->
-    <div class="sidebar">
-      
-      <div class="profile_info">
-        <img src="avatar.png" class="profile_image" alt="">
-        <h4>Joseph John</h4>
-      </div>
+    <div class="mobile_nav_items">
       <a href="#"><i class="fas fa-desktop"></i><span>Link</span></a>
       <a href="#"><i class="fas fa-briefcase"></i><span>Link</span></a>
-      <a href="#"><i class="fas fa-plus"></i><span>Link</span></a>
+      <a href="#"><i class="fas fa-plus"></i><span> Link</span></a>
       <a href="#"><i class="fas fa-users"></i><span>Link</span></a>
     </div>
-    <!--sidebar end-->
+  </div>
+  <!--mobile navigation bar end-->
+  <!--sidebar start-->
+  <div class="sidebar">
 
-    <div class="content">
-      <!-- diri ang main content -->
+    <div class="profile_info">
+      <img src="avatar.png" class="profile_image" alt="">
+      <h4>Joseph John</h4>
     </div>
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $('.nav_btn').click(function(){
+    <a href="#"><i class="fas fa-desktop"></i><span>Link</span></a>
+    <a href="#"><i class="fas fa-briefcase"></i><span>Link</span></a>
+    <a href="#"><i class="fas fa-plus"></i><span>Link</span></a>
+    <a href="#"><i class="fas fa-users"></i><span>Link</span></a>
+  </div>
+  <!--sidebar end-->
+
+      <div class="row" style="margin-left:30%;margin-top:10%;padding:5px;">
+          <div class="col-sm-3" >
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                </div>
+              </div>
+            </div>
+        </div>
+
+  <div class="content">
+    <!-- diri ang main content -->
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.nav_btn').click(function () {
         $('.mobile_nav_items').toggleClass('active');
       });
     });
-    </script>
+  </script>
 
-  </body>
+</body>
+
 </html>

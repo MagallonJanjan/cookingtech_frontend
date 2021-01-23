@@ -1,12 +1,10 @@
 .tableInfo {
-    margin-top: -50%;;
-    margin-left: 60%;
-    width:300%;   
+    width:100%;   
     padding:5px;
     border:5px;
       /* float: right; */
 }
 
 .tableTable{
-    width:2000%;
+    width:100%;
 }

@@ -1,8 +1,8 @@
 <div>
 
-    <table>
-        <div class="row mb-5 tableInfo">
-            <div class="table-responsive-xl bg-light tableTable">
+    <table class="w-100">
+        <div class="row w-100">
+            <div class="table-responsive-xl bg-light w-100">
                 <table class="table table-striped bg-white center">
                     <thead class="thead-dark">
                         <th colspan="2" class="text-center">USER'S TABLE</th>
@@ -13,7 +13,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let user of users | paginate: { id: 'test',
-                        itemsPerPage: 5,
+                        itemsPerPage: 10,
                         currentPage: page,
                         totalItems: totalUsers}">
                             <td class="table-secondary">{{user.firstName + " " + user.lastName}}</td>

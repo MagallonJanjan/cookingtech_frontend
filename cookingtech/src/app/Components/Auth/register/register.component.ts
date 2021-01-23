@@ -66,7 +66,7 @@ MustMatch(controlName: string, matchingControlName: string) {
   }
 }
 
-configUrl = 'http://cookingtech.herokuapp.com/api/users';
+configUrl = '/api/users';
 
 onSubmit() {
   this.submitted = true;

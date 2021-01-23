@@ -104,12 +104,15 @@
     height: 40px;
 }
 
-
-
 .content {
     margin-left: 225px;
 }
 
 .content-v2 {
     margin-left: 85px;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
 }

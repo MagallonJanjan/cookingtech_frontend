@@ -9,7 +9,7 @@
 
 <body>
   <nav class="navbar navbar-expand-sm navbar-dark bg-custom-header border position-fixed main-header">
-    <a class="navbar-brand" href="#">CookingTech <strong>Dashboard</strong></a>
+    <a class="navbar-brand" href="#"><strong>CookingTech</strong></a>
   </nav>
 
   <div class="container-fluid">
@@ -31,7 +31,7 @@
 
         <div class="container">
           <!-- navigations -->
-          <span class="btn-custom border navigation-items"><i class="fas fa-columns pr-2 ml-4"></i>Dashboard</span>
+          <span class="btn-custom border navigation-items" (click)="showDasboardFun()"><i class="fas fa-columns pr-2 ml-4"></i>Dashboard</span>
           <span class="btn-custom border navigation-items" (click)="getDataOnclick('/users')"><i class="fas fa-users pr-2 ml-4"></i>Users</span>
           <span class="btn-custom border navigation-items" (click)="getDataOnclick('/recipes')"><i class="fas fa-book-open pr-2 ml-4"></i>Recipes</span>
           <span class="btn-custom border navigation-items" (click)="getDataOnclick('')"><i class="fas fa-thumbs-up pr-2 ml-4"></i>Pendings</span>
@@ -52,24 +52,87 @@
             <hr class="bg-light">
           </div>
         </div>
-            <div class="container">
-              <!-- navigations -->
-              <span class="btn border navigation-items"><i class="fas fa-columns "></i></span>
-              <span class="btn border navigation-items"><i class="fas fa-users "></i></span>
-              <span class="btn border navigation-items"><i class="fas fa-book-open "></i></span>
-              <span class="btn border navigation-items"><i class="fas fa-thumbs-up "></i></span>
-              <span class="btn border navigation-items"><i class="fas fa-sign-out-alt "></i></span>
-            </div>
-          </div>    
+        <div class="container">
+          <!-- navigations -->
+          <span class="btn border navigation-items"><i class="fas fa-columns "></i></span>
+          <span class="btn border navigation-items"><i class="fas fa-users "></i></span>
+          <span class="btn border navigation-items"><i class="fas fa-book-open "></i></span>
+          <span class="btn border navigation-items"><i class="fas fa-thumbs-up "></i></span>
+          <span class="btn border navigation-items"><i class="fas fa-sign-out-alt "></i></span>
+        </div>
       </div>
-    
+    </div>
+
     <!-- content -->
     <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
+      <strong>Dashboard</strong>
+      <hr class="bg-secondary">
       <div class="container">
+
+        <!-- when the modal is triggered -->
         <app-admin-modal></app-admin-modal>
 
-        <app-admin-table [data]="data" [tableTitle] = "title"></app-admin-table>
-
+        <!-- when the admin button is clicked -->
+        <div class="row" *ngIf="showDashboard">
+          <div class="col-md-4 p-2">
+            <div class="row border rounded bg-light">
+              <div class="col-sm-6">
+                <div class=" p-1 shadow-sm">
+                  <div class="rounded-circle bg-dark circle py-4">
+                    <p class="text-center text-white">
+                      <i class="fas fa-users fa-3x"></i><br>
+                      <span><small>Users</small></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 border-top">
+                <h2 class="text-center mt-4">1234</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-2">
+            <div class="row border rounded bg-light">
+              <div class="col-sm-6">
+                <div class="p-1 shadow-sm">
+                  <div class="rounded-circle bg-primary circle py-4">
+                    <p class="text-center text-white">
+                      <i class="fas fa-book-open fa-3x">
+                      </i><br>
+                      <small>Recipes</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 border-top">
+                <h2 class="text-center mt-4">1234</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-2">
+            <div class="row border rounded bg-light">
+              <div class="col-sm-6">
+                <div class="p-1 shadow-sm">
+                  <div class="rounded-circle bg-success circle py-4">
+                    <p class="text-center text-white">
+                      <i class="fas fa-thumbs-up fa-3x"></i><br>
+                      <small>Pendings</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 border-top">
+                <h2 class="text-center mt-4">1234</h2>
+              </div>
+            </div>
+          </div>
+          <hr class="w-100 bg-secondary">
+          <div class="container w-100">
+            <h1>Graph bar here</h1>
+          </div>
+        </div>
+        <!-- this for the tables -->
+        <app-admin-table [data]="data" [tableTitle]="title" *ngIf="!showDashboard"></app-admin-table>
       </div>
     </div>
   </div>
@@ -78,36 +141,36 @@
 </html>
 <!-- <div class="row cardCenter">
   <div class="col-sm-3 ">
-  <div class="card text-center w-100 ">
-  <div class="card-header headBackground ">
-    TOTAL RECIPES
-  </div>
-  <div class="card-body">
-    <h5 class="card-title"></h5>
-    <p class="card-text"></p>
-  </div>
-  </div>
-  </div>
-  <div class="col-sm-3 ">
-  <div class="card text-center">
-  <div class="card-header headBackground1 bg-info">
-    MOST RATED RECIPE
-  </div>
-  <div class="card-body">
-    <h5 class="card-title"></h5>
-    <p class="card-text"></p>
-  </div>
-  </div>
+    <div class="card text-center w-100 ">
+      <div class="card-header headBackground ">
+        TOTAL RECIPES
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text"></p>
+      </div>
+    </div>
   </div>
   <div class="col-sm-3 ">
-  <div class="card text-center">
-  <div class="card-header headBackground3 ">
-    TOTAL USERS
+    <div class="card text-center">
+      <div class="card-header headBackground1 bg-info">
+        MOST RATED RECIPE
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text"></p>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-    <h5 class="card-title"></h5>
-    <p class="card-text"></p>
+  <div class="col-sm-3 ">
+    <div class="card text-center">
+      <div class="card-header headBackground3 ">
+        TOTAL USERS
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text"></p>
+      </div>
+    </div>
   </div>
-  </div>
-  </div>
-  </div>  -->
+</div> -->

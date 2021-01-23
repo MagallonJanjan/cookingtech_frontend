@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiRequestService } from '../../../services/apirequest.service';
+import {} from 'ng-apexcharts';
 
 @Component({
   selector: 'app-admin',
@@ -14,10 +15,13 @@ export class AdminComponent implements OnInit {
   class:string = "click";
   title:any;
 
+  showDashboard:boolean;
+
   constructor(
     private apiService: ApiRequestService
   ) {
     this.data = [];
+    this.showDashboard = true;
    }
 
   ngOnInit(): void {
@@ -28,7 +32,13 @@ export class AdminComponent implements OnInit {
     this.showSideBar = !this.showSideBar;
   }
 
+
+  showDasboardFun() {
+    this.showDashboard = true;
+  }
+
   getDataOnclick(kindOfData:string) {    
+    this.showDashboard = false;
     this.apiService.apiRequest(kindOfData,"get")
       .subscribe(respond => {
         this.temp = respond;

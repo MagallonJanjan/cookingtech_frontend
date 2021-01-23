@@ -31,7 +31,7 @@ usertype:any;
 
 onSubmit():void  {
   
- this.validation.apiRequest('https://cookingtech.herokuapp.com/api/users/login',"post", this.userLogin.value)
+ this.validation.apiRequest('/users/login',"post", this.userLogin.value)
       .subscribe(userToken => {
         this.usertype = userToken;
         window.localStorage.setItem('token', this.usertype.token);

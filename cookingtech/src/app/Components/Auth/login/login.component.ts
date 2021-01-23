@@ -2,7 +2,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder ,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import {CustomvalidationService} from '../../../services/customvalidation.service'
+import {ApirequestService} from '../../../services/apirequest.service'
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder : FormBuilder,
-    private validation : CustomvalidationService,
+    private validation : ApirequestService,
     private router : Router) { }
 
     userLogin:any
@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
  
 kindOfUser:any;
 
-onSubmit(){
-  console.log(this.userLogin.value);
- this.validation.postData('https://cookingtech.herokuapp.com/api/users/login', this.userLogin.value)
+onSubmit():void  {
+  
+ this.validation.apiRequest('https://cookingtech.herokuapp.com/api/users/login',"post", this.userLogin.value)
       .subscribe(userToken => {
         console.log(userToken);
         this.kindOfUser = userToken;
@@ -46,9 +46,7 @@ onSubmit(){
         if(this.kindOfUser.user.usertype === 'admin'){
           this.router.navigate([''])
         }
-
+        window.localStorage.setItem('token', this.kindOfUser.token);
       })
 }
-
-
 }

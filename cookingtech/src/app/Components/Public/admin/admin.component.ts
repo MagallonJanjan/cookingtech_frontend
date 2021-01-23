@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApirequestService } from '../../../services/apirequest.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  
+  showSideBar:boolean = true;
+  class:string = "click";
+
+  constructor(
+    private apiService: ApirequestService
+  ) {
+   }
 
   ngOnInit(): void {
+    
   }
 
+  toggleSidebar() {
+    this.showSideBar = !this.showSideBar;
+  }
 }

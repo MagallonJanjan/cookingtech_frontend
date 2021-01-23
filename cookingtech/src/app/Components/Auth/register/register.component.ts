@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomvalidationService } from '../../../services/customvalidation.service';
+import { ApirequestService } from '../../../services/apirequest.service';
 
 
 
@@ -22,12 +22,12 @@ submitted = false;
 
 constructor(
   private formBuilder: FormBuilder ,
-  private sample: CustomvalidationService,
+  private sample: ApirequestService,
   private router :Router){ }
 
 
 ngOnInit(): void {
-  this.user = this.formBuilder.group({
+   this.user = this.formBuilder.group({
     firstname: ['', [Validators.required, Validators.minLength(4)]],
     lastname: ['', [Validators.required, Validators.minLength(4)]],
     username: ['',[Validators.required, Validators.minLength(4)]],
@@ -77,9 +77,9 @@ onSubmit() {
   }
  
   console.log(this.user.value)
-  this.sample.postData(this.configUrl, this.user.value).subscribe(respond => {
+  this.user.value["profile_pic"] = "rtetsdtsadgds";
+  this.sample.apiRequest(this.configUrl,"post",this.user.value).subscribe(respond => {
     console.log(respond);
-    
     this.router.navigate(['/login'])
   });
 

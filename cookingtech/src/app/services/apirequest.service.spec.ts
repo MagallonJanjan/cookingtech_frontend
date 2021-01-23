@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CustomvalidationService } from './customvalidation.service';
+import { CustomvalidationService } from './apirequest.service';
 
 describe('CustomvalidationService', () => {
   let service: CustomvalidationService;

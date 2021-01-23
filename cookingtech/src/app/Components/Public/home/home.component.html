@@ -24,27 +24,17 @@
   </div>
   <form class="form-inline my-2 my-lg-0" style="margin: 2px;">
     <button style="margin-right: 5px;" class="btn btn-outline-info my-2 my-sm-0" type="submit"
-      routerLink="/register"><span class="fas fa-user-plus"></span>Register</button>
+      routerLink="/register">Register</button>
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/login">Login</button>
   </form>
+
 </nav>
-<nav class="navbar navbar-light bg-light justify-content-between">
-  <div class="dropdown pl-3">
-    <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-      aria-haspopup="true" aria-expanded="false">
-      <label>Categories</label>
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <button class="dropdown-item" type="button">Soup</button>
-      <button class="dropdown-item" type="button">Breakfast</button>
-      <button class="dropdown-item" type="button">Dessert</button>
-    </div>
+<div class="input-group" style="width:25rem;margin-left: 68%;">
+  <input class="form-control ml-5" type="search" placeholder="Search">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" id="btnGroupAddon2"><i class="fa fa-search"></i></button>
   </div>
-  <form class="form-inline">
-    <input class="form-control" type="search" placeholder="Enter what to search..." aria-label="Search">
-    <button type="submit" class="btn btn-outline-secondary"> Search</button>
-  </form>
-</nav><br><br>
+</div>
 
 
 <!--carousel here-->
@@ -116,11 +106,11 @@
 </div>
 <div class="card-deck mt-5 mx-3">
   <div class="card">
-    <img class="card-img-top" src="../../../../assets/img/home/carousel3.jpg" alt="Card image cap">
+    <img class="card-img-top" src="../../../../assets/img/home/veggie_quiche_muffins.jpg" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Rawmisu</h5>
-      <p class="card-text">Short description of the recipe...</p>
-      <button class="btn btn-outline-success">See More...</button>
+      <h5 class="card-title">Veggie Quiche Muffins</h5>
+      <p class="card-text">A very healthy breakfast for all ages.</p>
+      <button class="btn btn-outline-success" routerLink="/viewpage">See More...</button>
     </div>
   </div>
   <div class="card">
@@ -140,47 +130,5 @@
     </div>
   </div>
 </div>
-<div class="card text-center">
-  <div class="card-header">
 
-  </div>
-  <div class="card-body">
-    <!-- <h5 class="card-title">Special title treatment</h5> -->
-    <!-- <p class="card-text text-left" style="font-family: Zapf Chancery, cursive;font-size: 35px;">cookingTech</p>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-    <div class="card-text text-left">
-      <p style="font-family: Zapf Chancery, cursive;font-size: 35px;">cookingTech</p>
-      <p class="card-text my-4 mx-4" style="font-size: 18px;">
-        The haven for the skilled and aspiring chef of the century.
-      </p>
-    </div>
-  </div>
-  <div class="card-footer">
-    <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light">
-          <i class="fa fa-twitter"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light">
-          <i class="fa fa-facebook"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light">
-          <i class="fa fa-github"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light">
-          <i class="fa fa-linkedin"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light">
-          <i class="fa fa-google-plus-g"></i>
-        </a>
-      </li>
-    </ul>
-</div>
+<app-footer></app-footer>

@@ -11,6 +11,14 @@ img{
     width: max-content;
 
 }
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+ }
 .card-img-top{
-    height: 20rem;
+    height: 15rem;
+}
+/*search bar*/
+.search-bar{
+    position:inline;
 }

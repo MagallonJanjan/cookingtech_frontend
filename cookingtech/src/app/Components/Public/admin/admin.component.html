@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
+
+<body class="">
   <nav class="navbar navbar-expand-sm navbar-dark bg-custom-header border position-fixed main-header">
     <a class="navbar-brand" href="#">CookingTech <strong>Dashboard</strong></a>
   </nav>
@@ -36,8 +38,6 @@
         </div>
       </div>
 
-
-
       <!-- ghost nav -->
       <div class="bg-custom-sidebar h-100 position-fixed custom-style-sidebar-ghost">
         <p class="text-center text-white" (click)="toggleSidebar()"><i class="fas fa-bars custom-style-x"></i></p>
@@ -62,45 +62,50 @@
       </div>
     </div>
 
+   <!-- <div class="row cardCenter">
+      <div class="col-sm-3 ">
+        <div class="card text-center w-100 ">
+          <div class="card-header headBackground ">
+            TOTAL RECIPES
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 ">
+        <div class="card text-center">
+          <div class="card-header headBackground1 bg-info">
+            MOST RATED RECIPE
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 ">
+        <div class="card text-center">
+          <div class="card-header headBackground3 ">
+            TOTAL USERS
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+    </div>  -->
+
     <!-- content -->
     <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
       <div class="container">
         <app-admin-table></app-admin-table>
-      </div>
-      <!-- <div class="right_area">
-        <a href="#" class="logout_btn">Logout</a>
-      </div> -->
-   
-    <!--header area end-->
-    <!--mobile navigation bar start-->
-    <!-- <div class="mobile_nav">
-      <div class="nav_bar">
-        <img src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/malecostume-512.png" class="mobile_profile_image" alt="">
-        <i class="fa fa-bars nav_btn"></i>
-      </div>
-    </div> -->
-    <div class="col-sm-3 ">
-      <div class="card text-center">
-        <div class="card-header headBackground1 bg-info">
-          MOST RATED RECIPE
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text"></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-3 ">
-      <div class="card text-center">
-        <div class="card-header headBackground3 ">
-          TOTAL USERS
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text"></p>
-        </div>
+        <app-admin-modal></app-admin-modal>
       </div>
     </div>
   </div>
+</body>
 
-
+</html>

@@ -12,6 +12,15 @@
 .btn1{ 
     width: 40%;
     margin-left: 30%;
-    border-radius: 2%;
-    
+    border-radius: 2%;   
+}
+
+.procedure{
+  margin-top: 10px;
+}
+
+#add-ingredient{
+  float: left;
+  margin-left: -1060%;
+  margin-top: -30%;
 }

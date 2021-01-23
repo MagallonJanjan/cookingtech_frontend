@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http'; 
 
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 //Import Components
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { AddrecipeComponent } from './Components/Public/addrecipe/addrecipe.comp
 import { AdminHeaderComponent } from './Components/admin-header/admin-header.component';
 import { AdminSidebarComponent } from './Components/admin-sidebar/admin-sidebar.component';
 import { AdminTableComponent } from './Components/admin-table/admin-table.component';
+import { AdminModalComponent } from './Components/admin-modal/admin-modal.component';
 
 
 @NgModule({
@@ -27,13 +28,15 @@ import { AdminTableComponent } from './Components/admin-table/admin-table.compon
 
     AdminHeaderComponent,
     AdminSidebarComponent,
-    AdminTableComponent
+    AdminTableComponent,
+    AdminModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

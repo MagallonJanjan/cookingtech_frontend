@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomvalidationService } from '../../../services/customvalidation.service';
+import { ApiRequestService } from '../../../services/apirequest.service';
 
 
 
@@ -22,7 +22,7 @@ submitted = false;
 
 constructor(
   private formBuilder: FormBuilder ,
-  private sample: CustomvalidationService,
+  private sample: ApiRequestService,
   private router :Router){ }
 
 

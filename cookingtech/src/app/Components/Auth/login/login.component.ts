@@ -2,7 +2,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder ,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import {CustomvalidationService} from '../../../services/customvalidation.service'
+import {ApiRequestService} from '../../../services/apirequest.service'
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder : FormBuilder,
-    private validation : CustomvalidationService,
+    private validation : ApiRequestService,
     private router : Router) { }
 
     userLogin:any

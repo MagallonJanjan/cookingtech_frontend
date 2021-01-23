@@ -1,0 +1,16 @@
+.logo{
+    height: 5rem;
+    width: 15rem;
+}
+img{
+    height: 40rem;
+}
+.carousel-caption{
+    background-color: gray;
+    opacity:80%;
+    width: max-content;
+
+}
+.card-img-top{
+    height: 20rem;
+}

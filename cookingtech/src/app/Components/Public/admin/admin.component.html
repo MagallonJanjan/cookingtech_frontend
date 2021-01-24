@@ -127,8 +127,19 @@
             </div>
           </div>
           <hr class="w-100 bg-secondary">
-          <div class="container w-100">
-            <h1>Graph bar here</h1>
+          <div class="container w-100 border">
+            <h1 class="text-center">Top 5 Most Rated Recipe</h1>
+            <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [dataLabels]="chartOptions.dataLabels"
+            [plotOptions]="chartOptions.plotOptions"
+            [yaxis]="chartOptions.yaxis"
+            [xaxis]="chartOptions.xaxis"
+            [legend]="chartOptions.legend"
+            [colors]="chartOptions.colors"
+            [grid]="chartOptions.grid"
+          ></apx-chart>
           </div>
         </div>
         <!-- this for the tables -->

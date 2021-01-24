@@ -4,49 +4,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ApirequestService {
+export class ApiRequestService {
 
   constructor(private http: HttpClient) { }
 
-  getData(url: string){
-    return this.http.get(url);
-  }
-
-  postData(url: string, body:any){
-    return this.http.post(url, body);
-  }
-  
-  updateData(){
-
-  }
-
-  deleteData(){
-    
-  }
-
-
-  //loginUrl = 'https://cookingtech.herokuapp.com/api/users/login';
-  
-
-  // postData(url: string, body: any) {
-  //   let token = window.localStorage.getItem('token');
-  //   let headers = new HttpHeaders({
-  //     Authorization: `Bearer ${token}`
-  //   });
-  //   return this.http.post(url, body, { headers: headers });
-  // }
-
-  // updateData(url: string, body:any) {
-  //   return this.http.put(url, body);
-  // }
-
   
   apiRequest(url:string, method:string, body?: any) {
+    let baseUrl = 'http://cookingtech.herokuapp.com/api';
     let token = window.localStorage.getItem('token');
     let headers = new HttpHeaders({
       Authorization: `Bearer ${token}` 
     });
 
+    url = `${baseUrl}${url}`
     method = method.toUpperCase();
     console.log(method, body);
     

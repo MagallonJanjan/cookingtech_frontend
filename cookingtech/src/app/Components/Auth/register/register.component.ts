@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApirequestService } from '../../../services/apirequest.service';
+import { ApiRequestService } from '../../../services/apirequest.service';
 
 
 
@@ -22,7 +22,7 @@ submitted = false;
 
 constructor(
   private formBuilder: FormBuilder ,
-  private sample: ApirequestService,
+  private sample: ApiRequestService,
   private router :Router){ }
 
 
@@ -66,7 +66,7 @@ MustMatch(controlName: string, matchingControlName: string) {
   }
 }
 
-configUrl = 'http://cookingtech.herokuapp.com/api/users';
+configUrl = '/api/users';
 
 onSubmit() {
   this.submitted = true;

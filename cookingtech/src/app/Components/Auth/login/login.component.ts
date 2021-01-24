@@ -2,7 +2,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder ,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import {ApirequestService} from '../../../services/apirequest.service'
+import {ApiRequestService} from '../../../services/apirequest.service'
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder : FormBuilder,
-    private validation : ApirequestService,
+    private validation : ApiRequestService,
     private router : Router) { }
 
     userLogin:any
@@ -31,7 +31,7 @@ kindOfUser:any;
 
 onSubmit():void  {
   
- this.validation.apiRequest('https://cookingtech.herokuapp.com/api/users/login',"post", this.userLogin.value)
+ this.validation.apiRequest('/users/login',"post", this.userLogin.value)
       .subscribe(userToken => {
         console.log(userToken);
         this.kindOfUser = userToken;

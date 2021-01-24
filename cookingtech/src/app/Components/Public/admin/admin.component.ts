@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApirequestService } from '../../../services/apirequest.service';
+import { ApiRequestService } from '../../../services/apirequest.service';
+import {} from 'ng-apexcharts';
 
 @Component({
   selector: 'app-admin',
@@ -8,13 +9,19 @@ import { ApirequestService } from '../../../services/apirequest.service';
 })
 export class AdminComponent implements OnInit {
 
-  
+  data:Array<any>;
+  temp:any;
   showSideBar:boolean = true;
   class:string = "click";
+  title:any;
+
+  showDashboard:boolean;
 
   constructor(
-    private apiService: ApirequestService
+    private apiService: ApiRequestService
   ) {
+    this.data = [];
+    this.showDashboard = true;
    }
 
   ngOnInit(): void {
@@ -23,5 +30,20 @@ export class AdminComponent implements OnInit {
 
   toggleSidebar() {
     this.showSideBar = !this.showSideBar;
+  }
+
+
+  showDasboardFun() {
+    this.showDashboard = true;
+  }
+
+  getDataOnclick(kindOfData:string) {    
+    this.showDashboard = false;
+    this.apiService.apiRequest(kindOfData,"get")
+      .subscribe(respond => {
+        this.temp = respond;
+        this.data = this.temp.users || respond;
+        this.title = (this.temp.users)? "USERS":"RECIPES"
+      });
   }
 }

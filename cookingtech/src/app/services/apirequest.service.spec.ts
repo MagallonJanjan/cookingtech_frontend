@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ApirequestService } from './apirequest.service';
+import { ApiRequestService } from './apirequest.service';
 
 describe('CustomvalidationService', () => {
-  let service: ApirequestService;
+  let service: ApiRequestService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ApirequestService);
+    service = TestBed.inject(ApiRequestService);
   });
 
   it('should be created', () => {

@@ -21,6 +21,9 @@ import { HomeComponent } from './Components/Public/home/home.component';
 import { ViewpageComponent } from './Components/Public/viewpage/viewpage.component';
 import { FooterComponent } from './Components/Public/footer/footer.component';
 
+//Import provider
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +48,7 @@ import { FooterComponent } from './Components/Public/footer/footer.component';
     NgxPaginationModule,
     NgApexchartsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

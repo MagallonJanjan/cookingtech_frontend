@@ -9,14 +9,13 @@ export class ApiRequestService {
   constructor(private http: HttpClient) { }
   
   apiRequest(url:string, method:string, body?: any) {
-    let baseUrl = "http://cookingtech.herokuapp.com/api";
+    let baseUrl = 'http://cookingtech.herokuapp.com/api';
     let token = window.localStorage.getItem('token');
     let headers = new HttpHeaders({
       Authorization: `Bearer ${token}` 
     });
 
-    url = `${baseUrl}${url}`;
-
+    url = `${baseUrl}${url}`
     method = method.toUpperCase();
     console.log(method, body);
     
@@ -26,4 +25,8 @@ export class ApiRequestService {
 
     return this.http.request(method, url, {body: body, headers: headers});
   }
+
+  
+
+
 }

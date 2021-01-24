@@ -27,14 +27,26 @@ export class LoginComponent implements OnInit {
   }
   
  
-usertype:any;
+kindOfUser:any;
 
 onSubmit():void  {
   
  this.validation.apiRequest('/users/login',"post", this.userLogin.value)
       .subscribe(userToken => {
-        this.usertype = userToken;
-        window.localStorage.setItem('token', this.usertype.token);
+        console.log(userToken);
+        this.kindOfUser = userToken;
+        console.log(this.kindOfUser)
+        
+        if(this.kindOfUser.user.usertype === 'chef_apprentice'){
+            this.router.navigate(['/admin'])
+        }
+        if(this.kindOfUser.user.usertype === 'chef_master'){
+          this.router.navigate([''])
+        }
+        if(this.kindOfUser.user.usertype === 'admin'){
+          this.router.navigate([''])
+        }
+        window.localStorage.setItem('token', this.kindOfUser.token);
       })
 }
 }

@@ -1,0 +1,26 @@
+.container {
+    background-color:#b7c8da;
+    margin-top: 80px;
+    height: -60%;
+}
+
+.btn {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.btn1{ 
+    width: 40%;
+    margin-left: 30%;
+    border-radius: 2%;   
+}
+
+.procedure{
+  margin-top: 10px;
+}
+
+#add-ingredient{
+  float: left;
+  margin-left: -1060%;
+  margin-top: -30%;
+}

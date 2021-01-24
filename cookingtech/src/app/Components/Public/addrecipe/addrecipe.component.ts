@@ -21,26 +21,41 @@ export class AddrecipeComponent implements OnInit {
     yield : new FormControl(),
     category : new FormControl(),
     tags : new FormControl(),
-    ingredients : new FormControl()
+    ingredients : new FormControl(),
+    procedure : new FormControl()
   })
 
 
   
-  view: any[] = [];
-  addIngredients(){
-    this.view.push(this.addRecipe.value.ingredients);
-    (<HTMLInputElement>document.getElementById('lingling')).value = "" 
+  ingredients: any[] = [];
+ 
+  hidden = true;
+  showMe(){
+    this.hidden = !this.hidden;
+  }
 
+  hiddenProcedure = true;
+  showProcedure(){
+    this.hiddenProcedure = !this.hiddenProcedure;
+  }
+
+  addIngredients(){
+    this.ingredients.push(this.addRecipe.value.ingredients);
+    (<HTMLInputElement>document.getElementById('lingling')).value = ""
+    this.hidden = true
+  }
+
+
+  procedure:any[] = [];
+  addProcedure(){
+    this.procedure.push(this.addRecipe.value.procedure);
+    (<HTMLInputElement>document.getElementById('procedure')).value = "";
+    this.hiddenProcedure = true;
   }
 
 
   onSubmit(data : any){
     console.log(data)
-  }
-
-  hidden = true;
-  showMe(){
-    this.hidden = !this.hidden;
   }
 
 }

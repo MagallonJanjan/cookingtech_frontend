@@ -5,9 +5,10 @@
             <div class="table-responsive-xl bg-light w-100">
                 <table class="table table-striped bg-white center">
                     <thead class="thead-dark">
-                        <th colspan="2" class="text-center">{{tableTitle}} TABLE</th>
+                        <th colspan="3" class="text-center">{{tableTitle}} TABLE</th>
                         <tr>
                             <th scope="col-sm">Full Name</th>
+                            <th scope="col-sm" *ngIf ="!data[0].name">Position</th>
                             <th scope="col-sm" class="text-right px-5">Action</th>
                         </tr>
                     </thead>
@@ -17,11 +18,12 @@
                         currentPage: page,
                         totalItems: totalData}">
                             <td class="table-secondary">{{bits.name || bits.username}}</td>
+                            <td class="table-secondary" *ngIf="!bits.name">{{bits.usertype}}</td>
                             <td class="table-secondary">
                                 <button class="btn btn-danger float-right" data-toggle="modal" data-target="#exampleModal1">Delete</button>
                                 <button type="submit" data-toggle="modal" data-target="#exampleModal" class="float-right btn btn-info mr-2">View</button>
                             </td>
-                                <button type="submit" data-toggle="modal" data-target="#exampleModal" class="btn btn-info mr-2 float-right">View</button>
+                             
                         </tr>
                     </tbody>
                 </table>

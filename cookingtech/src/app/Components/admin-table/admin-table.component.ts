@@ -21,72 +21,7 @@ export class AdminTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-   this.users=[
-    {
-      id:1,
-      firstName:"Kyla Jean",
-      lastName:"Dumaguit",
-    },
-    {
-      id:1,
-      firstName:"Harvey",
-      lastName:"Aparece",
-    },
-    {
-      id:1,
-      firstName:"Joseph",
-      lastName:"Magallon",
-    },
-    {
-      id:1,
-      firstName:"Kyla Jean",
-      lastName:"Dumaguit",
-    },
-    {
-      id:1,
-      firstName:"Harvey",
-      lastName:"Aparece",
-    },
-    {
-      id:1,
-      firstName:"Joseph",
-      lastName:"Magallon",
-    },
-    {
-      id:1,
-      firstName:"Kyla Jean",
-      lastName:"Dumaguit",
-    },
-    {
-      id:1,
-      firstName:"Harvey",
-      lastName:"Aparece",
-    },
-    {
-      id:1,
-      firstName:"Joseph",
-      lastName:"Magallon",
-    },
-    {
-      id:1,
-      firstName:"Kyla Jean",
-      lastName:"Dumaguit",
-    },
-    {
-      id:1,
-      firstName:"Harvey",
-      lastName:"Aparece",
-    },
-    {
-      id:1,
-      firstName:"Joseph",
-      lastName:"Magallon",
-    }
-    ]
-
-    this.totalUsers = this.users.length;
-    
-    
+  
     this.totalData = this.data.length;
   }
 

@@ -22,11 +22,8 @@ export class ApiRequestService {
     if(method == "GET") {
       return this.http.request(method, url, {headers: headers});
     }
-
+      
     return this.http.request(method, url, {body: body, headers: headers});
   }
-
-  
-
 
 }

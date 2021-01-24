@@ -1,101 +1,107 @@
 
-
-<body>
-  <div class="mask">
-    <div class="container pt-5">
-      <div class="row">
-        <div class="col d-flex justify-content-center pt-5">
-          <div class="card" style="width:35rem">
-            <div class="text-center">
-              <img src="../../../../assets/img/login/cherry.png" alt="logo.png">
-          </div>
-            <div class="card-body">
-              <form class="float left" (ngSubmit)="user.valid && onSubmit()" [formGroup]="user">
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label>First Name</label>
-                    <input type="text" class="form-control" formControlName="firstname"
-                      [ngClass]="{'is-invalid' : user.get('firstname').touched && user.get('firstname').invalid}"
-                      placeholder="First Name">
-                    <div *ngIf="user.get('firstname').touched && user.get('firstname').invalid" class="invalid-feedback">
-                      <p *ngIf="user.get('firstname').errors.required">First Name is required</p>
-                      <p *ngIf="user.get('firstname').errors.minlength">First Name must be atleast 4 characters</p>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </head>
+  
+  <body>
+    <div class="mask">
+      <div class="container pt-5">
+        <div class="row">
+          <div class="col d-flex justify-content-center pt-5">
+            <div class="card" style="width: 35rem;">
+              <div class="text-center">
+                <img src="../../../../assets/img/cherry.png" alt="logo.png">
+            </div>
+              <div class="card-body">
+                <form class="float left" (ngSubmit)="user.valid && onSubmit()" [formGroup]="user">
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label>First Name</label>
+                      <input type="text" class="form-control" formControlName="firstname"
+                        [ngClass]="{'is-invalid' : user.get('firstname').touched && user.get('firstname').invalid}"
+                        placeholder="First Name">
+                      <div *ngIf="user.get('firstname').touched && user.get('firstname').invalid" class="invalid-feedback">
+                        <p *ngIf="user.get('firstname').errors.required">First Name is required</p>
+                        <p *ngIf="user.get('firstname').errors.minlength">First Name must be atleast 4 characters</p>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>Last Name</label>
+                      <input type="text" class="form-control" formControlName="lastname"
+                        [ngClass]="{'is-invalid' : user.get('lastname').touched && user.get('lastname').invalid}"
+                        placeholder="Last Name">
+                      <div *ngIf="user.get('lastname').touched && user.get('lastname').invalid" class="invalid-feedback">
+                        <p *ngIf="user.get('lastname').errors.required">Last Name is required</p>
+                        <p *ngIf="user.get('lastname').errors.minlength">Last Name must be atleast 4 characters</p>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>Username</label>
+                      <input type="text" class="form-control" formControlName="username"
+                        [ngClass]="{'is-invalid' : user.get('username').touched && user.get('username').invalid}"
+                        placeholder="Username">
+                      <div *ngIf="user.get('username').touched && user.get('username').invalid" class="invalid-feedback">
+                        <p *ngIf="user.get('username').errors.required">Username is required</p>
+                        <p *ngIf="user.get('username').errors.minlength">Username must be atleat 4 characters</p>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>Email Address</label>
+                      <input type="email" class="form-control" formControlName="email"
+                        [ngClass]="{'is-invalid' : user.get('email').touched && user.get('email').invalid}"
+                        placeholder="Email Address">
+                      <div *ngIf="user.get('email').touched && user.get('email').invalid" class="invalid-feedback">
+                        <div *ngIf="user.get('email').errors.required"> Email is required</div>
+                        <div *ngIf="user.get('email').errors.email"> Email must be valid</div>
+                      </div>
                     </div>
                   </div>
-                  <div class="form-group col-md-6">
-                    <label>Last Name</label>
-                    <input type="text" class="form-control" formControlName="lastname"
-                      [ngClass]="{'is-invalid' : user.get('lastname').touched && user.get('lastname').invalid}"
-                      placeholder="Last Name">
-                    <div *ngIf="user.get('lastname').touched && user.get('lastname').invalid" class="invalid-feedback">
-                      <p *ngIf="user.get('lastname').errors.required">Last Name is required</p>
-                      <p *ngIf="user.get('lastname').errors.minlength">Last Name must be atleast 4 characters</p>
+                  <div class="form-group">
+                    <label> Are you a..?</label>
+                    <select name="select?" class="form-control" formControlName="usertype">
+                      <option selected>Chef Master</option>
+                      <option>Chef Apprentice</option>
+                      <option>Viewer</option>
+                    </select>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label>Password</label>
+                      <input type="password" class="form-control" formControlName="password"
+                       [ngClass]="{'is-invalid' : user.get('password').touched && user.get('password').invalid}" placeholder="Password">
+                       <div *ngIf="user.get('password').touched && user.get('password').invalid" class="invalid-feedback">
+                       <div *ngIf="user.get('password').errors.required"> Password is required</div>
+                       <div *ngIf="user.get('password').errors.minlength"> Password must be atleat 8     characters</div>
+                    </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>Confirm Password</label>
+                      <input type="password" class="form-control" formControlName="confirmpassword" 
+                      [ngClass]="{'is-invalid' : user.get('confirmpassword').touched && user.get('confirmpassword').invalid  && user.get('confirmpassword').errors}" placeholder="Confirm Password">
+                      <div *ngIf="user.get('confirmpassword').touched && user.get('confirmpassword').invalid && user.get('confirmpassword').errors" class="invalid-feedback">
+                        <div *ngIf="user.get('confirmpassword').errors.required"> Password is required</div>
+                       <div *ngIf="user.get('confirmpassword').errors.mustMatch"> Password doesn't match</div>
+                      </div>
+                    </div>
+                    <div class="col text-center">
+                      <button type="submit" class="btn btn-primary" [disabled]="!user.valid">Register</button>
                     </div>
                   </div>
-                  <div class="form-group col-md-6">
-                    <label>Username</label>
-                    <input type="text" class="form-control" formControlName="username"
-                      [ngClass]="{'is-invalid' : user.get('username').touched && user.get('username').invalid}"
-                      placeholder="Username">
-                    <div *ngIf="user.get('username').touched && user.get('username').invalid" class="invalid-feedback">
-                      <p *ngIf="user.get('username').errors.required">Username is required</p>
-                      <p *ngIf="user.get('username').errors.minlength">Username must be atleat 4 characters</p>
-                    </div>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label>Email Address</label>
-                    <input type="email" class="form-control" formControlName="email"
-                      [ngClass]="{'is-invalid' : user.get('email').touched && user.get('email').invalid}"
-                      placeholder="Email Address">
-                    <div *ngIf="user.get('email').touched && user.get('email').invalid" class="invalid-feedback">
-                      <div *ngIf="user.get('email').errors.required"> Email is required</div>
-                      <div *ngIf="user.get('email').errors.email"> Email must be valid</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label> Are you a..?</label>
-                  <select name="select?" class="form-control" formControlName="usertype">
-                    <option value="chef_master" selected>Chef Master</option>
-                    <option  value="chef_apprentice">Chef Apprentice</option>
-                  </select>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label>Password</label>
-                    <input type="password" class="form-control" formControlName="password"
-                     [ngClass]="{'is-invalid' : user.get('password').touched && user.get('password').invalid}" placeholder="Password">
-                     <div *ngIf="user.get('password').touched && user.get('password').invalid" class="invalid-feedback">
-                     <div *ngIf="user.get('password').errors.required"> Password is required</div>
-                     <div *ngIf="user.get('password').errors.minlength"> Password must be atleat 8 characters</div>
-                  </div>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label>Confirm Password</label>
-                    <input type="password" class="form-control" formControlName="confirmpassword" 
-                    [ngClass]="{'is-invalid' : user.get('confirmpassword').touched && user.get('confirmpassword').invalid  && user.get('confirmpassword').errors}" placeholder="Confirm Password">
-                    <div *ngIf="user.get('confirmpassword').touched && user.get('confirmpassword').invalid && user.get('confirmpassword').errors" class="invalid-feedback">
-                      <div *ngIf="user.get('confirmpassword').errors.required"> Password is required</div>
-                     <div *ngIf="user.get('confirmpassword').errors.mustMatch"> Password doesn't match</div>
-                    </div>
-                  </div>
+      
                   <div class="col text-center">
-                    <button type="submit" class="btn btn-primary" [disabled]="!user.valid">Register</button>
+                    <br>
+                    <p>Already have an account?</p>
+                    <button type="submit" routerLink="/login" class="btn btn-outline-success">Login</button>
                   </div>
-                </div>
-    
-                <div class="col text-center">
-                  <br>
-                  <p>Already have an account?</p><a  routerLink="/login">Login</a>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-
-</body>
-
+  </body>
+  

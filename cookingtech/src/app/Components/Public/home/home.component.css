@@ -1,18 +1,24 @@
-.form-inline{
-    padding-right: 1%;
+.logo{
+    height: 5rem;
+    width: 15rem;
 }
-
-#carouselExampleControls img {
-    height: 400px;
-    width:80%;
+img{
+    height: 40rem;
 }
+.carousel-caption{
+    background-color: gray;
+    opacity:80%;
+    width: max-content;
 
-#carouselExampleControls2 img {
-    height: 450px;
-    width:100%;
 }
-
-#carouselExampleControls3 img {
-    height: 450px;
-    width:100%;
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+ }
+.card-img-top{
+    height: 15rem;
+}
+/*search bar*/
+.search-bar{
+    position:inline;
 }

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="addrecipe.component.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container"><br>
+    <form [formGroup]="addRecipe" (ngSubmit)="onSubmit(addRecipe.value)">
+          <div class="row">
+            <div class="col">
+              <label for="exampleFormControlTextarea1">Name</label>
+              <input type="text" class="form-control" formControlName="recipeName" placeholder="Recipe Name">
+            </div>
+            <div class="col">
+              <label for="exampleFormControlTextarea1">Description</label>
+              <textarea class="form-control" formControlName="description" id="exampleFormControlTextarea1" rows="1"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="exampleFormControlTextarea1">Yield</label>
+              <input type="number" class="form-control" formControlName="yield" placeholder="Yield ">
+            </div>
+            <div class="col">
+              <label for="exampleFormControlTextarea1">Category</label>
+              <select class="custom-select my-1 mr-sm-2" formControlName="category">
+                <option value="Soup" selected>Soup</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Snacks">Snacks</option>
+              </select>
+            
+            </div>
+          </div><br>
+        <div class="form-row" id="buttons">
+            <div class="col">
+                <button type="button" class="btn alert-primary"  (click)="showMe()">Add Ingredient</button>
+              </div>
+              <div class="col">
+                <button type="button" class="btn alert-danger"  data-toggle="modal" data-target="#viewIngredient"> View Ingredient</button>
+              </div>
+        </div><br>
+        <div class="form-row"  [hidden]="hidden">
+          <div class="col" >
+              <input type="text" style="width: 42.5%; margin-left: 27px; margin-top: -1.7%;"  class="form-control" 
+               formControlName="ingredients" id="lingling" placeholder="Ingredients">
+          </div>
+          <div class="buttons" >
+            <button class="btn alert-info"  id="add-ingredient" type="submit" (click)="addIngredients()">Add</button>
+          </div>
+        </div>
+        <div class="procedure">
+        <div class="form-row" id="buttons">
+            <div class="col">
+                <button type="button" class="btn alert-info" data-toggle="modal" data-target="#addProcedure">Add Procedure</button>
+              </div>
+              <div class="col">
+                <button type="button" class="btn alert-warning" data-toggle="modal" data-target="#viewProcedure"> View Procedure</button>
+              </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" >
+                      <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" formControlName="tags" placeholder="Tags">
+            </div>
+          </div><br>
+        <button type="submit" class="btn1 btn-primary">Save Recipe</button><br><br><br>
+        <div>
+            <span></span>
+            <span><p></p></span>
+        </div>
+      </form>
+
+    
+      <!-- View Ingredient Modal -->
+      <div class="modal fade" id="viewIngredient" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <li *ngFor="let data of view">
+                {{data}}
+              </li>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- View Procedure Modal -->
+      <div class="modal fade" id="viewProcedure" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Walay Sulod
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </body>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+

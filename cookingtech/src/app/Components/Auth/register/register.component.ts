@@ -77,6 +77,7 @@ onSubmit() {
   }
  
   console.log(this.user.value)
+  this.user.value["profile_pic"] = "rtetsdtsadgds";
   this.sample.apiRequest(this.configUrl,"post",this.user.value).subscribe(respond => {
     console.log(respond);
     this.router.navigate(['/login'])

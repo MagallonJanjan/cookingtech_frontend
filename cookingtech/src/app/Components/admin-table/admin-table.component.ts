@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AdminTableComponent implements OnInit {
   @Input() data: any;
-  @Input()users:any;
+  @Input() users:any;
   @Input() tableTitle:any;
   
   

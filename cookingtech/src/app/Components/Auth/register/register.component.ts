@@ -66,7 +66,7 @@ MustMatch(controlName: string, matchingControlName: string) {
   }
 }
 
-configUrl = '/api/users';
+configUrl = '/users';
 
 onSubmit() {
   this.submitted = true;
@@ -75,12 +75,13 @@ onSubmit() {
   if (this.user.invalid) {
     return;
   }
- 
   console.log(this.user.value)
-  this.user.value["profile_pic"] = "rtetsdtsadgds";
   this.sample.apiRequest(this.configUrl,"post",this.user.value).subscribe(respond => {
     console.log(respond);
     this.router.navigate(['/login'])
+  },
+  errors=> {
+    console.log(errors.error.errors);
   });
 
 }

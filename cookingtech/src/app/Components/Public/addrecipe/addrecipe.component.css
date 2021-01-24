@@ -24,3 +24,23 @@
   margin-left: -1060%;
   margin-top: -30%;
 }
+
+#add-procedure{
+  float: left;
+  margin-left: -1060%;
+  margin-top: -10%;
+}
+
+#adding-procedure {
+  margin-top: 8px;
+}
+
+
+.list-body{
+  overflow: auto;
+  height: 200px;
+}
+
+.list-body::-webkit-scrollbar {
+  display: none;
+}

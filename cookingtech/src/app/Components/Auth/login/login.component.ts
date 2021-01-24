@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   
  
 kindOfUser:any;
+error:any;
 
 onSubmit():void  {
   
@@ -35,8 +36,12 @@ onSubmit():void  {
       .subscribe(userToken => {
         console.log(userToken);
         this.kindOfUser = userToken;
-        console.log(this.kindOfUser)
-        
+
+       
+        // if(this.kindOfUser.errors){
+        //   console.log('Dili mao bay')
+        //   return;
+        // }
         if(this.kindOfUser.user.usertype === 'chef_apprentice'){
             this.router.navigate(['/admin'])
         }
@@ -47,6 +52,11 @@ onSubmit():void  {
           this.router.navigate([''])
         }
         window.localStorage.setItem('token', this.kindOfUser.token);
-      })
+      }, errors => {
+        this.error = errors;
+       alert('This credentials does not match to our records');
+        
+      }
+    )
 }
 }

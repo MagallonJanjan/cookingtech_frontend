@@ -16,7 +16,6 @@ export type ChartOptions = {
   chart: ApexChart;
   dataLabels: ApexDataLabels;
   plotOptions: ApexPlotOptions;
-  yaxis: ApexYAxis;
   xaxis: ApexXAxis;
   grid: ApexGrid;
   colors: string[];
@@ -38,7 +37,7 @@ export class AdminComponent implements OnInit {
 
   showDashboard:boolean;
   //graph components needs declaration
-  chartOptions: Partial<ChartOptions>;
+  chartOptions: ChartOptions;
 
   constructor(
     private apiService: ApiRequestService

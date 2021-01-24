@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 //Import Components
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { AdminModalComponent } from './Components/admin-modal/admin-modal.compon
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,26 +1,27 @@
 <div>
 
-    <table>
-        <div class="row mb-5 tableInfo">
-            <div class="table-responsive-xl bg-light tableTable">
+    <table class="w-100">
+        <div class="row w-100">
+            <div class="table-responsive-xl bg-light w-100">
                 <table class="table table-striped bg-white center">
                     <thead class="thead-dark">
-                        <th colspan="2" class="text-center">USER'S TABLE</th>
+                        <th colspan="2" class="text-center">{{tableTitle}} TABLE</th>
                         <tr>
                             <th scope="col-sm">Full Name</th>
                             <th scope="col-sm" class="text-right px-5">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let user of users | paginate: { id: 'test',
-                        itemsPerPage: 5,
+                        <tr *ngFor="let bits of data | paginate: { id: 'test',
+                        itemsPerPage: 10,
                         currentPage: page,
-                        totalItems: totalUsers}">
-                            <td class="table-secondary">{{user.firstName + " " + user.lastName}}</td>
+                        totalItems: totalData}">
+                            <td class="table-secondary">{{bits.name || bits.username}}</td>
                             <td class="table-secondary">
                                 <button class="btn btn-danger float-right" data-toggle="modal" data-target="#exampleModal1">Delete</button>
                                 <button type="submit" data-toggle="modal" data-target="#exampleModal" class="float-right btn btn-info mr-2">View</button>
                             </td>
+                                <button type="submit" data-toggle="modal" data-target="#exampleModal" class="btn btn-info mr-2 float-right">View</button>
                         </tr>
                     </tbody>
                 </table>

@@ -99,19 +99,20 @@
   background-color: #ff611d;
 }
 
-/* .btn-custom {
+.btn-custom {
     border-radius: 5px;
     height: 40px;
-} */
+}
 
-
-
-/* .content {
-    margin-top: 80px;
+.content {
     margin-left: 225px;
-    background-color: #527ba7;
-} */
+}
 
 .content-v2 {
     margin-left: 85px;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
 }

@@ -16,6 +16,9 @@ import { AdminHeaderComponent } from './Components/admin-header/admin-header.com
 import { AdminSidebarComponent } from './Components/admin-sidebar/admin-sidebar.component';
 import { AdminTableComponent } from './Components/admin-table/admin-table.component';
 import { AdminModalComponent } from './Components/admin-modal/admin-modal.component';
+import { HomeComponent } from './Components/Public/home/home.component';
+import { ViewpageComponent } from './Components/Public/viewpage/viewpage.component';
+import { FooterComponent } from './Components/Public/footer/footer.component';
 
 
 @NgModule({
@@ -24,12 +27,14 @@ import { AdminModalComponent } from './Components/admin-modal/admin-modal.compon
     routingComponents,
     AdminComponent,
     AddrecipeComponent,
-   
-
     AdminHeaderComponent,
     AdminSidebarComponent,
     AdminTableComponent,
-    AdminModalComponent
+    AdminModalComponent,
+    routingComponents,
+    HomeComponent,
+    ViewpageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

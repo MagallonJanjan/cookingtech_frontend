@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
@@ -8,39 +9,63 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 export class AddrecipeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private http : HttpClient
+  ) { }
 
   //addRecipe!:FormGroup
-
+  
   ngOnInit(): void {
   
   }
  addRecipe = new FormGroup({
-    recipeName : new FormControl(),
-    description : new FormControl(),
-    yield : new FormControl(),
-    category : new FormControl(),
-    tags : new FormControl(),
-    ingredients : new FormControl()
+    recipeName : new FormControl('', [Validators.required , Validators.minLength(5)]),
+    description : new FormControl('', [Validators.required , Validators.minLength(5)]),
+    yield : new FormControl('', Validators.required),
+    category : new FormControl('',Validators.required),
+    tags : new FormControl('', Validators.required),
+    ingredients : new FormControl(),
+    procedure : new FormControl()
   })
+
+  // selectedFile = null;
+  // onFileSelected(event : any){
+  //   this.selectedFile = event.target.files[0]
+  // }
 
 
   
-  view: any[] = [];
-  addIngredients(){
-    this.view.push(this.addRecipe.value.ingredients);
-    (<HTMLInputElement>document.getElementById('lingling')).value = "" 
+  ingredients: any[] = [];
+  procedure:any[] = [];
 
-  }
-
-
-  onSubmit(data : any){
-    console.log(data)
-  }
 
   hidden = true;
   showMe(){
     this.hidden = !this.hidden;
   }
+
+  hiddenProcedure = true;
+  showProcedure(){
+    this.hiddenProcedure = !this.hiddenProcedure;
+  }
+
+  addIngredients(){
+    this.ingredients.push(this.addRecipe.value.ingredients);
+    (<HTMLInputElement>document.getElementById('lingling')).value = ""
+    this.hidden = true
+  }
+
+  addProcedure(){
+    this.procedure.push(this.addRecipe.value.procedure);
+    (<HTMLInputElement>document.getElementById('procedure')).value = "";
+    this.hiddenProcedure = true;
+  }
+
+
+  onSubmit(data : any){
+    console.log(data)
+    
+  }
+
 
 }

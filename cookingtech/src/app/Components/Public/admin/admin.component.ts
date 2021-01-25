@@ -34,7 +34,7 @@ export class AdminComponent implements OnInit {
   data: Array<any>;
   showSideBar: boolean = true;
   class: string = "click";
-  title: any;
+  title: any = "Dashboard";
 
   users: any;
   recipes: any;
@@ -163,23 +163,24 @@ export class AdminComponent implements OnInit {
 
   showDasboardFun() {
     this.showDashboard = true;
+    this.title = "Dashboard"
   }
 
   getDataOnclick(kindOfData: string) {
     this.showDashboard = false;
     if(kindOfData == "users") {
       this.data = this.users.users;
-      this.title = "USER"
+      this.title = "Users"
       return;
     }
     if(kindOfData == "recipes") {
       this.data = this.recipes.recipes || [];
-      this.title = "RECIPE";
+      this.title = "Recipes";
       return;
     }
     if(kindOfData == "pendings") {
       this.data = this.pendings.pendings;
-      this.title = "PENDINGS";
+      this.title = "Pendings";
       return;
     }
   }

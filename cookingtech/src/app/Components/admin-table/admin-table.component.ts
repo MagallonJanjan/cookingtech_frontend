@@ -12,9 +12,7 @@ export class AdminTableComponent implements OnInit {
 
   datas: any;
 
-  firstname: string;
-  lastname: string;
-  position: string;
+  info: any;
   
   usertypes = [
     ["",""],
@@ -28,9 +26,7 @@ export class AdminTableComponent implements OnInit {
   showSearch:boolean = false;
 
   constructor() {
-    this.firstname = "";
-    this.lastname = "";
-    this.position = "";
+    this.info = {firstname: "", lastname: "", position: ""}
    }
 
   ngOnInit(): void {
@@ -43,9 +39,7 @@ export class AdminTableComponent implements OnInit {
   }
 
   getUserData(data:any){
-    this.position = data.position;
-    this.firstname = data.firstname;
-    this.lastname = data.lastname;
+    this.info = data;
   }
 
 }

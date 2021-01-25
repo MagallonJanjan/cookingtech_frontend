@@ -7,6 +7,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ViewpageSidebarComponent implements OnInit {
 
+  //out event here
+  @Output() sideBarToggle = new EventEmitter<boolean>();
+
+
   showSideBar:boolean = true;
   class:string = "click";
 
@@ -16,5 +20,6 @@ export class ViewpageSidebarComponent implements OnInit {
   }
   toggleSidebar() {
     this.showSideBar = !this.showSideBar;
+    this.sideBarToggle.emit(this.showSideBar);
   }
 }

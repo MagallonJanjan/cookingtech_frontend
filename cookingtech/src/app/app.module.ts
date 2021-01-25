@@ -18,6 +18,8 @@ import { AdminModalComponent } from './Components/admin-modal/admin-modal.compon
 import { HomeComponent } from './Components/Public/home/home.component';
 import { ViewpageComponent } from './Components/Public/viewpage/viewpage.component';
 import { FooterComponent } from './Components/Public/footer/footer.component';
+import { CommentComponent } from './Components/comment/comment.component';
+import { ReplyComponent } from './Components/reply/reply.component';
 
 //Import provider
 import { CookieService } from 'ngx-cookie-service';
@@ -34,7 +36,9 @@ import { CookieService } from 'ngx-cookie-service';
     routingComponents,
     HomeComponent,
     ViewpageComponent,
-    FooterComponent
+    FooterComponent,
+    CommentComponent,
+    ReplyComponent
   ],
   imports: [
     BrowserModule,

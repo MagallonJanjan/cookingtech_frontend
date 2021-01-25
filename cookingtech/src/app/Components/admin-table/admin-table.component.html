@@ -1,5 +1,6 @@
 <div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -11,16 +12,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-primary" role="alert">
-                        <p>First Name: Kyla Jean </p>
-                        <p>Last Name: Dumaguit</p>
-                        <p>Current User Position: admin</p>
+                        <p>First Name: {{firstname}}</p>
+                        <p>Last Name: {{lastname}}</p>
                         <div class="form-group">
                             <label for="sel1">Update User Position:</label>
-                            <select class="form-control" id="sel1">
-                                <option></option>
-                                <option value="admin">Admin</option>
-                                <option value="chef_master">Chief Master</option>
-                                <option value="chef_apprentice">Chief Apprentice</option>
+                            <select class="form-control" id="sel1" value="">
+                                <option *ngFor="let pos of usertypes" value="pos[1]">{{pos[0]}}</option>
                             </select>
                         </div>
                     </div>
@@ -32,8 +29,9 @@
             </div>
         </div>
     </div>
-    
-    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -59,10 +57,14 @@
             <div class="table-responsive-xl bg-light w-100">
                 <table class="table table-striped bg-white center">
                     <thead class="thead-dark">
-                        <th colspan="2" class="text-center">{{tableTitle}} TABLE</th>
+                        <th colspan="4" class="text-center">{{tableTitle}} TABLE</th>
                         <tr>
-                            <th scope="col-sm">Full Name</th>
+                            <th scope="col-sm">Name</th>
+                            <th scope="col-sm" *ngIf="!data[0].name">Position</th>
+                            <th scope="col-sm" *ngIf="!data[0].lastname">Category</th>
+                            <th scope="col-sm" *ngIf="!data[0].lastname && !data[0].status ">Status</th>
                             <th scope="col-sm" class="text-right px-5">Action</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -70,16 +72,27 @@
                         itemsPerPage: 10,
                         currentPage: page,
                         totalItems: totalData}">
-                            <td class="table-secondary">{{bits.name || bits.username}}</td>
+                            <td class="table-secondary">{{bits.name || bits.lastname}}</td>
+                            <td class="table-secondary" *ngIf="!bits.name">{{bits.usertype}}</td>
+                            <td class="table-secondary" *ngIf="!bits.lastname">{{bits.category}}</td>
+                            <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{bits.status}}</td>
+
                             <td class="table-secondary">
                                 <button class="btn btn-danger float-right" data-toggle="modal" data-target="#exampleModal1">Delete</button>
-                                <button type="submit" data-toggle="modal" data-target="#exampleModal" class="float-right btn btn-info mr-2">View</button>
+                                <button type="submit" (click)="getUserData(bits)" data-toggle="modal" data-target="#exampleModal"
+                                    class="float-right btn btn-info mr-2">View</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+<<<<<<< HEAD
             <pagination-controls id="test" maxSize:number="5" (pageChange)="pageChanged($event)"></pagination-controls>
+=======
+            <div *ngClass="{hide: data.length == 0}">
+                <pagination-controls id="test" maxSize:number="5" (pageChange)="pageChanged($event)"></pagination-controls>
+            </div>
+>>>>>>> 1c8f55d2d137545f4f9cc1c0374f71b09e2cf915
         </div>
     </table>
 </div>

@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiRequestService } from '../../../services/apirequest.service';
-import { ApexAxisChartSeries,
-         ApexChart,
-         ApexGrid,
-         ApexLegend,
-         ApexXAxis,
-         ApexYAxis,
-         ApexDataLabels,
-         ApexPlotOptions} from 'ng-apexcharts';
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexGrid,
+  ApexLegend,
+  ApexXAxis,
+  ApexYAxis,
+  ApexDataLabels,
+  ApexPlotOptions
+} from 'ng-apexcharts';
 
 
 //initialized the chart options
@@ -29,13 +31,16 @@ export type ChartOptions = {
 })
 export class AdminComponent implements OnInit {
 
-  data:Array<any>;
-  temp:any;
-  showSideBar:boolean = true;
-  class:string = "click";
-  title:any;
+  data: Array<any>;
+  showSideBar: boolean = true;
+  class: string = "click";
+  title: any;
 
-  showDashboard:boolean;
+  users: any;
+  recipes: any;
+  pendings: any;
+
+  showDashboard: boolean;
   //graph components needs declaration
   chartOptions: ChartOptions;
 
@@ -44,9 +49,8 @@ export class AdminComponent implements OnInit {
   ) {
     this.data = [];
     this.showDashboard = true;
-
     this.chartOptions = {
-      series:[
+      series: [
         {
           name: "Ratings",
           data: [21, 22, 10, 28, 16]
@@ -88,11 +92,11 @@ export class AdminComponent implements OnInit {
       },
       xaxis: {
         categories: [
-          "John Doe",
-          ["Joe", "Smith"],
-          ["Jake", "Williams"],
-          "Amber",
-          ["Peter", "Brown"],
+          "Recipe 1",
+          "Recipe 2",
+          "Recipe 3",
+          "Recipe 4",
+          "Recipe 5",
         ],
         labels: {
           style: {
@@ -112,11 +116,46 @@ export class AdminComponent implements OnInit {
       }
     }
 
-   }
+    //get all data
+    this.getDatas();
+   
+  }
 
   ngOnInit(): void {
     
   }
+
+  getDatas() {
+     //retrieve all datas
+     this.apiService.apiRequest('/users', "get")
+     .subscribe(
+       respond => {
+         this.users = respond;
+         console.log(this.users);
+         
+       }
+     );
+
+   //pendings
+   this.apiService.apiRequest('/recipes/status/pendings', "get")
+     .subscribe(
+       respond => {
+         this.pendings = respond;
+         console.log(this.pendings);
+         
+       }
+     );
+
+     //active recipes
+   this.apiService.apiRequest('/recipes', "get")
+     .subscribe(
+       respond => {
+         this.recipes = respond;
+         console.log(this.recipes);
+       }
+     )
+  }
+
 
   toggleSidebar() {
     this.showSideBar = !this.showSideBar;
@@ -126,13 +165,22 @@ export class AdminComponent implements OnInit {
     this.showDashboard = true;
   }
 
-  getDataOnclick(kindOfData:string) {    
+  getDataOnclick(kindOfData: string) {
     this.showDashboard = false;
-    this.apiService.apiRequest(kindOfData,"get")
-      .subscribe(respond => {
-        this.temp = respond;
-        this.data = this.temp.users || respond;
-        this.title = (this.temp.users)? "USERS":"RECIPES"
-      });
+    if(kindOfData == "users") {
+      this.data = this.users.users;
+      this.title = "USER"
+      return;
+    }
+    if(kindOfData == "recipes") {
+      this.data = this.recipes.recipes || [];
+      this.title = "RECIPE";
+      return;
+    }
+    if(kindOfData == "pendings") {
+      this.data = this.pendings.pendings;
+      this.title = "PENDINGS";
+      return;
+    }
   }
 }

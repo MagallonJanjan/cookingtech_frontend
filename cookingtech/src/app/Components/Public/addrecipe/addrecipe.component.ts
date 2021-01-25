@@ -57,11 +57,11 @@ export class AddrecipeComponent implements OnInit {
   }
 
 
-  onSave(){
-    alert('You are adding a new recipe!');
-    this.addRecipe.reset();
+  // onSave(){
+  //   alert('You are adding a new recipe!');
+  //   this.addRecipe.reset();
     
-  }
+  // }
 
 
   removeIngredientItem(item:any){
@@ -76,8 +76,10 @@ export class AddrecipeComponent implements OnInit {
 
   onSubmit(data : any){ 
     console.log(data)
+    alert('You are adding a new recipe!');
     this.addRecipe.value.ingredients = this.ingredientsArray;
     this.addRecipe.value.procedure = this.proceduresArray;
+    this.addRecipe.reset()
   }
 
 

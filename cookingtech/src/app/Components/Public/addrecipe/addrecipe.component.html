@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container"><br>
-    <form [formGroup]="addRecipe" (ngSubmit)="onSubmit(addRecipe.value)">
+    <form [formGroup]="addRecipe">
           <div class="row">
             <div class="col">
               <label for="exampleFormControlTextarea1">Name</label>
@@ -117,7 +117,7 @@
               </div>
             </div>
           </div><br>
-        <button type="submit" class="btn1 btn-primary" (click)="onSave()" [disabled]="addRecipe.invalid">Save Recipe</button><br><br><br>
+        <button type="submit" class="btn1 btn-primary" (click)="onSubmit(addRecipe.value)" [disabled]="addRecipe.invalid">Save Recipe</button><br><br><br>
         <div>
             <span></span>
             <span><p></p></span>

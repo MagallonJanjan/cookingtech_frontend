@@ -6,11 +6,22 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./admin-table.component.css']
 })
 export class AdminTableComponent implements OnInit {
-  @Input() data: any;
-  @Input()users:any;
+  @Input() users:any;
   @Input() tableTitle:any;
+  @Input() data: any;
+
+  datas: any;
+
+  firstname: string;
+  lastname: string;
+  position: string;
   
-  
+  usertypes = [
+    ["",""],
+    ["chef_apprentice","chef_apprentice"],
+    ["chef_master","chef_master"],
+  ];
+
   totalData:any;
   page: number = 1;
   totalUsers:any;
@@ -18,15 +29,25 @@ export class AdminTableComponent implements OnInit {
 
   showSearch:boolean = false;
 
-  constructor() { }
+  constructor() {
+    this.firstname = "";
+    this.lastname = "";
+    this.position = "";
+   }
 
   ngOnInit(): void {
-  
     this.totalData = this.data.length;
-  }
+    this.datas = this.data;
+  } 
 
   pageChanged(page:any) {
     this.page = page;
+  }
+
+  getUserData(data:any){
+    this.position = data.position;
+    this.firstname = data.firstname;
+    this.lastname = data.lastname;
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-admin-modal',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-modal.component.css']
 })
 export class AdminModalComponent implements OnInit {
-
+  @Input() data: any;
+  
   constructor() { }
 
   ngOnInit(): void {

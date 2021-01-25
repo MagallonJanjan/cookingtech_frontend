@@ -31,9 +31,9 @@
         <div class="container">
           <!-- navigations -->
           <span class="btn-custom border navigation-items" (click)="showDasboardFun()"><i class="fas fa-columns pr-2 ml-4"></i>Dashboard</span>
-          <span class="btn-custom border navigation-items" (click)="getDataOnclick('/users')"><i class="fas fa-users pr-2 ml-4"></i>Users</span>
-          <span class="btn-custom border navigation-items" (click)="getDataOnclick('/recipes')"><i class="fas fa-book-open pr-2 ml-4"></i>Recipes</span>
-          <span class="btn-custom border navigation-items" (click)="getDataOnclick('')"><i class="fas fa-thumbs-up pr-2 ml-4"></i>Pendings</span>
+          <span class="btn-custom border navigation-items" (click)="getDataOnclick('users')"><i class="fas fa-users pr-2 ml-4"></i>Users</span>
+          <span class="btn-custom border navigation-items" (click)="getDataOnclick('recipes')"><i class="fas fa-book-open pr-2 ml-4"></i>Recipes</span>
+          <span class="btn-custom border navigation-items" (click)="getDataOnclick('pendings')"><i class="fas fa-thumbs-up pr-2 ml-4"></i>Pendings</span>
           <span class="btn-custom border navigation-items"><i class="fas fa-sign-out-alt pr-2 ml-4"></i>Logout</span>
         </div>
       </div>
@@ -161,7 +161,7 @@
           </div>
           <hr class="w-100 bg-secondary">
           <div class="container w-100 border">
-            <h1 class="text-center">Top 5 Most Rated Recipe</h1>
+            <h1 class="text-center">Top 5 Most Rated Recipes</h1>
             <apx-chart
             [series]="chartOptions.series"
             [chart]="chartOptions.chart"
@@ -181,38 +181,3 @@
   </div>
   </body>
 </html>
-<!-- <div class="row cardCenter">
-  <div class="col-sm-3 ">
-    <div class="card text-center w-100 ">
-      <div class="card-header headBackground ">
-        TOTAL RECIPES
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text"></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-3 ">
-    <div class="card text-center">
-      <div class="card-header headBackground1 bg-info">
-        MOST RATED RECIPE
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text"></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-3 ">
-    <div class="card text-center">
-      <div class="card-header headBackground3 ">
-        TOTAL USERS
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text"></p>
-      </div>
-    </div>
-  </div>
-</div> -->

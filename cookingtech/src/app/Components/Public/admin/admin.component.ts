@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiRequestService } from '../../../services/apirequest.service';
+import { CookieService } from 'ngx-cookie-service';
+import { EncryptService } from '../../../services/encrypt.service';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -45,7 +47,8 @@ export class AdminComponent implements OnInit {
   chartOptions: ChartOptions;
 
   constructor(
-    private apiService: ApiRequestService
+    private apiService: ApiRequestService,
+    private cookies: CookieService
   ) {
     this.data = [];
     this.showDashboard = true;
@@ -169,19 +172,34 @@ export class AdminComponent implements OnInit {
   getDataOnclick(kindOfData: string) {
     this.showDashboard = false;
     if(kindOfData == "users") {
-      this.data = this.users.users;
+      this.data = this.users.users.filter(user=>{
+        return user.usertype != "admin"
+      });
       this.title = "Users"
       return;
     }
     if(kindOfData == "recipes") {
-      this.data = this.recipes.recipes || [];
+      this.data = this.recipes || [];
       this.title = "Recipes";
       return;
     }
     if(kindOfData == "pendings") {
-      this.data = this.pendings.pendings;
+      this.data = this.pendings.pendings.filter(pending=>{
+        return pending.status == false;
+      });
       this.title = "Pendings";
       return;
     }
+  }
+
+  logout() {
+    //clear all broswer storages
+    this.apiService.apiRequest('/users/logout',"post",{}).subscribe(respond => {
+      window.localStorage.removeItem('token');
+      this.cookies.delete('__cookingtech');
+      window.location.reload();
+      console.log(respond);
+      
+    }) 
   }
 }

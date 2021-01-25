@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
@@ -33,12 +33,6 @@ export class AddrecipeComponent implements OnInit {
   proceduresArray:any[] = [];
 
   
-  onSubmit(data : any){ 
-    console.log(data)
-    this.addRecipe.value.ingredients = this.ingredientsArray;
-    this.addRecipe.value.procedure = this.proceduresArray;
-  }
-
   hidden = true;
   showMe(){
     this.hidden = !this.hidden;
@@ -64,7 +58,7 @@ export class AddrecipeComponent implements OnInit {
 
 
   onSave(){
-    alert('Recipe added successfully!');
+    alert('You are adding a new recipe!');
     this.addRecipe.reset();
     
   }
@@ -77,5 +71,14 @@ export class AddrecipeComponent implements OnInit {
   removeProcedureItem(item:any){
     this.proceduresArray.splice(this.proceduresArray.indexOf(item),1)
   }
+
+
+
+  onSubmit(data : any){ 
+    console.log(data)
+    this.addRecipe.value.ingredients = this.ingredientsArray;
+    this.addRecipe.value.procedure = this.proceduresArray;
+  }
+
 
 }

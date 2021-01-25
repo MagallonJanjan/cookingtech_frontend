@@ -109,11 +109,11 @@
                   </div>
             </div>
             <div class="col">
-              <input type="text" class="form-control" formControlName="tags" 
-              [ngClass]="{'is-invalid' : addRecipe.get('tags').touched && addRecipe.get('tags').invalid}" placeholder="Tags">
-              <div *ngIf="addRecipe.get('tags').touched && addRecipe.get('tags').invalid" class="invalid-feedback">
-                <p *ngIf="addRecipe.get('tags').errors.required">This field is required</p>
-                <p *ngIf="addRecipe.get('tags').errors.minlength">Tags must be atleast 5 characters</p>
+              <input type="text" class="form-control" formControlName="tagline"
+              [ngClass]="{'is-invalid' : addRecipe.get('tagline').touched && addRecipe.get('tagline').invalid}"   placeholder="Tags">
+              <div *ngIf="addRecipe.get('tagline').touched && addRecipe.get('tagline').invalid" id="procedures-feedback" class="invalid-feedback">
+                <p *ngIf="addRecipe.get('tagline').errors.required">This field is required</p>
+                <p *ngIf="addRecipe.get('tagline').errors.minlength">Tags must be atleast 5 characters</p>
               </div>
             </div>
           </div><br>
@@ -157,7 +157,8 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" style="margin-right: 20px;" data-dismiss="modal">Save changes</button>
+
+              <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Save changes</button>
             </div>
           </div>
         </div>
@@ -194,7 +195,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" style="margin-right: 20px;"  data-dismiss="modal">Save changes</button>
+              <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Save changes</button>
             </div>
           </div>
         </div>

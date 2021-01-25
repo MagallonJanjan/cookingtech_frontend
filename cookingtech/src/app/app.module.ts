@@ -26,6 +26,7 @@ import { ViewpageSidebarComponent } from './Components/Public/viewpage-sidebar/v
 
 //Import provider
 import { CookieService } from 'ngx-cookie-service';
+import { ViewrecipesComponent } from './Components/Public/viewrecipes/viewrecipes.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { CookieService } from 'ngx-cookie-service';
     ReplyComponent,
     ViewpageHeaderComponent,
     ViewpageBodyComponent,
-    ViewpageSidebarComponent
+    ViewpageSidebarComponent,
+    ViewrecipesComponent
   ],
   imports: [
     BrowserModule,

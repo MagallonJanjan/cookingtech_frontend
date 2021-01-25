@@ -81,12 +81,9 @@
                   </div>
                   <div class="col text-center">
                     <br>
-                    <p>Already have an account?</p>
-                    <!-- <button type="submit"  class="">Login</button> -->
-                    <a href=""routerLink="/login" >Login</a>
+                    <button type="submit"  class="btn btn-primary" [disabled]="user.invalid">Sign Up</button>
                   </div>
                 </div>
-    
                 <div class="col text-center">
                   <br>
                   <p>Already have an account?</p><a  routerLink="/login">Login</a>

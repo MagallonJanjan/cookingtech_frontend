@@ -8,13 +8,14 @@ import { HomeComponent } from './Components/Public/home/home.component';
 import {ViewpageComponent} from './Components/Public/viewpage/viewpage.component';
 import { AdminComponent } from './Components/Public/admin/admin.component';
 
+
 const routes: Routes =
 [
   { path : 'login', component : LoginComponent },
   { path : 'register', component : RegisterComponent },
   {path: 'viewpage', component: ViewpageComponent},
   { path : '', component : HomeComponent },
-  { path : 'admin', component : AdminComponent }
+  { path : 'admin', component : AdminComponent },
 ];
 
 @NgModule({

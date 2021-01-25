@@ -22,6 +22,8 @@ import { ViewpageHeaderComponent } from './Components/Public/viewpage-header/vie
 import { ViewpageBodyComponent } from './Components/Public/viewpage-body/viewpage-body.component';
 import { ViewpageSidebarComponent } from './Components/Public/viewpage-sidebar/viewpage-sidebar.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,8 @@ import { ViewpageSidebarComponent } from './Components/Public/viewpage-sidebar/v
     AdminModalComponent,
     ViewpageHeaderComponent,
     ViewpageBodyComponent,
-    ViewpageSidebarComponent
+    ViewpageSidebarComponent,
+
   ],
   imports: [
     BrowserModule,

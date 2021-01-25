@@ -64,7 +64,7 @@ MustMatch(controlName: string, matchingControlName: string) {
   }
 }
 
-configUrl = '/api/users';
+configUrl = '/users';
 
 onSubmit() {
   this.submitted = true;
@@ -73,7 +73,6 @@ onSubmit() {
     return;
   }
   console.log(this.user.value)
-  this.user.value["profile_pic"] = "rtetsdtsadgds";
   this.sample.apiRequest(this.configUrl,"post",this.user.value).subscribe(respond => {
     console.log(respond);
     this.router.navigate(['/login'])

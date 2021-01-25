@@ -40,13 +40,13 @@ onSubmit():void  {
         // this.userLogin.form.reset();
         
         if(this.kindOfUser.user.usertype === 'chef_apprentice'){
-            this.router.navigate(['/admin'])
+            this.router.navigate(['/home'])
         }
         if(this.kindOfUser.user.usertype === 'chef_master'){
-          this.router.navigate([''])
+          this.router.navigate(['/home'])
         }
         if(this.kindOfUser.user.usertype === 'admin'){
-          this.router.navigate([''])
+          this.router.navigate(['/admin'])
         }
         window.localStorage.setItem('token', this.kindOfUser.token);
       }, errors => {

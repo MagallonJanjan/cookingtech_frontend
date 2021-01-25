@@ -1,34 +1,7 @@
-<div class="card">
-  <div class="card-header">
-    <div class="row">
-      <div class="col">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCategory" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Category
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownCategory">
-            <a class="dropdown-item" href="#">Soup</a>
-            <a class="dropdown-item" href="#">Breakfast</a>
-            <a class="dropdown-item" href="#">Desserts</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <form class="form-inline my-2 my-lg-0" style="margin-left: 55%;">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="container-fluid">
   <!-- sidebar -->
   <div class="row">
-    <div class="bg-custom-sidebar position-absolute custom-style-sidebar" *ngIf="showSideBar == true">
+    <div class="bg-custom-sidebar position-fixed custom-style-sidebar" *ngIf="showSideBar == true">
       <p class="text-right px-2 text-white" (click)="toggleSidebar()"><i class="fa fa-times custom-style-x"></i></p>
       <div class="row">
         <div class="col-md-6 ml-2">
@@ -43,14 +16,14 @@
 
       <div class="container">
         <!-- navigations -->
-        <span class="btn-custom border navigation-items" routerLink="/user-home"><i class="fa fa-columns pr-2 ml-4"></i>My Recipe</span>
-        <span class="btn-custom border navigation-items"><i class="fa fa-bookmark pr-2 ml-4"></i>My Bookmarks</span>
+        <span class="btn-custom border navigation-items"><i class="fa fa-columns pr-2 ml-4"></i>My Recipe</span>
+        <span class="btn-custom border navigation-items"><i class="fa fa-users pr-2 ml-4"></i>My Bookmarks</span>
         <span class="btn-custom border navigation-items"><i class="fa fa-sign-out pr-2 ml-4"></i>Log Out</span>
       </div>
     </div>
 
     <!-- ghost nav -->
-    <div class="bg-custom-sidebar position-absolute custom-style-sidebar-ghost" style="height: 61.60rem;">
+    <div class="bg-custom-sidebar position-fixed custom-style-sidebar-ghost" style="height: 60.25rem;">
       <p class="text-center text-white" (click)="toggleSidebar()"><i class="fa fa-bars custom-style-x"></i></p>
 
       <div class="row">
@@ -64,15 +37,15 @@
 
       <div class="container">
         <!-- navigations -->
-        <span class="btn border navigation-items" routerLink="/user-home"><i class="fa fa-columns "></i></span>
-        <span class="btn border navigation-items"><i class="fa fa-bookmark"></i></span>
-        <span class="btn border navigation-items"><i class="fa fa-sign-out"></i></span>
+        <span class="btn border navigation-items"><i class="fa fa-columns "></i></span>
+        <span class="btn border navigation-items"><i class="fa fa-users "></i></span>
+        <span class="btn border navigation-items"><i class="fa fa-sign-out pr-2 ml-4"></i></span>
       </div>
     </div>
   </div>
   <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
     <div class="container">
-      <app-viewpage-body></app-viewpage-body>
+      <app-viewrecipes></app-viewrecipes>
     </div>
   </div>
 </div>

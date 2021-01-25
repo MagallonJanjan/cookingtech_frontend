@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-admin-table',
@@ -6,84 +6,46 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-table.component.css']
 })
 export class AdminTableComponent implements OnInit {
-  users:any
-  totalUsers:any;
-  page: number = 1;
+  @Input() users:any;
+  @Input() tableTitle:any;
+  @Input() data: any;
 
+  datas: any;
+
+  firstname: string;
+  lastname: string;
+  position: string;
+  
+  usertypes = [
+    ["",""],
+    ["chef_apprentice","chef_apprentice"],
+    ["chef_master","chef_master"],
+  ];
+
+  totalData:any;
+  page: number = 1;
 
   showSearch:boolean = false;
 
-  constructor() { }
+  constructor() {
+    this.firstname = "";
+    this.lastname = "";
+    this.position = "";
+   }
 
   ngOnInit(): void {
-   this.users=[
-    {
-      id:1,
-      firstName:"Kyla Jean",
-      lastName:"Dumaguit",
-    },
-    {
-      id:1,
-      firstName:"Harvey",
-      lastName:"Aparece",
-    },
-    {
-      id:1,
-      firstName:"Joseph",
-      lastName:"Magallon",
-    },
-    {
-      id:1,
-      firstName:"Kyla Jean",
-      lastName:"Dumaguit",
-    },
-    {
-      id:1,
-      firstName:"Harvey",
-      lastName:"Aparece",
-    },
-    {
-      id:1,
-      firstName:"Joseph",
-      lastName:"Magallon",
-    },
-    {
-      id:1,
-      firstName:"Kyla Jean",
-      lastName:"Dumaguit",
-    },
-    {
-      id:1,
-      firstName:"Harvey",
-      lastName:"Aparece",
-    },
-    {
-      id:1,
-      firstName:"Joseph",
-      lastName:"Magallon",
-    },
-    {
-      id:1,
-      firstName:"Kyla Jean",
-      lastName:"Dumaguit",
-    },
-    {
-      id:1,
-      firstName:"Harvey",
-      lastName:"Aparece",
-    },
-    {
-      id:1,
-      firstName:"Joseph",
-      lastName:"Magallon",
-    }
-    ]
-
-    this.totalUsers = this.users.length;
-  }
+    this.totalData = this.data.length;
+    this.datas = this.data;
+  } 
 
   pageChanged(page:any) {
     this.page = page;
+  }
+
+  getUserData(data:any){
+    this.position = data.position;
+    this.firstname = data.firstname;
+    this.lastname = data.lastname;
   }
 
 }

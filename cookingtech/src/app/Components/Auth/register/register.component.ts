@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomvalidationService } from '../../../services/customvalidation.service';
+import { ApiRequestService } from '../../../services/apirequest.service';
 
 
 
@@ -22,7 +22,7 @@ submitted = false;
 
 constructor(
   private formBuilder: FormBuilder ,
-  private sample: CustomvalidationService,
+  private sample: ApiRequestService,
   private router :Router){ }
 
 
@@ -44,8 +44,6 @@ ngOnInit(): void {
 
 }
 
-
-
 get f() { return this.user.controls; }
 
 MustMatch(controlName: string, matchingControlName: string) {
@@ -66,22 +64,23 @@ MustMatch(controlName: string, matchingControlName: string) {
   }
 }
 
-configUrl = 'http://cookingtech.herokuapp.com/api/users';
+configUrl = '/users';
 
 onSubmit() {
   this.submitted = true;
-  console.log('Hi')
   // stop here if form is invalid
   if (this.user.invalid) {
     return;
   }
- 
   console.log(this.user.value)
   this.sample.apiRequest(this.configUrl,"post",this.user.value).subscribe(respond => {
     console.log(respond);
     this.router.navigate(['/login'])
+  },
+  errors=> {
+    console.log(errors.error.errors);
   });
+  this.user.reset();
 
 }
-
 }

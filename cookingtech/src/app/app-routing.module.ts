@@ -4,18 +4,24 @@ import { Routes, RouterModule } from '@angular/router';
 //Auth Components
 import {LoginComponent} from '../app/Components/Auth/login/login.component'
 import {RegisterComponent} from '../app/Components/Auth/register/register.component'
+import { AddrecipeComponent } from './Components/Public/addrecipe/addrecipe.component';
+import { AdminComponent } from './Components/Public/admin/admin.component';
 import { HomeComponent } from './Components/Public/home/home.component';
 import {ViewpageComponent} from './Components/Public/viewpage/viewpage.component';
-import { AdminComponent } from './Components/Public/admin/admin.component';
+import { IsAdminGuard } from './guards/is-admin.guard';
+import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
+import { IsMasterGuard } from './guards/is-master.guard';
 
 
 const routes: Routes =
 [
-  { path : 'login', component : LoginComponent },
-  { path : 'register', component : RegisterComponent },
-  {path: 'viewpage', component: ViewpageComponent},
   { path : '', component : HomeComponent },
-  { path : 'admin', component : AdminComponent },
+  { path : 'home', component : HomeComponent },
+  { path : 'login', component : LoginComponent },
+  { path : 'register', component : RegisterComponent},
+  {path: 'viewpage', component: ViewpageComponent},
+  { path : 'admin', component : AdminComponent, canActivate:[IsAuthenticatedGuard, IsAdminGuard]},
+  {path : 'add-recipe', component : AddrecipeComponent, canActivate: [IsAuthenticatedGuard, IsMasterGuard]}
 ];
 
 @NgModule({
@@ -24,4 +30,11 @@ const routes: Routes =
 })
 
 export class AppRoutingModule { }
-export const routingComponents = [LoginComponent,RegisterComponent,ViewpageComponent,HomeComponent]
+export const routingComponents = 
+                [
+                  LoginComponent,
+                  RegisterComponent,
+                  ViewpageComponent,
+                  AdminComponent,
+                  AddrecipeComponent
+                ]

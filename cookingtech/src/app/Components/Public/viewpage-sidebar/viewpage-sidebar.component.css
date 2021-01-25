@@ -1,13 +1,15 @@
 .custom-style-sidebar {
   height: 20rem;
   width: 220px;
-  margin-top: 58px;
-  z-index: 1;
+  z-index: 2;
+  top: 165px;
 }
 
 .custom-style-sidebar-ghost {
+  top: 165px;
   width: 85px;
   margin-top: 5rem;
+  z-index: 1;
 }
 
 .custom-style-x {

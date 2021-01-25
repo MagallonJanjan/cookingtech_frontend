@@ -107,6 +107,11 @@ p {
     color: #ffd700;
 }
 
-.rating-list li.selected{
-    color: #ffd700;
+.rating-list {
+  display: inline-block;
+  list-style: none;
+}
+
+.top {
+  margin-top: 170px;
 }

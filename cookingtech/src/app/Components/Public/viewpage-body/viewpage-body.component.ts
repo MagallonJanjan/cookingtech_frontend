@@ -29,5 +29,4 @@ export class ViewpageBodyComponent implements OnInit {
       document.getElementById(ndex)?.classList.remove("selected");
     }
   }
- 
 }

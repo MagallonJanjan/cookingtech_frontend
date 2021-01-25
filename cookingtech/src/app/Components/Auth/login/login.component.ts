@@ -27,6 +27,9 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
+  
+ 
+usertype:any;
 
 
   kindOfUser: any;

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CustomvalidationService } from '../../../services/customvalidation.service';
+
 
 
 @Component({
@@ -8,16 +11,23 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
+
 export class RegisterComponent implements OnInit {
 
-   
 user: any = FormGroup;
 submitted = false;
 
-constructor(private formBuilder: FormBuilder) { }
+
+
+constructor(
+  private formBuilder: FormBuilder ,
+  private sample: CustomvalidationService,
+  private router :Router){ }
+
 
 ngOnInit(): void {
-  this.user = this.formBuilder.group({
+   this.user = this.formBuilder.group({
     firstname: ['', [Validators.required, Validators.minLength(4)]],
     lastname: ['', [Validators.required, Validators.minLength(4)]],
     username: ['',[Validators.required, Validators.minLength(4)]],
@@ -28,7 +38,14 @@ ngOnInit(): void {
   }, {
     validator: this.MustMatch('password', 'confirmpassword')
   });
+
+  
+
+
 }
+
+
+
 get f() { return this.user.controls; }
 
 MustMatch(controlName: string, matchingControlName: string) {
@@ -48,6 +65,9 @@ MustMatch(controlName: string, matchingControlName: string) {
     }
   }
 }
+
+configUrl = 'http://cookingtech.herokuapp.com/api/users';
+
 onSubmit() {
   this.submitted = true;
   console.log('Hi')
@@ -55,9 +75,13 @@ onSubmit() {
   if (this.user.invalid) {
     return;
   }
+ 
+  console.log(this.user.value)
+  this.sample.apiRequest(this.configUrl,"post",this.user.value).subscribe(respond => {
+    console.log(respond);
+    this.router.navigate(['/login'])
+  });
 
-  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.user.value))
 }
-
 
 }

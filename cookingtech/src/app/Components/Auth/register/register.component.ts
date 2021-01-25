@@ -38,10 +38,6 @@ ngOnInit(): void {
   }, {
     validator: this.MustMatch('password', 'confirmpassword')
   });
-
-  
-
-
 }
 
 
@@ -83,7 +79,5 @@ onSubmit() {
   errors=> {
     console.log(errors.error.errors);
   });
-
 }
-
 }

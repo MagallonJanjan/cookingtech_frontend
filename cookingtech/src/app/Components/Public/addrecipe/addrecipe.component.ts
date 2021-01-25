@@ -25,6 +25,7 @@ export class AddrecipeComponent implements OnInit {
       ingredients :  ['',  [Validators.required, Validators.minLength(4)]],
       procedure :  ['',  [Validators.required, Validators.minLength(4)]],
       tagline : ['',[Validators.required, Validators.minLength(5)]],
+      image : ['',[Validators.required]]
     })
   
   }
@@ -80,6 +81,9 @@ export class AddrecipeComponent implements OnInit {
     this.addRecipe.value.ingredients = this.ingredientsArray;
     this.addRecipe.value.procedure = this.proceduresArray;
     this.addRecipe.reset()
+
+    this.ingredientsArray = [];
+    this.proceduresArray = [];
   }
 
 

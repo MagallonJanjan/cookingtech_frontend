@@ -100,14 +100,13 @@
       <!-- End add procedure area -->
 
         <div class="row">
-            <div class="col">
-                <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" >
-                      <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-                    </div>
-                  </div>
+          <div class="col">
+            <input type="text" class="form-control" formControlName="image"
+            [ngClass]="{'is-invalid' : addRecipe.get('image').touched && addRecipe.get('image').invalid}"   placeholder="Image URL">
+            <div *ngIf="addRecipe.get('image').touched && addRecipe.get('image').invalid"  class="invalid-feedback">
+              <p *ngIf="addRecipe.get('image').errors.required">This field is required</p>
             </div>
+          </div>
             <div class="col">
               <input type="text" class="form-control" formControlName="tagline"
               [ngClass]="{'is-invalid' : addRecipe.get('tagline').touched && addRecipe.get('tagline').invalid}"   placeholder="Tags">

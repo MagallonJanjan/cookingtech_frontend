@@ -70,18 +70,17 @@ configUrl = '/api/users';
 
 onSubmit() {
   this.submitted = true;
-  console.log('Hi')
   // stop here if form is invalid
   if (this.user.invalid) {
     return;
   }
- 
   console.log(this.user.value)
   this.user.value["profile_pic"] = "rtetsdtsadgds";
   this.sample.apiRequest(this.configUrl,"post",this.user.value).subscribe(respond => {
     console.log(respond);
     this.router.navigate(['/login'])
   });
+  this.user.reset();
 
 }
 

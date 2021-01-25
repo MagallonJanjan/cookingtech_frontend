@@ -37,11 +37,8 @@ onSubmit():void  {
         console.log(userToken);
         this.kindOfUser = userToken;
 
-       
-        // if(this.kindOfUser.errors){
-        //   console.log('Dili mao bay')
-        //   return;
-        // }
+        // this.userLogin.form.reset();
+        
         if(this.kindOfUser.user.usertype === 'chef_apprentice'){
             this.router.navigate(['/admin'])
         }
@@ -55,7 +52,7 @@ onSubmit():void  {
       }, errors => {
         this.error = errors;
        alert('This credentials does not match to our records');
-        
+      
       }
     )
 }

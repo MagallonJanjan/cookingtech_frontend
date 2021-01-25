@@ -10,33 +10,27 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 export class AddrecipeComponent implements OnInit {
 
   constructor(
-    private http : HttpClient
+    private http : HttpClient,
+    private formBuilder : FormBuilder
   ) { }
 
-  //addRecipe!:FormGroup
+  addRecipe:any;
   
   ngOnInit(): void {
+    this.addRecipe = this.formBuilder.group({
+      recipeName : ['', [Validators.required, Validators.minLength(6)]],
+      description : ['', [Validators.required, Validators.minLength(25)]],
+      yield :  ['', Validators.required],
+      category :  ['', Validators.required],
+      ingredients :  ['',  [Validators.required, Validators.minLength(4)]],
+      procedure :  ['',  [Validators.required, Validators.minLength(4)]],
+      tags : ['',[Validators.required, Validators.minLength(5)]],
+    })
   
   }
- addRecipe = new FormGroup({
-    recipeName : new FormControl('', [Validators.required , Validators.minLength(5)]),
-    description : new FormControl('', [Validators.required , Validators.minLength(5)]),
-    yield : new FormControl('', Validators.required),
-    category : new FormControl('',Validators.required),
-    tags : new FormControl('', Validators.required),
-    ingredients : new FormControl(),
-    procedure : new FormControl()
-  })
-
-  // selectedFile = null;
-  // onFileSelected(event : any){
-  //   this.selectedFile = event.target.files[0]
-  // }
-
-
-  
-  ingredients: any[] = [];
-  procedure:any[] = [];
+ 
+  ingredientsArray: any[] = [];
+  proceduresArray:any[] = [];
 
 
   hidden = true;
@@ -49,27 +43,39 @@ export class AddrecipeComponent implements OnInit {
     this.hiddenProcedure = !this.hiddenProcedure;
   }
 
+  
   addIngredients(){
-    this.ingredients.push(this.addRecipe.value.ingredients);
-    (<HTMLInputElement>document.getElementById('lingling')).value = ""
+    this.ingredientsArray.push(this.addRecipe.value.ingredients);
+   (<HTMLInputElement>document.getElementById('lingling')).value = ""
     this.hidden = true
   }
 
   addProcedure(){
-    this.procedure.push(this.addRecipe.value.procedure);
-    (<HTMLInputElement>document.getElementById('procedure')).value = "";
+    this.proceduresArray.push(this.addRecipe.value.procedure);
+   (<HTMLInputElement>document.getElementById('procedure')).value = "";
     this.hiddenProcedure = true;
   }
 
 
   onSubmit(data : any){
     console.log(data)
+    this.addRecipe.value.ingredients = this.ingredientsArray;
+    this.addRecipe.value.procedure = this.proceduresArray;
+  }
+
+  onSave(){
+    alert('Recipe added successfully!');
+    this.addRecipe.reset();
     
   }
 
 
-  removeItem(item:any){
-    this.ingredients.splice(this.ingredients.indexOf(item),1)
+  removeIngredientItem(item:any){
+    this.ingredientsArray.splice(this.ingredientsArray.indexOf(item),1)
+  }
+
+  removeProcedureItem(item:any){
+    this.proceduresArray.splice(this.proceduresArray.indexOf(item),1)
   }
 
 }

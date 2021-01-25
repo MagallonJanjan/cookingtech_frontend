@@ -24,7 +24,7 @@ export class AddrecipeComponent implements OnInit {
       category :  ['', Validators.required],
       ingredients :  ['',  [Validators.required, Validators.minLength(4)]],
       procedure :  ['',  [Validators.required, Validators.minLength(4)]],
-      tags : ['',[Validators.required, Validators.minLength(5)]],
+      tagline : ['',[Validators.required, Validators.minLength(5)]],
     })
   
   }
@@ -32,6 +32,12 @@ export class AddrecipeComponent implements OnInit {
   ingredientsArray: any[] = [];
   proceduresArray:any[] = [];
 
+  
+  onSubmit(data : any){ 
+    console.log(data)
+    this.addRecipe.value.ingredients = this.ingredientsArray;
+    this.addRecipe.value.procedure = this.proceduresArray;
+  }
 
   hidden = true;
   showMe(){
@@ -56,12 +62,6 @@ export class AddrecipeComponent implements OnInit {
     this.hiddenProcedure = true;
   }
 
-
-  onSubmit(data : any){
-    console.log(data)
-    this.addRecipe.value.ingredients = this.ingredientsArray;
-    this.addRecipe.value.procedure = this.proceduresArray;
-  }
 
   onSave(){
     alert('Recipe added successfully!');

@@ -20,6 +20,9 @@ import { ViewpageComponent } from './Components/Public/viewpage/viewpage.compone
 import { FooterComponent } from './Components/Public/footer/footer.component';
 import { CommentComponent } from './Components/comment/comment.component';
 import { ReplyComponent } from './Components/reply/reply.component';
+import { ViewpageHeaderComponent } from './Components/Public/viewpage-header/viewpage-header.component';
+import { ViewpageBodyComponent } from './Components/Public/viewpage-body/viewpage-body.component';
+import { ViewpageSidebarComponent } from './Components/Public/viewpage-sidebar/viewpage-sidebar.component';
 
 //Import provider
 import { CookieService } from 'ngx-cookie-service';
@@ -38,7 +41,10 @@ import { CookieService } from 'ngx-cookie-service';
     ViewpageComponent,
     FooterComponent,
     CommentComponent,
-    ReplyComponent
+    ReplyComponent,
+    ViewpageHeaderComponent,
+    ViewpageBodyComponent,
+    ViewpageSidebarComponent
   ],
   imports: [
     BrowserModule,

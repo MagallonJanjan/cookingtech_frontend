@@ -1,11 +1,11 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder ,Validators} from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {ApiRequestService} from '../../../services/apirequest.service';
+import { ApiRequestService } from '../../../services/apirequest.service';
 import { CookieService } from 'ngx-cookie-service';
 import { EncryptService } from '../../../services/encrypt.service';
-  
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,39 +14,42 @@ import { EncryptService } from '../../../services/encrypt.service';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private formBuilder : FormBuilder,
-    private validation : ApiRequestService,
-    private router : Router,
+    private formBuilder: FormBuilder,
+    private validation: ApiRequestService,
+    private router: Router,
     private cookies: CookieService,
     private dataEnc: EncryptService) { }
-    userLogin:any
+  userLogin: any
 
   ngOnInit(): void {
     this.userLogin = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password :['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
   
  
-kindOfUser:any;
-onSubmit():void  {
-  
- this.validation.apiRequest('/users/login',"post", this.userLogin.value)
+usertype:any;
+
+
+  kindOfUser: any;
+  onSubmit(): void {
+
+    this.validation.apiRequest('/users/login', "post", this.userLogin.value)
       .subscribe(userToken => {
         console.log(userToken);
         this.kindOfUser = userToken;
-        if(this.kindOfUser.errors) {
+        if (this.kindOfUser.errors) {
           alert("");
           return;
         }
-        if(this.kindOfUser.user.usertype === 'chef_apprentice'){
-            this.router.navigate(['/admin'])
+        if (this.kindOfUser.user.usertype === 'chef_apprentice') {
+          this.router.navigate(['/admin'])
         }
-        if(this.kindOfUser.user.usertype === 'chef_master'){
+        if (this.kindOfUser.user.usertype === 'chef_master') {
           this.router.navigate([''])
         }
-        if(this.kindOfUser.user.usertype === 'admin'){
+        if (this.kindOfUser.user.usertype === 'admin') {
           this.router.navigate([''])
         }
         window.localStorage.setItem('token', this.kindOfUser.token);
@@ -54,5 +57,6 @@ onSubmit():void  {
         this.cookies.set('__cookingtech', encCookies);
       }
       )
-}
+
+  }
 }

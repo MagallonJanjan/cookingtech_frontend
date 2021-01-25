@@ -6,31 +6,48 @@
     <title>Document</title>
     <link rel="stylesheet" href="addrecipe.component.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
 </head>
 <body>
     <div class="container"><br>
-    <form [formGroup]="addRecipe" (ngSubmit)="onSubmit(addRecipe.value)">
+    <form [formGroup]="addRecipe">
           <div class="row">
             <div class="col">
               <label for="exampleFormControlTextarea1">Name</label>
-              <input type="text" class="form-control" formControlName="recipeName" placeholder="Recipe Name">
+              <input type="text" class="form-control" formControlName="name" 
+              [ngClass]="{'is-invalid' : addRecipe.get('name').touched && addRecipe.get('name').invalid}" placeholder="Recipe Name">
+              <div *ngIf="addRecipe.get('name').touched && addRecipe.get('name').invalid" class="invalid-feedback">
+                <p *ngIf="addRecipe.get('name').errors.required">Name of the recipe is required</p>
+                <p *ngIf="addRecipe.get('name').errors.minlength">Name must be atleast 6 characters</p>
+              </div>
             </div>
             <div class="col">
               <label for="exampleFormControlTextarea1">Description</label>
-              <textarea class="form-control" formControlName="description" id="exampleFormControlTextarea1" rows="1"></textarea>
+              <textarea class="form-control" formControlName="description"
+              [ngClass]="{'is-invalid' : addRecipe.get('description').touched && addRecipe.get('description').invalid}" id="exampleFormControlTextarea1" rows="1">
+            </textarea>
+            <div *ngIf="addRecipe.get('description').touched && addRecipe.get('description').invalid" class="invalid-feedback">
+              <p *ngIf="addRecipe.get('description').errors.required">Description of the recipe is required</p>
+              <p *ngIf="addRecipe.get('description').errors.minlength">Description must be atleast 25 characters</p>
+            </div>
             </div>
           </div>
           <div class="row">
             <div class="col">
               <label for="exampleFormControlTextarea1">Yield</label>
-              <input type="number" class="form-control" formControlName="yield" placeholder="Yield ">
+              <input type="number" class="form-control" formControlName="yield" 
+              [ngClass]="{'is-invalid' : addRecipe.get('yield').touched && addRecipe.get('yield').invalid}" placeholder="Yield ">
+              <div *ngIf="addRecipe.get('yield').touched && addRecipe.get('yield').invalid" class="invalid-feedback">
+                <p *ngIf="addRecipe.get('yield').errors.required">This field is required</p>
+              </div>
             </div>
             <div class="col">
               <label for="exampleFormControlTextarea1">Category</label>
-              <select class="custom-select my-1 mr-sm-2" formControlName="category">
-                <option value="Soup" selected>Soup</option>
-                <option value="Breakfast">Breakfast</option>
-                <option value="Snacks">Snacks</option>
+              <select class="custom-select my-1 mr-sm-2" formControlName="category" 
+              [ngClass]="{'is-invalid' : addRecipe.get('category').touched && addRecipe.get('category').invalid}" >
+                <option value="soup" selected>Soup</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="deserts">Deserts</option>
               </select>
             
             </div>
@@ -43,40 +60,63 @@
                 <button type="button" class="btn alert-danger"  data-toggle="modal" data-target="#viewIngredient"> View Ingredient</button>
               </div>
         </div><br>
-        <div class="form-row"  [hidden]="hidden">
+        <div class="form-row" [hidden]="hidden">
           <div class="col" >
               <input type="text" style="width: 42.5%; margin-left: 27px; margin-top: -1.7%;"  class="form-control" 
-               formControlName="ingredients" id="lingling" placeholder="Ingredients">
+               formControlName="ingredients"  [ngClass]="{'is-invalid' : addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid}"  id="lingling" placeholder="Ingredients">
+               <div *ngIf="addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid" id="ingredients-feedback" class="invalid-feedback">
+                <p *ngIf="addRecipe.get('ingredients').errors.required">This field is required</p>
+                <p *ngIf="addRecipe.get('ingredients').errors.minlength">Ingredient must be atleast 4 characters</p>
+              </div>
           </div>
           <div class="buttons" >
             <button class="btn alert-info"  id="add-ingredient" type="submit" (click)="addIngredients()">Add</button>
           </div>
         </div>
-        <div class="procedure">
-        <div class="form-row" id="buttons">
+        <br>
+        
+        <!-- Start add procedure area -->
+        <div class="form-row">
+          <div class="col">
+              <button type="button" class="btn alert-primary" (click)="showProcedure()">Add Procedure</button>
+            </div>
             <div class="col">
-                <button type="button" class="btn alert-info" data-toggle="modal" data-target="#addProcedure">Add Procedure</button>
-              </div>
-              <div class="col">
-                <button type="button" class="btn alert-warning" data-toggle="modal" data-target="#viewProcedure"> View Procedure</button>
-              </div>
+              <button type="button" class="btn alert-danger"  data-toggle="modal" data-target="#viewProcedure"> View Procedure</button>
+            </div>
+      </div><br>
+      <div class="form-row" [hidden]="hiddenProcedure">
+        <div class="col" >
+            <input type="text" style="width: 42.5%; margin-left: 27px; margin-top: -1.7%;"  class="form-control" 
+             formControlName="procedures" [ngClass]="{'is-invalid' : addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid}"  id="procedure" placeholder="Procedure">
+             <div *ngIf="addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid" id="procedures-feedback" class="invalid-feedback">
+              <p *ngIf="addRecipe.get('procedures').errors.required">This field is required</p>
+              <p *ngIf="addRecipe.get('procedures').errors.minlength">Procedure must be atleast 4 characters</p>
             </div>
         </div>
-        <br>
+        <div class="buttons" >
+          <button class="btn alert-info"  id="add-procedure" type="submit" (click)="addProcedure()">Add</button>
+        </div>
+      </div><br>
+      <!-- End add procedure area -->
+
         <div class="row">
-            <div class="col">
-                <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" >
-                      <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-                    </div>
-                  </div>
+          <div class="col">
+            <input type="text" class="form-control" formControlName="img_url"
+            [ngClass]="{'is-invalid' : addRecipe.get('img_url').touched && addRecipe.get('img_url').invalid}"   placeholder="Image URL">
+            <div *ngIf="addRecipe.get('img_url').touched && addRecipe.get('img_url').invalid"  class="invalid-feedback">
+              <p *ngIf="addRecipe.get('img_url').errors.required">This field is required</p>
             </div>
+          </div>
             <div class="col">
-              <input type="text" class="form-control" formControlName="tags" placeholder="Tags">
+              <input type="text" class="form-control" formControlName="tag"
+              [ngClass]="{'is-invalid' : addRecipe.get('tag').touched && addRecipe.get('tag').invalid}"   placeholder="Tags">
+              <div *ngIf="addRecipe.get('tag').touched && addRecipe.get('tag').invalid" id="procedures-feedback" class="invalid-feedback">
+                <p *ngIf="addRecipe.get('tag').errors.required">This field is required</p>
+                <p *ngIf="addRecipe.get('tag').errors.minlength">Tags must be atleast 5 characters</p>
+              </div>
             </div>
           </div><br>
-        <button type="submit" class="btn1 btn-primary">Save Recipe</button><br><br><br>
+        <button type="submit" class="btn1 btn-primary" (click)="onSubmit(addRecipe.value)" [disabled]="addRecipe.invalid">Save Recipe</button><br><br><br>
         <div>
             <span></span>
             <span><p></p></span>
@@ -89,19 +129,35 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLongTitle">List of Ingredients</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <li *ngFor="let data of view">
-                {{data}}
-              </li>
+              <div class="list-body">
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Ingredient</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let data of ingredientsArray">
+                          <td>{{data}}</td>
+                          <td>
+                            
+                            <button type="submit" class="btn alert-danger btn-sm" (click)="removeIngredientItem(data)">Remove</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+
+              <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Save changes</button>
             </div>
           </div>
         </div>
@@ -112,17 +168,33 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLongTitle">Procedures</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              Walay Sulod
+              <div class="procedure-list">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Procedure</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of proceduresArray">
+                      <td>{{data}}</td>
+                      <td>
+                        <button type="submit" class="btn alert-danger btn-sm" (click)="removeProcedureItem(data)">Remove</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Save changes</button>
             </div>
           </div>
         </div>
@@ -132,6 +204,8 @@
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
 
 
 

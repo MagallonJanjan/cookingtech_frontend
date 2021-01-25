@@ -15,12 +15,50 @@
     border-radius: 2%;   
 }
 
-.procedure{
+/* .procedure{
   margin-top: 10px;
-}
+} */
 
 #add-ingredient{
   float: left;
   margin-left: -1060%;
   margin-top: -30%;
+}
+
+#add-procedure{
+  float: left;
+  margin-left: -1060%;
+  margin-top: -31%;
+}
+
+#adding-procedure {
+  margin-top: 8px;
+}
+
+
+.list-body{
+  overflow: auto;
+  height: 200px;
+}
+
+.list-body::-webkit-scrollbar {
+  display: none;
+}
+
+
+.procedure-list{
+  overflow: auto;
+  height: 200px;
+}
+
+.procedure-list::-webkit-scrollbar {
+  display: none;
+}
+
+#ingredients-feedback {
+  margin-left: 25px;
+}
+
+#procedures-feedback {
+  margin-left: 25px;
 }

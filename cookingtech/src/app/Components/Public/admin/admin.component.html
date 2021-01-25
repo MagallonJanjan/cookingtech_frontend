@@ -54,9 +54,9 @@
         <div class="container">
           <!-- navigations -->
           <span class="btn border navigation-items"><i class="fas fa-columns "></i></span>
-          <span class="btn border navigation-items"><i class="fas fa-users "></i></span>
-          <span class="btn border navigation-items"><i class="fas fa-book-open "></i></span>
-          <span class="btn border navigation-items"><i class="fas fa-thumbs-up "></i></span>
+          <span class="btn border navigation-items" (click)="getDataOnclick('users')" ><i class="fas fa-users "></i></span>
+          <span class="btn border navigation-items" (click)="getDataOnclick('recipes')"><i class="fas fa-book-open "></i></span>
+          <span class="btn border navigation-items" (click)="getDataOnclick('pendings')"><i class="fas fa-thumbs-up "></i></span>
           <span class="btn border navigation-items"><i class="fas fa-sign-out-alt "></i></span>
         </div>
       </div>

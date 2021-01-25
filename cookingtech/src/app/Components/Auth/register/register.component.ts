@@ -44,8 +44,6 @@ ngOnInit(): void {
 
 }
 
-
-
 get f() { return this.user.controls; }
 
 MustMatch(controlName: string, matchingControlName: string) {
@@ -70,7 +68,6 @@ configUrl = '/users';
 
 onSubmit() {
   this.submitted = true;
-  console.log('Hi')
   // stop here if form is invalid
   if (this.user.invalid) {
     return;
@@ -83,5 +80,7 @@ onSubmit() {
   errors=> {
     console.log(errors.error.errors);
   });
+  this.user.reset();
+
 }
 }

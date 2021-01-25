@@ -82,7 +82,7 @@ export class AddrecipeComponent implements OnInit {
 
 
   datas:any;
-  onSubmit(data : any){ 
+  onSubmit(data : any){
     this.datas = data;
     let cookie = this.cookies.get('__cookingtech');
     let UserData = this.dataEnc.decrypt(cookie);

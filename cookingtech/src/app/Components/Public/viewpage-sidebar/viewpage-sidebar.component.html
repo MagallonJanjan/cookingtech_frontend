@@ -16,7 +16,7 @@
 
       <div class="container">
         <!-- navigations -->
-        <span class="btn-custom border navigation-items"><i class="fa fa-columns pr-2 ml-4"></i>My Recipe</span>
+        <span class="btn-custom border navigation-items"  routerLink="/viewrecipes"><i class="fa fa-columns pr-2 ml-4"></i>My Recipe</span>
         <span class="btn-custom border navigation-items"><i class="fa fa-users pr-2 ml-4"></i>My Bookmarks</span>
         <span class="btn-custom border navigation-items"><i class="fa fa-sign-out pr-2 ml-4"></i>Log Out</span>
       </div>
@@ -39,15 +39,9 @@
         <!-- navigations -->
         <span class="btn border navigation-items"><i class="fa fa-columns "></i></span>
         <span class="btn border navigation-items"><i class="fa fa-users "></i></span>
-        <span class="btn border navigation-items"><i class="fa fa-sign-out pr-2 ml-4"></i></span>
+        <span class="btn border navigation-items"><i class="fa fa-sign-out"></i></span>
       </div>
     </div>
   </div>
-  <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
-    <div class="container">
-      <app-viewrecipes></app-viewrecipes>
-    </div>
-  </div>
+ 
 </div>
-
-

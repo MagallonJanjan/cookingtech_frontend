@@ -76,14 +76,21 @@
   height: 40px;
 }
 
-.content {
-  margin-top: 80px;
-  margin-left: 225px;
-  /* border: #0066cc solid 4px; */
+.cardCenter {
+  margin-left: 30%;
+  margin-top: 8%;
 }
 
-.content-v2 {
-  margin-left: 85px;
+.headBackground {
+  background-color: #cc3399;
+}
+
+.headBackground1 {
+  background-color: #e32929;
+}
+
+.headBackground3 {
+  background-color: #ff611d;
 }
 
 .content-v2 {

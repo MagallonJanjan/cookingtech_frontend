@@ -1,31 +1,13 @@
-.card {
-    margin-left: 3%;
-    margin-right: 3%;
-    
-    
-}
-
-.card-body {
-    height: 100px;
-}
-.card img {
-    max-height: 180px;
-}
-
-.card-text{
-    height: 500px;
-}
-
-#second-row {
-    padding-top: 5%;
-}
-
-#third-row {
-    padding-top: 5%;
-}
-
-
-
+.content {
+    margin-top: 80px;
+    margin-left: 225px;
+    /* border: #0066cc solid 4px; */
+  }
+  
+  .content-v2 {
+    margin-left: 85px;
+  }
+  
 
 
 

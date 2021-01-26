@@ -12,8 +12,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-primary" role="alert">
-                        <p>First Name: {{firstname}}</p>
-                        <p>Last Name: {{lastname}}</p>
+                        <p>First Name: {{info.firstname}}</p>
+                        <p>Last Name: {{info.lastname}}</p>
                         <div class="form-group">
                             <label for="sel1">Update User Position:</label>
                             <select class="form-control" id="sel1" value="">
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-    <table class="w-100">
+    <table class="w-100" *ngIf="data.length > 0">
         <div class="row w-100">
             <div class="table-responsive-xl bg-light w-100">
                 <table class="table table-striped bg-white center">
@@ -86,9 +86,10 @@
                     </tbody>
                 </table>
             </div>
-            <div *ngClass="{hide: data.length == 0}">
+            <div [ngClass]="{hide: 1 > data.length}">
                 <pagination-controls id="test" maxSize:number="5" (pageChange)="pageChanged($event)"></pagination-controls>
             </div>
         </div>
     </table>
+    <h2 class="text-center" *ngIf="!data.length">No {{tableTitle}} Data</h2>
 </div>

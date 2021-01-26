@@ -8,6 +8,7 @@ import { AddrecipeComponent } from './Components/Public/addrecipe/addrecipe.comp
 import { AdminComponent } from './Components/Public/admin/admin.component';
 import { HomeComponent } from './Components/Public/home/home.component';
 import {ViewpageComponent} from './Components/Public/viewpage/viewpage.component';
+import {ViewrecipesComponent} from './Components/Public/viewrecipes/viewrecipes.component';
 import { IsAdminGuard } from './guards/is-admin.guard';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { IsMasterGuard } from './guards/is-master.guard';
@@ -19,6 +20,7 @@ const routes: Routes =
   { path : 'home', component : HomeComponent },
   { path : 'login', component : LoginComponent },
   { path : 'register', component : RegisterComponent},
+  {path: 'viewrecipes',component: ViewrecipesComponent},
   {path: 'viewpage', component: ViewpageComponent},
   { path : 'admin', component : AdminComponent, canActivate:[IsAuthenticatedGuard, IsAdminGuard]},
   {path : 'add-recipe', component : AddrecipeComponent, canActivate: [IsAuthenticatedGuard, IsMasterGuard]}
@@ -36,5 +38,6 @@ export const routingComponents =
                   RegisterComponent,
                   ViewpageComponent,
                   AdminComponent,
+                  ViewrecipesComponent,
                   AddrecipeComponent
                 ]

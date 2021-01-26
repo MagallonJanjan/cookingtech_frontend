@@ -63,12 +63,9 @@
     </div>
     <!-- content -->
     <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
-      <strong>Dashboard</strong>
+      <strong>{{title}}</strong>
       <hr class="bg-secondary">
       <div class="container">
-
-        <!-- when the modal is triggered -->
-        <app-admin-modal></app-admin-modal>
 
         <!-- when the admin button is clicked -->
         <div class="row" *ngIf="showDashboard">

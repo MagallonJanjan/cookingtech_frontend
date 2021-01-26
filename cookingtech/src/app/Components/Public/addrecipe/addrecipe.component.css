@@ -15,27 +15,6 @@
     border-radius: 2%;   
 }
 
-/* .procedure{
-  margin-top: 10px;
-} */
-
-#add-ingredient{
-  float: left;
-  margin-left: -1060%;
-  margin-top: -30%;
-}
-
-#add-procedure{
-  float: left;
-  margin-left: -1060%;
-  margin-top: -31%;
-}
-
-#adding-procedure {
-  margin-top: 8px;
-}
-
-
 .list-body{
   overflow: auto;
   height: 200px;
@@ -56,9 +35,16 @@
 }
 
 #ingredients-feedback {
-  margin-left: 25px;
+  margin-left: 15px;
 }
 
-#procedures-feedback {
-  margin-left: 25px;
+
+
+.ingredientInput{
+  margin-left: 2%;
 }
+
+.modal-footer{
+  margin-top: 5px
+}
+

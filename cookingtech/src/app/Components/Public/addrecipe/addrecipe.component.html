@@ -6,7 +6,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="addrecipe.component.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
 </head>
 <body>
     <div class="container"><br>
@@ -54,51 +53,13 @@
           </div><br>
         <div class="form-row" id="buttons">
             <div class="col">
-                <button type="button" class="btn alert-primary"  (click)="showMe()">Add Ingredient</button>
+                <button type="button" class="btn alert-primary"  data-toggle="modal" data-target="#viewIngredient">Add Ingredient</button>
               </div>
               <div class="col">
-                <button type="button" class="btn alert-danger"  data-toggle="modal" data-target="#viewIngredient"> View Ingredient</button>
+                <button type="button" class="btn alert-danger"  data-toggle="modal" data-target="#viewProcedure"> Add Procedure</button>
               </div>
         </div><br>
-        <div class="form-row" [hidden]="hidden">
-          <div class="col" >
-              <input type="text" style="width: 42.5%; margin-left: 27px; margin-top: -1.7%;"  class="form-control" 
-               formControlName="ingredients"  [ngClass]="{'is-invalid' : addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid}"  id="lingling" placeholder="Ingredients">
-               <div *ngIf="addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid" id="ingredients-feedback" class="invalid-feedback">
-                <p *ngIf="addRecipe.get('ingredients').errors.required">This field is required</p>
-                <p *ngIf="addRecipe.get('ingredients').errors.minlength">Ingredient must be atleast 4 characters</p>
-              </div>
-          </div>
-          <div class="buttons" >
-            <button class="btn alert-info"  id="add-ingredient" (click)="addIngredients()">Add</button>
-          </div>
-        </div>
         <br>
-        
-        <!-- Start add procedure area -->
-        <div class="form-row">
-          <div class="col">
-              <button type="button" class="btn alert-primary" (click)="showProcedure()">Add Procedure</button>
-            </div>
-            <div class="col">
-              <button type="button" class="btn alert-danger"  data-toggle="modal" data-target="#viewProcedure"> View Procedure</button>
-            </div>
-      </div><br>
-      <div class="form-row" [hidden]="hiddenProcedure">
-        <div class="col" >
-            <input type="text" style="width: 42.5%; margin-left: 27px; margin-top: -1.7%;"  class="form-control" 
-             formControlName="procedures" [ngClass]="{'is-invalid' : addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid}"  id="procedure" placeholder="Procedure">
-             <div *ngIf="addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid" id="procedures-feedback" class="invalid-feedback">
-              <p *ngIf="addRecipe.get('procedures').errors.required">This field is required</p>
-              <p *ngIf="addRecipe.get('procedures').errors.minlength">Procedure must be atleast 4 characters</p>
-            </div>
-        </div>
-        <div class="buttons" >
-          <button class="btn alert-info"  id="add-procedure" (click)="addProcedure()">Add</button>
-        </div>
-      </div><br>
-      <!-- End add procedure area -->
-
         <div class="row">
           <div class="col">
             <input type="text" class="form-control" formControlName="img_url"
@@ -121,10 +82,9 @@
             <span></span>
             <span><p></p></span>
         </div>
-      </form>
 
-    
-      <!-- View Ingredient Modal -->
+
+           <!-- View Ingredient Modal -->
       <div class="modal fade" id="viewIngredient" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -155,14 +115,24 @@
                     </table>
               </div>
             </div>
+            <div class="input-group ">
+              <input type="text" class="form-control ingredientInput" 
+              formControlName="ingredients"  [ngClass]="{'is-invalid' : addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid}"  id="lingling"
+               placeholder="Ingredient">
+               <div class="input-group-append">
+                 <button class="btn alert-success mr-3 " type="submit" (click)="addIngredients()">Button</button>
+               </div>
+               <div *ngIf="addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid" id="ingredients-feedback" class="invalid-feedback">
+                <p *ngIf="addRecipe.get('ingredients').errors.required">This field is required</p>
+                <p *ngIf="addRecipe.get('ingredients').errors.minlength">Ingredient must be atleast 3 characters</p>
+              </div>
+            </div>
             <div class="modal-footer">
-
               <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Save changes</button>
             </div>
           </div>
         </div>
       </div>
-
       <!-- View Procedure Modal -->
       <div class="modal fade" id="viewProcedure" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -193,17 +163,31 @@
                 </table>
               </div>
             </div>
+            <div class="input-group ">
+                <input type="text" class="form-control ingredientInput" 
+                formControlName="procedures"  [ngClass]="{'is-invalid' : addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid}"  id="procedure"
+                 placeholder="Procedure">
+                 <div class="input-group-append">
+                   <button class="btn alert-success mr-3 " type="submit" (click)="addProcedure()">Button</button>
+                 </div>
+                 <div *ngIf="addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid" id="ingredients-feedback" class="invalid-feedback">
+                  <p *ngIf="addRecipe.get('procedures').errors.required">This field is required</p>
+                  <p *ngIf="addRecipe.get('procedures').errors.minlength">Procedure must be atleast 4 characters</p>
+                </div>
+              </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Save changes</button>
             </div>
           </div>
         </div>
       </div>
+      </form>
       </div>
-    </body>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+    
 
 
 

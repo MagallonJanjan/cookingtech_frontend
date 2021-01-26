@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ApiRequestService} from '../../services/apirequest.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-table',
@@ -28,7 +29,8 @@ export class AdminTableComponent implements OnInit {
 
   showSearch:boolean = false;
 
-  constructor(private apiService:ApiRequestService) {
+  constructor(private apiService:ApiRequestService,
+              private router : Router) {
     this.info = {firstname: "", lastname: "", position: ""}
    }
 
@@ -75,7 +77,7 @@ export class AdminTableComponent implements OnInit {
     this.editedData=data;
   }
 
-  editUserData(data:any){
-   
+  editUserData(id:any){
+    this.router.navigate([`edit-recipe/${id}`]);
   }
 }

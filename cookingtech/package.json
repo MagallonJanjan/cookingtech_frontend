@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild" : "ng build --prod"
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -60,8 +60,8 @@
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
   },
-  "engines" : {
-    "node" : "10.15.3",
-    "npm" : "6.4.1"
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.4.1"
   }
 }

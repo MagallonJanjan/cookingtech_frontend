@@ -9,9 +9,9 @@
     <br>
     <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
         <div class="container">
-            <app-viewrecipes [recipes] = "recipes" *ngIf="isRecipes"></app-viewrecipes>
+            <app-viewrecipes [recipes]="recipes" *ngIf="isRecipes"></app-viewrecipes>
             <app-viewpage-body *ngIf="!isRecipes" [recipe]="recipes"></app-viewpage-body>
         </div>
+        <app-footer></app-footer>
     </div>
-    <app-footer></app-footer>
 </div>

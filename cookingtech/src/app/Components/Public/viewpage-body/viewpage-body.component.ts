@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-viewpage-body',
@@ -11,9 +10,13 @@ export class ViewpageBodyComponent implements OnInit {
 
   stars: number[] = [1,2,3,4,5];
   selectedValue : number = 0;
-  constructor() { }
-
+  constructor() {
+  }
+  
   ngOnInit(): void {
+   this.recipe = this.recipe.recipe[0];
+   console.log(this.recipe);
+   
   }
   
   countStar(star: any){

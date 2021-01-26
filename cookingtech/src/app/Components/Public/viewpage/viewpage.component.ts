@@ -14,12 +14,13 @@ export class ViewpageComponent implements OnInit {
 
   isRecipes:any = true;
   recipes: any;
+  showSideBar:boolean = true;
 
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiRequestService
   ) { }
-  showSideBar:boolean = true;
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(params=> {
       this.id = params.get('id');
@@ -36,19 +37,22 @@ export class ViewpageComponent implements OnInit {
         console.log(this.recipes);
         
       });
-    }else if(this.id) {
+    }else if(this.id && !this.category) {
       this.apiService.apiRequest(`/recipes/${this.id}`, 'get').subscribe(respond => {
         this.recipes = respond;
         this.isRecipes = false;
-        console.log(this.recipes);
+        console.log("I was here");
+        
         
       });
-    }else if(this.category) {
+    }else if(this.category && !this.id) {
       this.apiService.apiRequest(`/recipes/category/${this.category}`, 'get').subscribe(respond => {
         this.recipes = respond || [];
         this.recipes = this.recipes.recipes;
         this.isRecipes = true;
         console.log(this.recipes);
+        console.log("I was here too");
+
       });
     }
   }

@@ -52,36 +52,29 @@
                       <div *ngIf="user.get('email').errors.email"> Email must be valid</div>
                     </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label> Are you a..?</label>
-                  <select name="select?" class="form-control" formControlName="usertype">
-                    <option value="chef_master" selected>Chef Master</option>
-                    <option  value="chef_apprentice">Chef Apprentice</option>
-                  </select>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label>Password</label>
-                    <input type="password" class="form-control" formControlName="password"
-                     [ngClass]="{'is-invalid' : user.get('password').touched && user.get('password').invalid}" placeholder="Password">
-                     <div *ngIf="user.get('password').touched && user.get('password').invalid" class="invalid-feedback">
-                     <div *ngIf="user.get('password').errors.required"> Password is required</div>
-                     <div *ngIf="user.get('password').errors.minlength"> Password must be atleat 8 characters</div>
-                  </div>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label>Confirm Password</label>
-                    <input type="password" class="form-control" formControlName="confirmpassword" 
-                    [ngClass]="{'is-invalid' : user.get('confirmpassword').touched && user.get('confirmpassword').invalid  && user.get('confirmpassword').errors}" placeholder="Confirm Password">
-                    <div *ngIf="user.get('confirmpassword').touched && user.get('confirmpassword').invalid && user.get('confirmpassword').errors" class="invalid-feedback">
-                      <div *ngIf="user.get('confirmpassword').errors.required"> Password is required</div>
-                     <div *ngIf="user.get('confirmpassword').errors.mustMatch"> Password doesn't match</div>
+                 
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label>Password</label>
+                      <input type="password" class="form-control" formControlName="password"
+                       [ngClass]="{'is-invalid' : user.get('password').touched && user.get('password').invalid}" placeholder="Password">
+                       <div *ngIf="user.get('password').touched && user.get('password').invalid" class="invalid-feedback">
+                       <div *ngIf="user.get('password').errors.required"> Password is required</div>
+                       <div *ngIf="user.get('password').errors.minlength"> Password must be atleat 8     characters</div>
                     </div>
-                  </div>
-                  <div class="col text-center">
-                    <br>
-                    <button type="submit"  class="btn btn-primary" [disabled]="user.invalid">Sign Up</button>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>Confirm Password</label>
+                      <input type="password" class="form-control" formControlName="confirmpassword" 
+                      [ngClass]="{'is-invalid' : user.get('confirmpassword').touched && user.get('confirmpassword').invalid  && user.get('confirmpassword').errors}" placeholder="Confirm Password">
+                      <div *ngIf="user.get('confirmpassword').touched && user.get('confirmpassword').invalid && user.get('confirmpassword').errors" class="invalid-feedback">
+                        <div *ngIf="user.get('confirmpassword').errors.required"> Password is required</div>
+                       <div *ngIf="user.get('confirmpassword').errors.mustMatch"> Password doesn't match</div>
+                      </div>
+                    </div>
+                    <div class="col text-center">
+                      <button type="submit" class="btn btn-primary" [disabled]="!user.valid">Register</button>
+                    </div>
                   </div>
                 </div>
                 <div class="col text-center">

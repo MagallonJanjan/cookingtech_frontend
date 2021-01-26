@@ -6,6 +6,7 @@ import { ApiRequestService } from '../../../services/apirequest.service';
 
 
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

@@ -172,7 +172,6 @@ export class AdminComponent implements OnInit {
   getDataOnclick(kindOfData: string) {
     this.showDashboard = false;
     if(kindOfData == "users") {
-
       this.data = this.users.users.filter((user:any)=>{
         return user.usertype != "admin"
       });
@@ -185,8 +184,8 @@ export class AdminComponent implements OnInit {
       return;
     }
     if(kindOfData == "pendings") {
-      this.data = this.pendings.pendings.filter((pending:any)=>{
-        return pending.status == false;
+      this.data = this.pendings.pendings.filter((pendings:any)=>{
+        return pendings.status == false;
       });
       this.title = "Pendings";
       return;

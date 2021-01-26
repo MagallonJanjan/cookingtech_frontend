@@ -1,17 +1,9 @@
 <div>
     <app-viewpage-header></app-viewpage-header>
     <app-viewpage-sidebar (sideBarToggle)="sideBarToggle($event)"></app-viewpage-sidebar>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
         <div class="container">
-            <app-viewrecipes [recipes]="recipes" *ngIf="isRecipes"></app-viewrecipes>
-            <app-viewpage-body *ngIf="!isRecipes" [recipe]="recipes"></app-viewpage-body>
+            <app-user-profile-body></app-user-profile-body>
         </div>
-        <app-footer></app-footer>
     </div>
 </div>

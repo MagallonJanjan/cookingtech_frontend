@@ -1,15 +1,19 @@
 .card {
     margin-left: 3%;
     margin-right: 3%;
+    width:300px;
     
     
 }
 
 .card-body {
-    height: 100px;
+    height: 80px;
+   
 }
 .card img {
-    max-height: 180px;
+    margin-top:5px;
+    height: 200px;
+    width:100%;
 }
 
 .card-text{
@@ -24,8 +28,18 @@
     padding-top: 5%;
 }
 
-
-
-
+.content {
+    margin-top: 80px;
+    margin-left: 225px;
+    /* border: #0066cc solid 4px; */
+  }
+  
+  .content-v2 {
+    margin-left: 85px;
+  }
+  
+  .cursor {
+      cursor: pointer;
+  }
 
 

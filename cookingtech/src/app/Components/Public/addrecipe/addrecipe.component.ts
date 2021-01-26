@@ -29,7 +29,7 @@ export class AddrecipeComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(25)]],
       yield: ['', Validators.required],
       category: ['', Validators.required],
-      ingredients: ['', [Validators.required, Validators.minLength(4)]],
+      ingredients: ['', [Validators.required, Validators.minLength(3)]],
       procedures: ['', [Validators.required, Validators.minLength(4)]],
       tag: ['', [Validators.required, Validators.minLength(5)]],
       img_url: ['', [Validators.required]]
@@ -41,35 +41,18 @@ export class AddrecipeComponent implements OnInit {
   proceduresArray: any[] = [];
 
 
-  hidden = true;
-  showMe() {
-    this.hidden = !this.hidden;
-  }
-
-  hiddenProcedure = true;
-  showProcedure() {
-    this.hiddenProcedure = !this.hiddenProcedure;
-  }
-
-
   addIngredients() {
     this.ingredientsArray.push(this.addRecipe.value.ingredients);
     (<HTMLInputElement>document.getElementById('lingling')).value = ""
-    this.hidden = true
+    
   }
 
   addProcedure() {
     this.proceduresArray.push(this.addRecipe.value.procedures);
     (<HTMLInputElement>document.getElementById('procedure')).value = "";
-    this.hiddenProcedure = true;
+
   }
 
-
-  // onSave(){
-  //   alert('You are adding a new recipe!');
-  //   this.addRecipe.reset();
-
-  // }
 
 
   removeIngredientItem(item: any) {
@@ -81,8 +64,8 @@ export class AddrecipeComponent implements OnInit {
   }
 
 
-  datas: any;
-  onSubmit(data: any) {
+  datas:any;
+  onSubmit(data : any){ 
     this.addRecipe.value.ingredients = this.ingredientsArray;
     this.addRecipe.value.procedures = this.proceduresArray;
     this.datas = this.addRecipe.value;
@@ -90,11 +73,12 @@ export class AddrecipeComponent implements OnInit {
     let UserData = this.dataEnc.decrypt(cookie);
     this.datas["user_id"] = UserData.user.id;
 
-    this.apiRequest.apiRequest('/recipes', 'post', this.datas)
-      .subscribe(respond => {
+  
+    
+    this.apiRequest.apiRequest('/recipes','post', this.datas)
+      .subscribe( respond => {
         console.log(respond);
         alert('You are adding a new recipe!');
-
         this.addRecipe.reset()
 
         this.ingredientsArray = [];

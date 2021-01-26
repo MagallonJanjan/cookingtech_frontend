@@ -29,11 +29,10 @@ constructor(
 
 ngOnInit(): void {
    this.user = this.formBuilder.group({
-    firstname: ['', [Validators.required, Validators.minLength(4)]],
-    lastname: ['', [Validators.required, Validators.minLength(4)]],
+    firstname: ['', [Validators.required, Validators.minLength(2)]],
+    lastname: ['', [Validators.required, Validators.minLength(2)]],
     username: ['',[Validators.required, Validators.minLength(4)]],
     email: ['', [Validators.required, Validators.email]],
-    usertype: ['',Validators.required],
     password: ['', [Validators.required, Validators.minLength(8)]],
     confirmpassword: ['', Validators.required]
   }, {

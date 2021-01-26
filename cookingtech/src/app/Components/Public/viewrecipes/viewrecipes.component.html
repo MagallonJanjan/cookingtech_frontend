@@ -1,19 +1,31 @@
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="viewrecipes.component.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="viewrecipes.component.css">
 </head>
+
 <body>
-    <div class="card-group" >
-        <div class="card">
-          <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLVAcQLuAuJk5T1gzaz35OoGwsTG0GbRh8Rw&usqp=CAU" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">By: Joseph John Magallon</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
+  <div class="row">
+    <div class="col-md-4 mt-5 cursor" *ngFor="let recipe of recipes" (click)="getRecipe(recipe.id)">
+      <div class="card p-2">
+        <img class="card-img-top" [src]="recipe.img_url" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{recipe.name}}</h5>
+          <small class="text-bold">Category: {{recipe.category}}</small>
         </div>
+        <div class="card-footer">
+            <small class="text-muted">Uploaded by: {{recipe.user.firstname + " "+ " " + recipe.user.lastname}}</small>
+          </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+<!-- </div>
         <div class="card">
           <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLVAcQLuAuJk5T1gzaz35OoGwsTG0GbRh8Rw&usqp=CAU" alt="Card image cap">
           <div class="card-body">
@@ -43,9 +55,9 @@
             <div class="card-footer">
               <small class="text-muted">Last updated 3 mins ago</small>
             </div>
-          </div>
-  </div>
-      <div class="card-group" id="second-row">
+          </div>  -->
+
+<!-- <div class="card-group" id="second-row">
             <div class="card">
               <img class="card-img-top" src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1586817825-20ex400g-242wt1drf3cg-a-19104142414.png?crop=1xw:1xh;center,top&resize=480:*" alt="Card image cap">
               <div class="card-body">
@@ -128,11 +140,4 @@
               <small class="text-muted">Last updated 3 mins ago</small>
             </div>
           </div>
-  </div>
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-
-
-
+  </div> -->

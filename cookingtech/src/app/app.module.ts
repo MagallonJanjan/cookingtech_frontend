@@ -6,6 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http'; 
 
+import { CommonModule } from '@angular/common';
+
+
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
@@ -27,6 +30,10 @@ import { ViewpageSidebarComponent } from './Components/Public/viewpage-sidebar/v
 //Import provider
 import { CookieService } from 'ngx-cookie-service';
 import { ViewrecipesComponent } from './Components/Public/viewrecipes/viewrecipes.component';
+import { ViewrecipesBodyComponent } from './Components/Public/viewrecipes-body/viewrecipes-body.component';
+import { UserProfileComponent } from './Components/Public/user-profile/user-profile.component';
+import { UserProfileBodyComponent } from './Components/Public/user-profile-body/user-profile-body.component';
+import { UserhomeComponent } from './Components/Public/userhome/userhome.component';
 
 
 @NgModule({
@@ -37,7 +44,6 @@ import { ViewrecipesComponent } from './Components/Public/viewrecipes/viewrecipe
     AddrecipeComponent,
     AdminTableComponent,
     AdminModalComponent,
-    routingComponents,
     HomeComponent,
     ViewpageComponent,
     FooterComponent,
@@ -46,10 +52,15 @@ import { ViewrecipesComponent } from './Components/Public/viewrecipes/viewrecipe
     ViewpageHeaderComponent,
     ViewpageBodyComponent,
     ViewpageSidebarComponent,
-    ViewrecipesComponent
+    ViewrecipesComponent,
+    ViewrecipesBodyComponent,
+    UserProfileComponent,
+    UserProfileBodyComponent,
+    UserhomeComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,

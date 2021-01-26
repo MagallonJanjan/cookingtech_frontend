@@ -23,6 +23,7 @@ export class AdminTableComponent implements OnInit {
     ["chef_master","chef_master"],
   ];
 
+  deleteAlert="SuccessfullDeletedD"
   totalData:any;
   page: number = 1;
 
@@ -56,7 +57,7 @@ export class AdminTableComponent implements OnInit {
     this.apiService.apiRequest(`/recipes/${this.editedData.id}`,"put",this.editedData)
 
       .subscribe(respond=>{
-        alert("approved");
+        // alert("approved");
         console.log(respond);
       })
     }
@@ -66,7 +67,7 @@ export class AdminTableComponent implements OnInit {
       let url = this.editedData.name?'recipes':'users'
       this.apiService.apiRequest(`/${url}/${this.editedData.id}`,"delete",this.editedData)
         .subscribe(respond=>{
-          alert ("data has deleted");
+          // alert ("data has deleted");
         })
   }
 

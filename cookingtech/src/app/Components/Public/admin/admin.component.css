@@ -115,4 +115,9 @@
 .circle {
     width: 100px;
     height: 100px;
+    cursor: pointer;
+}
+
+.circle:hover {
+    opacity: 0.49;
 }

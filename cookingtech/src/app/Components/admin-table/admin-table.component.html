@@ -14,11 +14,10 @@
                     <div class="alert alert-primary" role="alert">
                         <p>First Name: {{info.firstname}}</p>
                         <p>Last Name: {{info.lastname}}</p>
-                        <p>Current Position: {{info.usertype}}</p>
                         <div class="form-group">
                             <label for="sel1">Update User Position:</label>
                             <select class="form-control" id="sel1" value="">
-                                <option *ngFor="let pos of usertypes" value="pos[1]">{{pos[0]}}</option>
+                                <option *ngFor="let pos of usertypes" value="pos[1]" [selected]="info.usertype==pos[1]">{{pos[0]}}</option>
                             </select>
                         </div>
                     </div>

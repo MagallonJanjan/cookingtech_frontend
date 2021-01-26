@@ -81,8 +81,8 @@ export class AddrecipeComponent implements OnInit {
   }
 
 
-  datas: any;
-  onSubmit(data: any) {
+  datas:any;
+  onSubmit(data : any){ 
     this.addRecipe.value.ingredients = this.ingredientsArray;
     this.addRecipe.value.procedures = this.proceduresArray;
     this.datas = this.addRecipe.value;
@@ -90,11 +90,12 @@ export class AddrecipeComponent implements OnInit {
     let UserData = this.dataEnc.decrypt(cookie);
     this.datas["user_id"] = UserData.user.id;
 
-    this.apiRequest.apiRequest('/recipes', 'post', this.datas)
-      .subscribe(respond => {
+  
+    
+    this.apiRequest.apiRequest('/recipes','post', this.datas)
+      .subscribe( respond => {
         console.log(respond);
         alert('You are adding a new recipe!');
-
         this.addRecipe.reset()
 
         this.ingredientsArray = [];

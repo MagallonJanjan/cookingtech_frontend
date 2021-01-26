@@ -28,6 +28,8 @@ import { ViewpageSidebarComponent } from './Components/Public/viewpage-sidebar/v
 import { CookieService } from 'ngx-cookie-service';
 import { ViewrecipesComponent } from './Components/Public/viewrecipes/viewrecipes.component';
 import { ViewrecipesBodyComponent } from './Components/Public/viewrecipes-body/viewrecipes-body.component';
+import { UserProfileComponent } from './Components/Public/user-profile/user-profile.component';
+import { UserProfileBodyComponent } from './Components/Public/user-profile-body/user-profile-body.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { ViewrecipesBodyComponent } from './Components/Public/viewrecipes-body/v
     ViewpageBodyComponent,
     ViewpageSidebarComponent,
     ViewrecipesComponent,
-    ViewrecipesBodyComponent
+    ViewrecipesBodyComponent,
+    UserProfileComponent,
+    UserProfileBodyComponent
   ],
   imports: [
     BrowserModule,

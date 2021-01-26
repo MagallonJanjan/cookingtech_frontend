@@ -1,4 +1,4 @@
-.card-img-top {
+img{
   height: 15rem;
   width: 25rem;
 }
@@ -94,23 +94,25 @@ p {
   /* width: 30rem; */
 }
 
-.rating-list{
-    display: inline-block;
-    list-style: none;
+.rating-list {
+  display: inline-block;
+  list-style: none;
 }
-.rating-list li{
-    color: #ddd;
-    padding: 10px 5px;
+
+.rating-list li {
+  color: #ddd;
+  padding: 10px 5px;
 }
+
 .rating-list li:hover,
-.rating-list li:hover~li{
-    color: #ffd700;
+.rating-list li:hover~li {
+  color: #ffd700;
 }
 
 .top {
-  margin-top: 170px;
+  margin-top: -53px;
 }
 
-.rating-list li.selected{
-    color: #ffd700;
+.rating-list li.selected {
+  color: #ffd700;
 }

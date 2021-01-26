@@ -1,20 +1,19 @@
-<!-- <app-comment> </app-comment>
-<app-reply></app-reply> -->
-
 <div>
     <app-viewpage-header></app-viewpage-header>
-    <app-viewpage-sidebar (sideBarToggle)="sideBarToggle($event)"></app-viewpage-sidebar>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
+    <app-viewpage-sidebar (sideBarToggle)="sideBarToggle($event)" *ngIf="cookie"></app-viewpage-sidebar>
+
+    <div class="content-v3" *ngIf="!cookie">
         <div class="container">
-            <app-viewrecipes [recipes] = "recipes" *ngIf="isRecipes"></app-viewrecipes>
+            <app-viewrecipes [recipes]="recipes" *ngIf="isRecipes" [category]="category"></app-viewrecipes>
             <app-viewpage-body *ngIf="!isRecipes" [recipe]="recipes"></app-viewpage-body>
         </div>
+        <app-footer></app-footer>
     </div>
-    <app-footer></app-footer>
+    <div class="content" [ngClass]="{'content-v2' : !showSideBar}" *ngIf="cookie">
+            <div class="container">
+                <app-viewrecipes [recipes]="recipes" *ngIf="isRecipes" [category]="category"></app-viewrecipes>
+                <app-viewpage-body *ngIf="!isRecipes" [recipe]="recipes"></app-viewpage-body>
+            </div>
+            <app-footer></app-footer>
+    </div>
 </div>

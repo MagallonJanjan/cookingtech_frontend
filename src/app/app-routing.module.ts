@@ -13,7 +13,6 @@ import { UserProfileComponent } from './Components/Public/user-profile/user-prof
 import { IsAdminGuard } from './guards/is-admin.guard';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { IsMasterGuard } from './guards/is-master.guard';
-import { UserhomeComponent } from './Components/Public/userhome/userhome.component';
 
 
 const routes: Routes =
@@ -30,8 +29,7 @@ const routes: Routes =
   {path: 'edit-recipe/:id', component: AddrecipeComponent},
   { path : 'admin', component : AdminComponent, canActivate:[IsAuthenticatedGuard, IsAdminGuard]},
   {path : 'add-recipe', component : AddrecipeComponent, canActivate: [IsAuthenticatedGuard, IsMasterGuard]},
-  {path: 'user-profile', component: UserProfileComponent},
-  {path: 'user-home', component : UserhomeComponent}
+  {path: 'user-profile', component: UserProfileComponent}
 ];
 
 @NgModule({

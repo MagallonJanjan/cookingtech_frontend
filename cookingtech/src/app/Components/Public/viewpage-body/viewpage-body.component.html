@@ -43,16 +43,20 @@
       <div class="card-footer">
         <div class="row">
           <div class="col">
-            <input class="form-control" placeholder="Write your comment here...">
+            <form class="form-inline">
+                <input class="form-control w-50" type="text" placeholder="Write your comment here...">
+                <button class="btn btn-outline-secondary">Comment</button>
+            </form>
           </div>
           <div class="col">
             <div class="col-sm-12">
               <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index"
                 style="display: inline-block">
                 <li (click)="countStar(star)" id="{{'starId'+i}}" [ngClass]="{'selected': (star <= selectedValue)}"
-                  (onkeypress)="addClass(star)" (onkeypress)="removeClass(star)"> <i class="fa fa-star fa-lg"></i>
+                  (onkeypress)="addClass(star)" (onkeypress)="removeClass(star)" > <i class="fa fa-star fa-lg"></i>
                 </li>
               </ul>
+              <button class="btn btn-outline-info" [disabled]="isRateDisabled">Rate</button>
             </div>
           </div>
         </div>

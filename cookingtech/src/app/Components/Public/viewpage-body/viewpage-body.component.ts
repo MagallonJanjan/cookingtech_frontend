@@ -17,13 +17,18 @@ export class ViewpageBodyComponent implements OnInit {
   
   countStar(star: any){
     this.selectedValue = star;
+    this.isRateDisabled = false
   }
+
+  isRateDisabled = true;
+
   addClass(star:any){
     let ndex = "";
     for(let i = 0; i <star; i++){
       ndex = "starId" + i;
       document.getElementById(ndex)?.classList.add("selected");
     }
+   
   }
   removeClass(star:any){
     let ndex = "";
@@ -31,5 +36,11 @@ export class ViewpageBodyComponent implements OnInit {
       ndex = "starId" + i;
       document.getElementById(ndex)?.classList.remove("selected");
     }
+    
   }
+
+
+
+
+
 }

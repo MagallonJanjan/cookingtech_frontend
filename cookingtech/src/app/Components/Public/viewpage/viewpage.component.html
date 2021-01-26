@@ -1,6 +1,6 @@
 <div>
     <app-viewpage-header></app-viewpage-header>
-    <app-viewpage-sidebar (sideBarToggle)="sideBarToggle($event)"></app-viewpage-sidebar>
+    <app-viewpage-sidebar (sideBarToggle)="sideBarToggle($event)" *ngIf="cookie"></app-viewpage-sidebar>
 
     <div class="content-v3" *ngIf="!cookie">
         <div class="container">

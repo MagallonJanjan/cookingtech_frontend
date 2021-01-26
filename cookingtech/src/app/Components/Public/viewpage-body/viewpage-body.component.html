@@ -46,7 +46,7 @@
               <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index"
                 style="display: inline-block">
                 <li (click)="countStar(star)" id="{{'starId'+i}}" [ngClass]="{'selected': (star <= selectedValue)}"
-                  (onkeypress)="addClass(star)" (onkeypress)="removeClass(star)" > <i class="fa fa-star fa-lg"></i>
+                  (onkeypress)="addClass(star)" (onkeypress)="removeClass(star)"> <i class="fa fa-star fa-lg"></i>
                 </li>
               </ul>
               <button class="btn btn-outline-info" [disabled]="isRateDisabled">Rate</button>

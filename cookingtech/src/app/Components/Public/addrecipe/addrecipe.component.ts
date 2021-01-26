@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ApiRequestService } from '../../../services/apirequest.service';
+import { ActivatedRoute } from '@angular/router';
 
 import { EncryptService } from '../../../services/encrypt.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -18,11 +19,12 @@ export class AddrecipeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private apiRequest: ApiRequestService,
     private dataEnc: EncryptService,
-    private cookies: CookieService
+    private cookies: CookieService,
+    private route: ActivatedRoute
   ) { }
 
   addRecipe: any;
-
+  recipeId: any;
   ngOnInit(): void {
     this.addRecipe = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
@@ -35,6 +37,10 @@ export class AddrecipeComponent implements OnInit {
       img_url: ['', [Validators.required]]
     })
 
+
+    this.route.paramMap.subscribe( params => {
+        this.recipeId = params.get('id');
+      });
   }
 
   ingredientsArray: any[] = [];

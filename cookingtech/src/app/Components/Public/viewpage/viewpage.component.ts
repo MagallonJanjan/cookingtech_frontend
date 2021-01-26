@@ -2,6 +2,8 @@ import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {ApiRequestService } from '../../../services/apirequest.service';
 
+import { CookieService } from 'ngx-cookie-service';
+import { EncryptService } from '../../../services/encrypt.service';
 @Component({
   selector: 'app-viewpage',
   templateUrl: './viewpage.component.html',
@@ -11,6 +13,7 @@ export class ViewpageComponent implements OnInit {
 
   id:any;
   category: any;
+  cookie: any;
 
   isRecipes:any = true;
   recipes: any;
@@ -18,12 +21,19 @@ export class ViewpageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private apiService: ApiRequestService
+    private apiService: ApiRequestService,
+    private cookies: CookieService,
+    private dataEnc: EncryptService
   ) { }
 
   ngOnInit(): void {
+    //get the cookies and possible encrypt it into data
+    this.cookie = this.cookies.get('__cookingtech');
+
+    //get the router parameters
     this.route.paramMap.subscribe(params=> {
       this.id = params.get('id');
+
     });
 
     this.route.paramMap.subscribe(params=> {

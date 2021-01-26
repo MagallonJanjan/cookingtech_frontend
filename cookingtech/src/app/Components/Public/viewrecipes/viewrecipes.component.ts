@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ViewrecipesComponent implements OnInit {
   @Input() recipes:any; 
+  @Input() category?: any;
   
   constructor(private apiService:ApiRequestService,
     private route: Router) {

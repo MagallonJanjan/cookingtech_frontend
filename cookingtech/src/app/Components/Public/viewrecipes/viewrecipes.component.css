@@ -41,5 +41,7 @@
   .cursor {
       cursor: pointer;
   }
-
+.custom_margin {
+    margin-top: 400px;
+}
 

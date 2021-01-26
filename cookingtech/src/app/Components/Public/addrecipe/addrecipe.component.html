@@ -1,5 +1,7 @@
 <div class="container"><br>
   <form [formGroup]="addRecipe">
+    <h3 class="text-center" *ngIf="!recipeId">Add Recipe</h3>
+    <h3 class="text-center" *ngIf="recipeId">Edit Recipe</h3>
     <div class="row">
       <div class="col">
         <label for="exampleFormControlTextarea1">Name</label>

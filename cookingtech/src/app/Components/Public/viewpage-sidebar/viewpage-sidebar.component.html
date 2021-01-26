@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *igIf="cookie">
   <!-- sidebar -->
   <div class="row">
     <div class="bg-custom-sidebar position-fixed custom-style-sidebar" *ngIf="showSideBar">
@@ -16,7 +16,7 @@
 
       <div class="container">
         <!-- navigations -->
-        <span class="btn-custom border navigation-items"  routerLink="/viewrecipes"><i class="fa fa-columns pr-2 ml-4"></i>My Recipe</span>
+        <span class="btn-custom border navigation-items"  routerLink="/recipes"><i class="fa fa-columns pr-2 ml-4"></i>My Recipe</span>
         <span class="btn-custom border navigation-items"><i class="fa fa-users pr-2 ml-4"></i>My Bookmarks</span>
         <span class="btn-custom border navigation-items"><i class="fa fa-sign-out pr-2 ml-4"></i>Log Out</span>
       </div>

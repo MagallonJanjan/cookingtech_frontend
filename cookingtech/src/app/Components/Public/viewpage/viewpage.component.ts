@@ -33,6 +33,8 @@ export class ViewpageComponent implements OnInit {
       this.apiService.apiRequest('/recipes', "get").subscribe(respond => {
         this.recipes = respond||[];
         this.isRecipes = true;
+        console.log(this.recipes);
+        
       });
     }else if(this.id) {
       this.apiService.apiRequest(`/recipes/${this.id}`, 'get').subscribe(respond => {
@@ -46,6 +48,7 @@ export class ViewpageComponent implements OnInit {
         this.recipes = respond || [];
         this.recipes = this.recipes.recipes;
         this.isRecipes = true;
+        console.log(this.recipes);
       });
     }
   }

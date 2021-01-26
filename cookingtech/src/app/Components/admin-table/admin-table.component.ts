@@ -24,7 +24,7 @@ export class AdminTableComponent implements OnInit {
     ["chef_master","chef_master"],
   ];
 
-  deleteAlert="SuccessfullDeletedD"
+  deleteAlert="Delete Successfully";
   totalData:any;
   page: number = 1;
 
@@ -69,7 +69,7 @@ export class AdminTableComponent implements OnInit {
       let url = this.editedData.name?'recipes':'users'
       this.apiService.apiRequest(`/${url}/${this.editedData.id}`,"delete",this.editedData)
         .subscribe(respond=>{
-          // alert ("data has deleted");
+         alert(this.deleteAlert);
         })
   }
 

@@ -1,0 +1,50 @@
+.container {
+    background-color:#b7c8da;
+    margin-top: 80px;
+    height: -60%;
+}
+
+.btn {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.btn1{ 
+    width: 40%;
+    margin-left: 30%;
+    border-radius: 2%;   
+}
+
+.list-body{
+  overflow: auto;
+  height: 200px;
+}
+
+.list-body::-webkit-scrollbar {
+  display: none;
+}
+
+
+.procedure-list{
+  overflow: auto;
+  height: 200px;
+}
+
+.procedure-list::-webkit-scrollbar {
+  display: none;
+}
+
+#ingredients-feedback {
+  margin-left: 15px;
+}
+
+
+
+.ingredientInput{
+  margin-left: 2%;
+}
+
+.modal-footer{
+  margin-top: 5px
+}
+

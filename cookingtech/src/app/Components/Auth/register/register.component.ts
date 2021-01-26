@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiRequestService } from '../../../services/apirequest.service';
+
+
 
 
 @Component({
@@ -8,27 +12,38 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
+
 export class RegisterComponent implements OnInit {
 
-   
 user: any = FormGroup;
 submitted = false;
 
-constructor(private formBuilder: FormBuilder) { }
+
+
+constructor(
+  private formBuilder: FormBuilder ,
+  private sample: ApiRequestService,
+  private router :Router){ }
+
 
 ngOnInit(): void {
-  this.user = this.formBuilder.group({
-    firstname: ['', [Validators.required, Validators.minLength(4)]],
-    lastname: ['', [Validators.required, Validators.minLength(4)]],
+   this.user = this.formBuilder.group({
+    firstname: ['', [Validators.required, Validators.minLength(2)]],
+    lastname: ['', [Validators.required, Validators.minLength(2)]],
     username: ['',[Validators.required, Validators.minLength(4)]],
     email: ['', [Validators.required, Validators.email]],
-    usertype: ['',Validators.required],
     password: ['', [Validators.required, Validators.minLength(8)]],
     confirmpassword: ['', Validators.required]
   }, {
     validator: this.MustMatch('password', 'confirmpassword')
   });
+
+  
+
+
 }
+
 get f() { return this.user.controls; }
 
 MustMatch(controlName: string, matchingControlName: string) {
@@ -48,16 +63,24 @@ MustMatch(controlName: string, matchingControlName: string) {
     }
   }
 }
+
+configUrl = '/users';
+
 onSubmit() {
   this.submitted = true;
-  console.log('Hi')
   // stop here if form is invalid
   if (this.user.invalid) {
     return;
   }
+  console.log(this.user.value)
+  this.sample.apiRequest(this.configUrl,"post",this.user.value).subscribe(respond => {
+    console.log(respond);
+    this.router.navigate(['/login'])
+  },
+  errors=> {
+    console.log(errors.error.errors);
+  });
+  this.user.reset();
 
-  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.user.value))
 }
-
-
 }

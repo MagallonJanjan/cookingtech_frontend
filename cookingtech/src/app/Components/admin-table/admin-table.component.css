@@ -1,0 +1,21 @@
+.tableInfo {
+    width:100%;   
+    padding:5px;
+    border:5px;
+      /* float: right; */
+}
+
+.tableTable{
+    width:100%;
+}
+
+.customized {
+    border: solid 1px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.customized:hoder {
+    background-color: wheat;
+    color: black;
+}

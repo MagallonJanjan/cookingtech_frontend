@@ -7,9 +7,10 @@
 <br>
 <br>
 <br>
-<h3>{{category}}</h3>
+<h3>{{capitalize(category)}}</h3>
 <hr>
-  <div class="row">
+  <h5 class="p-5 text-center" *ngIf="!recipes.length > 0">No Recipe Yet!</h5>
+  <div class="row" *ngIf="recipes.length > 0">
     <div class="col-md-4 mt-5 cursor" *ngFor="let recipe of recipes" (click)="getRecipe(recipe.id)">
       <div class="card p-2">
         <img class="card-img-top" [src]="recipe.img_url" alt="Card image cap">

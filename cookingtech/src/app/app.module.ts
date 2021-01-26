@@ -33,7 +33,8 @@ import { ViewrecipesComponent } from './Components/Public/viewrecipes/viewrecipe
 import { ViewrecipesBodyComponent } from './Components/Public/viewrecipes-body/viewrecipes-body.component';
 import { UserProfileComponent } from './Components/Public/user-profile/user-profile.component';
 import { UserProfileBodyComponent } from './Components/Public/user-profile-body/user-profile-body.component';
-import { UserhomeComponent } from './Components/Public/userhome/userhome.component';
+import { UserHomeComponent } from './Components/Public/user-home/user-home.component';
+import { UserHomeBodyComponent } from './Components/Public/user-home-body/user-home-body.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { UserhomeComponent } from './Components/Public/userhome/userhome.compone
     ViewrecipesBodyComponent,
     UserProfileComponent,
     UserProfileBodyComponent,
-    UserhomeComponent
+    UserHomeComponent,
+    UserHomeBodyComponent
   ],
   imports: [
     BrowserModule,

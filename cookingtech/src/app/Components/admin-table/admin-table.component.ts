@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ApiRequestService} from '../../services/apirequest.service';
+
 @Component({
   selector: 'app-admin-table',
   templateUrl: './admin-table.component.html',
@@ -72,5 +73,9 @@ export class AdminTableComponent implements OnInit {
  
   getData(data:any){
     this.editedData=data;
+  }
+
+  editUserData(data:any){
+   
   }
 }

@@ -176,13 +176,13 @@ export class AdminComponent implements OnInit {
       return;
     }
     if(kindOfData == "recipes") {
-      this.data = this.recipes.recipes || [];
+      this.data = this.recipes || [];
       this.title = "Recipes";
       return;
     }
     if(kindOfData == "pendings") {
-      this.data = this.pendings.pendings.filter(pending=>{
-        return pending.status == false;
+      this.data = this.pendings.pendings.filter(pendings=>{
+        return pendings.status == false;
       });
       this.title = "Pendings";
       return;

@@ -14,6 +14,7 @@
                     <div class="alert alert-primary" role="alert">
                         <p>First Name: {{info.firstname}}</p>
                         <p>Last Name: {{info.lastname}}</p>
+                        <p>Current Position: {{info.usertype}}</p>
                         <div class="form-group">
                             <label for="sel1">Update User Position:</label>
                             <select class="form-control" id="sel1" value="">
@@ -78,11 +79,14 @@
                             <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{bits.status}}</td>
 
                             <td class="table-secondary">
-                                <button class="btn btn-danger float-right"   data-toggle="modal"  (click)="getData(bits)" data-target="#exampleModal1">Delete</button>
-                                <button type="submit" (click)="getUserData(bits)" *ngIf ="(bits.status || !bits.name)" data-toggle="modal" data-target="#exampleModal"
-                                    class="float-right btn btn-info mr-2">View</button>
-                                <button type="submit" (click)="approveButton(bits)" *ngIf ="(!bits.status && !bits.lastname)" data-toggle="modal" 
-                                    class="float-right btn btn-success mr-2">Approve</button>
+                                <button class="btn btn-danger float-right" data-toggle="modal" (click)="getData(bits)"
+                                    data-target="#exampleModal1">Delete</button>
+                                <button type="submit" (click)="getUserData(bits)" *ngIf="( !bits.name )"
+                                    data-toggle="modal" data-target="#exampleModal" class="float-right btn btn-info mr-2">View</button>
+                               <a routerLink="/add-recipe"><button type="submit" (click)="editUserData(bits)" *ngIf="(!bits.lastname && bits.status)"
+                                data-toggle="modal"  class="float-right btn btn-info mr-2">Edit</button></a> 
+                                <button type="submit" (click)="approveButton(bits)" *ngIf="(!bits.status && !bits.lastname)"
+                                    data-toggle="modal" class="float-right btn btn-success mr-2">Approve</button>
                             </td>
                         </tr>
                     </tbody>

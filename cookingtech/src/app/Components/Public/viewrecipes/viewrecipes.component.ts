@@ -1,25 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import {ApiRequestService} from '../../../services/apirequest.service'
+import { Component, OnInit, Input } from '@angular/core';
+import {ApiRequestService} from '../../../services/apirequest.service';
+import { Router } from '@angular/router';
+ 
 @Component({
   selector: 'app-viewrecipes',
   templateUrl: './viewrecipes.component.html',
   styleUrls: ['./viewrecipes.component.css']
 })
 export class ViewrecipesComponent implements OnInit {
-
-recipes:any;
-  constructor(private apiService:ApiRequestService) { 
-    this.apiService.apiRequest('/recipes',"get",)
-      .subscribe(respond =>{
-        this.recipes=respond;
-        console.log(this.recipes);
-      })
+  @Input() recipes:any; 
+  @Input() category?: any;
+  
+  constructor(private apiService:ApiRequestService,
+    private route: Router) {
+    console.log(this.recipes);
   }
-
   ngOnInit(): void {
   }
 
- getRecipe(){
-
+ getRecipe(id:any){
+   console.log(id);
+    this.route.navigate([`/recipes/${id}`]);
  }
 }

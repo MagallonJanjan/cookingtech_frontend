@@ -1,0 +1,27 @@
+.container{
+    margin-top: 20%;
+}
+.card {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+.card-body {
+    height: 100px;
+}
+.card img {
+    max-height: 180px;
+}
+
+.card-text{
+    height: 500px;
+}
+
+#second-row {
+    padding-top: 5%;
+}
+
+#third-row {
+    padding-top: 5%;
+}
+
+

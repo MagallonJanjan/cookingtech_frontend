@@ -1,3 +1,13 @@
+.content {
+    margin-top: 80px;
+    margin-left: 225px;
+    /* border: #0066cc solid 4px; */
+  }
+  
+  .content-v2 {
+    margin-left: 85px;
+  }
+  
 .card {
     margin-left: 3%;
     margin-right: 3%;
@@ -27,21 +37,3 @@
 #third-row {
     padding-top: 5%;
 }
-
-.content {
-    margin-top: 80px;
-    margin-left: 225px;
-    /* border: #0066cc solid 4px; */
-  }
-  
-  .content-v2 {
-    margin-left: 85px;
-  }
-  
-  .cursor {
-      cursor: pointer;
-  }
-.custom_margin {
-    margin-top: 400px;
-}
-

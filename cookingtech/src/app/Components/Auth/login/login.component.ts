@@ -50,11 +50,13 @@ usertype:any;
           this.router.navigate([''])
         }
         if (this.kindOfUser.user.usertype === 'admin') {
-          this.router.navigate([''])
+          this.router.navigate(['/admin'])
         }
         window.localStorage.setItem('token', this.kindOfUser.token);
         let encCookies = this.dataEnc.encrypt(JSON.stringify(this.kindOfUser));
         this.cookies.set('__cookingtech', encCookies);
+      },error =>{
+        alert('This credentials does not match to our records! Please try again.');
       }
       )
 

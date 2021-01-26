@@ -47,11 +47,11 @@ export class AdminTableComponent implements OnInit {
   }
 
   approveButton(data:any){
-    this.editedData=data;
+    this.editedData={...data};
     this.editedData.status = true;
+    console.log(this.editedData);
     delete this.editedData["user_id"];
     delete this.editedData["tag"];
-    console.log(this.editedData);
     
     this.apiService.apiRequest(`/recipes/${this.editedData.id}`,"put",this.editedData)
 

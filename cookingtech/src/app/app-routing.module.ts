@@ -18,7 +18,9 @@ const routes: Routes =
   { path : 'home', component : HomeComponent },
   { path : 'login', component : LoginComponent },
   { path : 'register', component : RegisterComponent},
-  {path: 'viewpage', component: ViewpageComponent},
+  {path: 'recipes/:id', component: ViewpageComponent},
+  {path: 'recipes', component: ViewpageComponent},
+  {path: 'recipes/category/:cat', component: ViewpageComponent},
   { path : 'admin', component : AdminComponent, canActivate:[IsAuthenticatedGuard, IsAdminGuard]},
   {path : 'add-recipe', component : AddrecipeComponent, canActivate: [IsAuthenticatedGuard, IsMasterGuard]}
 ];

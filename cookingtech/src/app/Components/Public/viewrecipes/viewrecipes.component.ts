@@ -22,4 +22,9 @@ export class ViewrecipesComponent implements OnInit {
    console.log(id);
     this.route.navigate([`/recipes/${id}`]);
  }
+
+ capitalize(s:string) {
+  if (typeof s !== 'string') return ''
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}
 }

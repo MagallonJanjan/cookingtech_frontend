@@ -17,6 +17,7 @@ export class AdminTableComponent implements OnInit {
   editedData:any;
 
   info: any;
+  recipe:any;
   
   usertypes = [
     ["",""],
@@ -24,7 +25,7 @@ export class AdminTableComponent implements OnInit {
     ["chef_master","chef_master"],
   ];
 
-  deleteAlert="Delete Successfully";
+
   totalData:any;
   page: number = 1;
 
@@ -33,6 +34,7 @@ export class AdminTableComponent implements OnInit {
   constructor(private apiService:ApiRequestService,
               private router : Router) {
     this.info = {firstname: "", lastname: "", position: ""}
+    this.recipe ={name:"",description:"",tag:"",ingredients:[],procedures:[],yield:"",category:""}
    }
 
   ngOnInit(): void {
@@ -49,8 +51,14 @@ export class AdminTableComponent implements OnInit {
     this.info = data;
   }
 
+  getRecipeData(data:any){
+    this.recipe=data;
+    console.log(this.recipe);
+    
+  }
+
   approveButton(data:any){
-    this.editedData={...data};
+    this.editedData=data;
     this.editedData.status = true;
     console.log(this.editedData);
     delete this.editedData["user_id"];
@@ -59,7 +67,7 @@ export class AdminTableComponent implements OnInit {
     this.apiService.apiRequest(`/recipes/${this.editedData.id}`,"put",this.editedData)
 
       .subscribe(respond=>{
-        // alert("approved");
+        alert("approved");
         console.log(respond);
       })
     }
@@ -69,7 +77,7 @@ export class AdminTableComponent implements OnInit {
       let url = this.editedData.name?'recipes':'users'
       this.apiService.apiRequest(`/${url}/${this.editedData.id}`,"delete",this.editedData)
         .subscribe(respond=>{
-         alert(this.deleteAlert);
+          alert("deleted Successfully");
         })
   }
 
@@ -81,4 +89,6 @@ export class AdminTableComponent implements OnInit {
   editUserData(id:any){
     this.router.navigate([`edit-recipe/${id}`]);
   }
+
+  
 }

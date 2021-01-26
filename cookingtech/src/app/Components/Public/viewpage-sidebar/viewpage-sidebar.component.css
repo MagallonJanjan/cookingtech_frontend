@@ -27,7 +27,7 @@
 .bg-custom-sidebar {
   background-color: royalblue;
   margin-top: 0;
-  height: 63.75rem;
+  height: 65.10rem;
 }
 
 .main-header {
@@ -68,22 +68,12 @@
 }
 
 .navigation-items:hover {
-  color: gray;
+  background-color: gray;
 }
 
 .btn-custom {
   border-radius: 5px;
   height: 40px;
-}
-
-.content {
-  margin-top: 80px;
-  margin-left: 225px;
-  /* border: #0066cc solid 4px; */
-}
-
-.content-v2 {
-  margin-left: 85px;
 }
 
 .cardCenter {

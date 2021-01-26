@@ -1,0 +1,9 @@
+<div>
+    <app-viewpage-header></app-viewpage-header>
+    <app-viewpage-sidebar (sideBarToggle)="sideBarToggle($event)"></app-viewpage-sidebar>
+    <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
+        <div class="container">
+            <app-user-profile-body></app-user-profile-body>
+        </div>
+    </div>
+</div>

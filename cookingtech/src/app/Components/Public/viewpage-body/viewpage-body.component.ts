@@ -12,6 +12,7 @@ export class ViewpageBodyComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   countStar(star: any){
     this.selectedValue = star;
   }

@@ -1,12 +1,20 @@
-<div class="">
+<div class="card w-75" style="margin: 20% 10% 10% 10%">
+    <h3  class="text-center" style="margin-top:5%">Edit Profile</h3>
     <div class="row">
         <div class="col profile-img">
-            <div class="img-container ml-5">
-                <!-- <img  src="" alt=""> -->
-                
+            <div class="img-container">
             </div>
-            <button class="btn btn-outline-success mt-3 ml-5 p-2">Change</button>
+            <div class="text-center mt-3" style="margin-left:-190px">
+                <button class="btn btn-outline-success ">Username</button>
+            </div>
         </div>
-        <div class="col"></div>
+        <div class="col pb-3" style="margin-top:5%">
+            <form class="form-group w-100" style="margin-left:-50%">
+                <input class="form-control" type="text" placeholder="First Name"><br>
+                <input class="form-control" type="text" placeholder="Last Name"><br>
+                <input class="form-control" type="email" placeholder="Email"><br>
+                <button class="btn btn-outline-primary" [disabled] = "true">Save Changes</button><br>
+            </form>
+        </div>
     </div>
 </div>

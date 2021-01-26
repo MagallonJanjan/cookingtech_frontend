@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import {ApiRequestService} from '../../../services/apirequest.service'
 @Component({
   selector: 'app-viewrecipes',
   templateUrl: './viewrecipes.component.html',
   styleUrls: ['./viewrecipes.component.css']
 })
 export class ViewrecipesComponent implements OnInit {
-
-  constructor() { }
-  showSideBar:boolean = true;
+  @Input() recipes:any; 
+  
+  constructor(private apiService:ApiRequestService) {
+    console.log(this.recipes);
+  }
   ngOnInit(): void {
   }
 
-  sideBarToggle(data:any) {
-    this.showSideBar = data;
-  }
+ getRecipe(){
+
+ }
 }

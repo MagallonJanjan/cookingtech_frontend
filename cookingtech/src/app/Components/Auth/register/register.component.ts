@@ -6,6 +6,7 @@ import { ApiRequestService } from '../../../services/apirequest.service';
 
 
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -32,7 +33,6 @@ ngOnInit(): void {
     lastname: ['', [Validators.required, Validators.minLength(4)]],
     username: ['',[Validators.required, Validators.minLength(4)]],
     email: ['', [Validators.required, Validators.email]],
-    usertype: ['',Validators.required],
     password: ['', [Validators.required, Validators.minLength(8)]],
     confirmpassword: ['', Validators.required]
   }, {

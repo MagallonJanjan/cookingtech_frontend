@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-viewpage-body',
@@ -6,12 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./viewpage-body.component.css']
 })
 export class ViewpageBodyComponent implements OnInit {
+  @Input() recipe: any;
+
   stars: number[] = [1,2,3,4,5];
   selectedValue : number = 0;
   constructor() { }
 
   ngOnInit(): void {
   }
+  
   countStar(star: any){
     this.selectedValue = star;
   }

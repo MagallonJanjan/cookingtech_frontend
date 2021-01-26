@@ -8,6 +8,38 @@
     margin-left: 85px;
   }
   
+.card {
+    margin-left: 3%;
+    margin-right: 3%;
+    width:300px;
+    
+    
+}
+
+.card-body {
+    height: 80px;
+   
+}
+.card img {
+    margin-top:5px;
+    height: 200px;
+    width:100%;
+}
+
+.card-text{
+    height: 500px;
+}
+
+#second-row {
+    padding-top: 5%;
+}
+
+#third-row {
+    padding-top: 5%;
+}
+
+
+
 
 
 

@@ -33,10 +33,16 @@
           </div>
         </div>
       </div>
-      <div class="card-footer">
+      <div class="card-footer" >
         <div class="row">
           <div class="col">
-            <input class="form-control" placeholder="Write your comment here...">
+            <form class="form-inline" [formGroup]="contentForm" (ngSubmit)="onComment()">
+                <input class="form-control w-50" type="text" formControlName="content" placeholder="Write your comment here..." id="content">
+                <div *ngIf="contentForm.get('content').touched && contentForm.get('content').invalid" class="invalid-feedback">
+                    <p *ngIf="contentForm.get('content').errors.required">Content of the recipe is required</p>
+                  </div>
+                <button class="btn btn-outline-secondary" type="submit" [disabled]="contentForm.value.content == ''">Comment</button>
+            </form>
           </div>
           <div class="col">
             <div class="col-sm-12">
@@ -46,9 +52,11 @@
                   (onkeypress)="addClass(star)" (onkeypress)="removeClass(star)"> <i class="fa fa-star fa-lg"></i>
                 </li>
               </ul>
+              <button class="btn btn-outline-info" [disabled]="isRateDisabled">Rate</button>
             </div>
           </div>
         </div>
       </div>
+      <app-comment *ngFor="let comment of comments"></app-comment>
     </div>
   </div>

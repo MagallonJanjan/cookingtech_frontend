@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { EncryptService } from '../../../services/encrypt.service';
 import { CookieService } from 'ngx-cookie-service';
 import {Router } from '@angular/router';
-
+import { ApiRequestService } from '../../../services/apirequest.service';
 
 
 
@@ -24,7 +24,8 @@ export class ViewpageSidebarComponent implements OnInit {
   constructor(
     private cookies: CookieService,
     private dataEnc: EncryptService,
-    private route: Router
+    private route: Router,
+    private apiService: ApiRequestService
   ) { }
 
   ngOnInit(): void {
@@ -42,5 +43,15 @@ export class ViewpageSidebarComponent implements OnInit {
 
   gotoBookmarks() {
     this.route.navigate(['/user/recipes/bookmarks']);
+  }
+
+  logout() {
+    //clear all broswer storages
+    this.apiService.apiRequest('/users/logout',"post",{}).subscribe(respond => {
+      window.localStorage.removeItem('token');
+      this.cookies.delete('__cookingtech');
+      window.location.reload();
+      console.log(respond);
+    }) 
   }
 }

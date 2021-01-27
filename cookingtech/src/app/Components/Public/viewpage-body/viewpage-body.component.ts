@@ -30,8 +30,9 @@ export class ViewpageBodyComponent implements OnInit {
   contentForm: any;
   ngOnInit(): void {
    this.recipe = this.recipe.recipe[0];
-   console.log(this.recipe);
-
+   this.comments = this.recipe.comments;
+    console.log(this.comments);
+    
    //form for the comment
    this.contentForm = this.formBuilder.group({
      content: ['',[Validators.required]]
@@ -62,14 +63,16 @@ export class ViewpageBodyComponent implements OnInit {
     
   }
 
+  getAllComments() {
+    this.apiService.apiRequest('')
+  }
+
   onComment() {
     let cookie = this.cookies.get('__cookingtech');
     let content = this.contentForm.value;
     let recipe_id = this.recipe.id;
     let user_id = this.dataEnc.decrypt(cookie).user.id;
-    console.log(user_id, recipe_id, content);
+
+
   }
-
-
-
 }

@@ -18,7 +18,7 @@
         <!-- navigations -->
         <span class="btn-custom border navigation-items"  routerLink="/recipes"><i class="fa fa-columns pr-2 ml-4"></i>My Recipe</span>
         <span class="btn-custom border navigation-items"><i class="fa fa-users pr-2 ml-4"></i>My Bookmarks</span>
-        <span class="btn-custom border navigation-items"><i class="fa fa-sign-out pr-2 ml-4"></i>Log Out</span>
+        <span class="btn-custom border navigation-items" (click)="logout()"><i class="fa fa-sign-out pr-2 ml-4"></i>Log Out</span>
       </div>
     </div>
     
@@ -39,7 +39,7 @@
         <!-- navigations -->
         <span class="btn border navigation-items"><i class="fa fa-columns "></i></span>
         <span class="btn border navigation-items"><i class="fa fa-bookmark"></i></span>
-        <span class="btn border navigation-items"><i class="fa fa-sign-out"></i></span>
+        <span class="btn border navigation-items" (click)="logout()"><i class="fa fa-sign-out"></i></span>
       </div>
     </div>
   </div>

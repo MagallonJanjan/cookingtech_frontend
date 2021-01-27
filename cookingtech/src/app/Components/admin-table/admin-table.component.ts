@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {ApiRequestService} from '../../services/apirequest.service';
 import { Router } from '@angular/router';
 import {FormBuilder,FormControl,Validator, Validators} from '@angular/forms';
+import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -13,7 +15,7 @@ export class AdminTableComponent implements OnInit {
   @Input() users:any;
   @Input() tableTitle:any;
   @Input() data: any;
-  
+  @Output() changes = new EventEmitter<any>();
   
   datas: any;
   editedData:any;
@@ -23,7 +25,6 @@ export class AdminTableComponent implements OnInit {
   recipe:any;
   
   usertypes = [
-    ["",""],
     ["chef_apprentice","chef_apprentice"],
     ["chef_master","chef_master"],
   ];
@@ -35,7 +36,8 @@ export class AdminTableComponent implements OnInit {
   showSearch:boolean = false;
 
   constructor(private apiService:ApiRequestService,
-              private router : Router,private formBuilder:FormBuilder) {
+            private router : Router,
+            private formBuilder:FormBuilder,) {
     this.info = {firstname: "", lastname: "", position: ""}
     this.recipe ={name:"",description:"",tag:"",ingredients:[],procedures:[],yield:"",category:""}
    }
@@ -68,7 +70,9 @@ export class AdminTableComponent implements OnInit {
     
     this.apiService.apiRequest(`/users/${this.editedUserData.id}`,"put",this.editedUserData)
       .subscribe(respond=>{
+        Swal.fire("Edited Successfully!");
         console.log(respond);
+        this.changes.emit("users");
       })
   }
 
@@ -88,8 +92,9 @@ export class AdminTableComponent implements OnInit {
     this.apiService.apiRequest(`/recipes/${this.editedData.id}`,"put",this.editedData)
 
       .subscribe(respond=>{
-        // alert("approved");
+        Swal.fire("Approved!");
         console.log(respond);
+        this.changes.emit("pendings");
       })
     }
 
@@ -98,13 +103,16 @@ export class AdminTableComponent implements OnInit {
       let url = this.editedData.name?'recipes':'users'
       this.apiService.apiRequest(`/${url}/${this.editedData.id}`,"delete",this.editedData)
         .subscribe(respond=>{
-          // alert("deleted Successfully");
+         Swal.fire("Deleted Successfully");
+          console.log(respond);
+          this.changes.emit(url);
         })
   }
 
  
   getData(data:any){
     this.editedData=data;
+    
   }
 
   editUserData(id:any){

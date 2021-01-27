@@ -58,4 +58,14 @@ export class ViewpageSidebarComponent implements OnInit {
       console.log(respond);
     }) 
   }
+
+  logout() {
+    //clear all broswer storages
+    this.apiService.apiRequest('/users/logout',"post",{}).subscribe(respond => {
+      window.localStorage.removeItem('token');
+      this.cookies.delete('__cookingtech');
+      window.location.reload();
+      console.log(respond);
+    }) 
+  }
 }

@@ -13,7 +13,6 @@
     margin-right: 3%;
     width:300px;
     
-    
 }
 
 .card-body {
@@ -37,3 +36,7 @@
 #third-row {
     padding-top: 5%;
 }
+
+.cursor {
+    cursor: pointer;
+} 

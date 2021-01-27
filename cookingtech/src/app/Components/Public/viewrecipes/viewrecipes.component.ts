@@ -11,10 +11,12 @@ import { Router } from '@angular/router';
 export class ViewrecipesComponent implements OnInit {
   @Input() recipes:any; 
   @Input() category?: any;
+
   
   constructor(private apiService:ApiRequestService,
     private route: Router) {
     console.log(this.recipes);
+    this.category = "All";
   }
   ngOnInit(): void {
   }

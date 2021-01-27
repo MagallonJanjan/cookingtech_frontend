@@ -30,7 +30,7 @@ const routes: Routes =
   {path: 'edit-recipe/:id', component: AddrecipeComponent, canActivate: [IsAuthenticatedGuard, IsMasterGuard]},
   { path : 'admin', component : AdminComponent, canActivate:[IsAuthenticatedGuard, IsAdminGuard]},
   {path : 'add-recipe', component : AddrecipeComponent, canActivate: [IsAuthenticatedGuard, IsMasterGuard]},
-  {path: 'user-profile/:id?', component: UserProfileComponent, canActivate: [IsAuthenticatedGuard]},
+  {path: 'user-profile/:id', component: UserProfileComponent, canActivate: [IsAuthenticatedGuard]},
   {path: 'user-home', component : UserhomeComponent,canActivate: [IsAuthenticatedGuard]}
 ];
 

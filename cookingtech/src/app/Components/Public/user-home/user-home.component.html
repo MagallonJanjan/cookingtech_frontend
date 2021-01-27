@@ -1,1 +1,18 @@
-<p>user-home works!</p>
+<div>
+    <app-viewpage-header></app-viewpage-header>
+    <app-viewpage-sidebar (sideBarToggle)="sideBarToggle($event)"></app-viewpage-sidebar>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
+        <div class="container" style="margin-top: 0; padding-top: 0;">
+            <!-- <app-viewrecipes [recipes] = "recipes" *ngIf="isRecipes"></app-viewrecipes>
+            <app-viewpage-body *ngIf="!isRecipes" [recipe]="recipes"></app-viewpage-body>
+        </div> -->
+        <app-user-home-body></app-user-home-body>
+    </div>
+    <!-- <app-footer></app-footer> -->
+</div>

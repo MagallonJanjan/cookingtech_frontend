@@ -1,5 +1,3 @@
-
-
 <body>
   <div class="mask">
     <div class="container pt-5">
@@ -60,7 +58,7 @@
                        [ngClass]="{'is-invalid' : user.get('password').touched && user.get('password').invalid}" placeholder="Password">
                        <div *ngIf="user.get('password').touched && user.get('password').invalid" class="invalid-feedback">
                        <div *ngIf="user.get('password').errors.required"> Password is required</div>
-                       <div *ngIf="user.get('password').errors.minlength"> Password must be atleat 8     characters</div>
+                       <div *ngIf="user.get('password').errors.minlength"> Password must be atleat 8 characters</div>
                     </div>
                     </div>
                     <div class="form-group col-md-6">

@@ -61,6 +61,9 @@ export class UserProfileBodyComponent implements OnInit {
             .subscribe(respond =>{
              
               alert('Okay na')
+            },error=>{
+              alert("Something went wrong! Please try again");
+              console.log(error);
             })
   
 

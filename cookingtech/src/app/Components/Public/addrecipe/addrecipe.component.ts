@@ -26,6 +26,7 @@ export class AddrecipeComponent implements OnInit {
   addRecipe: any;
   recipeId: any;
   ngOnInit(): void {
+
     this.addRecipe = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
       description: ['', [Validators.required, Validators.minLength(25)]],
@@ -52,7 +53,7 @@ export class AddrecipeComponent implements OnInit {
     (<HTMLInputElement>document.getElementById('lingling')).value = ""
     
   }
-
+ 
   addProcedure() {
     this.proceduresArray.push(this.addRecipe.value.procedures);
     (<HTMLInputElement>document.getElementById('procedure')).value = "";

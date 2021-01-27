@@ -50,7 +50,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-danger" role="alert">
-                        Are you sure you want to delete this user?
+                        Are you sure you want to delete this item?
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -79,7 +79,7 @@
                         <p> <strong>Tag:</strong> {{recipe.tag}}</p>
                         <p> <strong> Description:</strong> {{recipe.description}}</p>
                         <p class="font-weight-bold">Ingredients:</p>
-                        <p class="ml-3" *ngFor="let ingredient of recipe.ingredients; let number=index">{{+ number+1 + "." + 
+                        <p class="ml-3" *ngFor="let ingredient of recipe.ingredients; let number=index">{{number+1 + "." + 
                             ingredient}}</p>
                         <p class="font-weight-bold">Procedures:</p>
                         <p  class="ml-3" *ngFor="let procedure of recipe.procedures let num =index"> {{num+1 + "." + procedure}} </p>
@@ -120,10 +120,13 @@
                                 <td class="table-secondary">
                                     <button class="btn btn-danger float-right" data-toggle="modal" (click)="getData(bits)"
                                         data-target="#exampleModal1">Delete</button>
+
                                     <button type="submit" (click)="getUserData(bits)" *ngIf="( bits.lastname)"
                                         data-toggle="modal" data-target="#exampleModal" class="float-right btn btn-info mr-2">View</button>
+
                                     <a><button type="submit" (click)="editUserData(bits.id)" *ngIf="(!bits.lastname && bits.status)"
                                             data-toggle="modal"  class="float-right btn btn-info mr-2">Edit</button></a>
+
                                     <button type="submit" (click)="getRecipeData(bits)" *ngIf="( !bits.status && !bits.lastname )"
                                         data-toggle="modal" data-target="#exampleModal2" class="float-right btn btn-info mr-2">View</button>
 

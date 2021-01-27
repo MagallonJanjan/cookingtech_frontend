@@ -137,7 +137,7 @@
           </div>
         </div>
         <!-- this for the tables -->
-        <app-admin-table [data]="data" [tableTitle]="title" *ngIf="!showDashboard"></app-admin-table>
+        <app-admin-table [data]="data" [tableTitle]="title" (changes)="getChanges($event)" *ngIf="!showDashboard"></app-admin-table>
       </div>
     </div>
   </div>

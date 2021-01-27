@@ -4,6 +4,8 @@ import { EncryptService } from  '../../../services/encrypt.service';
 import { Router} from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 
+import { ApiRequestService } from '../../../services/apirequest.service'
+ 
 @Component({
   selector: 'app-viewpage-body',
   templateUrl: './viewpage-body.component.html',
@@ -14,11 +16,15 @@ export class ViewpageBodyComponent implements OnInit {
 
   stars: number[] = [1,2,3,4,5];
   selectedValue : number = 0;
+  comments: any;
+  replies: any;
+
   constructor(
     private cookies: CookieService,
     private dataEnc: EncryptService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private apiService: ApiRequestService
   ) {
   }
   contentForm: any;
@@ -62,7 +68,6 @@ export class ViewpageBodyComponent implements OnInit {
     let recipe_id = this.recipe.id;
     let user_id = this.dataEnc.decrypt(cookie).user.id;
     console.log(user_id, recipe_id, content);
-    
   }
 
 

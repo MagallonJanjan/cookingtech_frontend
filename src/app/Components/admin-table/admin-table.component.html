@@ -1,8 +1,8 @@
 <div>
     <!--update Modal-->
-    <div class="alert alert-success" role="alert">
+    <!-- <div class="alert alert-success" role="alert">
             This is a success alert—check it out!
-          </div>
+          </div> -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -73,7 +73,6 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-primary" role="alert">
-<<<<<<< HEAD
                         <p> <strong>Name:</strong> {{recipe.name}}</p>
                         <p> <strong>Category: </strong> {{recipe.category}}</p>
                         <p> <strong>Yield:</strong>  {{recipe.yield}}</p>
@@ -84,27 +83,11 @@
                             ingredient}}</p>
                         <p class="font-weight-bold">Procedures:</p>
                         <p  class="ml-3" *ngFor="let procedure of recipe.procedures let num =index"> {{num+1 + "." + procedure}} </p>
-=======
-                        <p>Name: {{recipe.name}}</p>
-                        <p>Category: {{recipe.category}}</p>
-                        <p>Yield: {{recipe.yield}}</p>
-                        <p>Tag: {{recipe.tag}}</p>
-                        <p>Description: {{recipe.description}}</p>
-                        <p>Ingredients:</p>
-                        <p *ngFor="let ingredient of recipe.ingredients; let number=index">{{number+1 + "." +
-                            ingredient}}</p>
-                        <p>Procedures:</p>
-                        <p *ngFor="let procedure of recipe.procedures let num =index"> {{num+1 + "." + procedure}} </p>
->>>>>>> 5e414eae34edefce31489d6118a86fb3225b6703
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-<<<<<<< HEAD
                         <button type="button" class="btn btn-primary" (click)="approveButton(recipe)" data-dismiss="modal">Approve</button>
-=======
-                        <button type="button" class="btn btn-primary" (click)="approveButton(recipe)">Approve</button>
->>>>>>> 5e414eae34edefce31489d6118a86fb3225b6703
                     </div>
                 </div>
             </div>
@@ -132,11 +115,7 @@
                                 <td class="table-secondary">{{bits.name || bits.lastname}}</td>
                                 <td class="table-secondary" *ngIf="!bits.name">{{bits.usertype}}</td>
                                 <td class="table-secondary" *ngIf="!bits.lastname">{{bits.category}}</td>
-<<<<<<< HEAD
                                 <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{epilsesLimit(bits.description)}}</td>
-=======
-                                <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{bits.description}}</td>
->>>>>>> 5e414eae34edefce31489d6118a86fb3225b6703
 
                                 <td class="table-secondary">
                                     <button class="btn btn-danger float-right" data-toggle="modal" (click)="getData(bits)"

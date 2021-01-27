@@ -5,6 +5,7 @@
 
 .header-index {
     z-index: 3;
+    height: 100px;
 }
 .search {
     top: 100px;

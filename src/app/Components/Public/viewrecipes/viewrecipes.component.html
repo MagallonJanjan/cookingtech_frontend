@@ -3,9 +3,13 @@
 <br>
 <br>
 <br>
+<div class="float-right">
+  <button class="btn btn-outline-primary" routerLink="/add-recipe">Add Recipe</button>
+</div>
 <br>
 <br>
 <h3>{{capitalize(category)}}</h3>
+<!-- <h3><u>My Recipes</u></h3> -->
 <hr>
 <h3 class="text-center p-4" *ngIf="!(recipes.length > 0)">No Data!</h3>
 <div class="row" *ngIf="recipes.length > 0">
@@ -17,7 +21,8 @@
         <small class="text-bold">Category: {{recipe.category}}</small>
       </div>
       <div class="card-footer">
-        <small class="text-muted">Uploaded by: {{recipe.user.firstname + " "+ " " + recipe.user.lastname}}</small>
+        <!-- <small class="text-muted">Uploaded by: {{recipe.user.firstname + " "+ " " + recipe.user.lastname}}</small> -->
+        <button class="btn btn-outline-info">View</button>
       </div>
     </div>
   </div>

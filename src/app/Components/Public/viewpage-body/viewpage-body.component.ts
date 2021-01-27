@@ -18,6 +18,7 @@ export class ViewpageBodyComponent implements OnInit {
   selectedValue : number = 0;
   comments: any;
   replies: any;
+  recipe_id: any;
 
   constructor(
     private cookies: CookieService,
@@ -31,6 +32,7 @@ export class ViewpageBodyComponent implements OnInit {
   ngOnInit(): void {
    this.recipe = this.recipe.recipe[0];
    this.comments = this.recipe.comments;
+   this.recipe_id = this.recipe.id;
     console.log(this.comments);
     
    //form for the comment
@@ -63,12 +65,21 @@ export class ViewpageBodyComponent implements OnInit {
     
   }
 
-  // getAllComments() {
-  //   this.apiService.apiRequest('')
-  // }
+  getAllComments() {
+    this.apiService.apiRequest(`/recipes/${this.recipe_id}`, 'get')
+      .subscribe((recipe:any)=> {
+        console.log(recipe);
+        
+      })
+  }
 
   onComment() {
     let cookie = this.cookies.get('__cookingtech');
+    if(!cookie) {
+      this.cookies.set('goto', window.location.href);
+      window.location.href = 'login';
+    }
+    
     let content = this.contentForm.value;
     let recipe_id = this.recipe.id;
     let user_id = this.dataEnc.decrypt(cookie).user.id;

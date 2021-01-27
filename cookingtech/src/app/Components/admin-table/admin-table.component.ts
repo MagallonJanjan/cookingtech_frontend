@@ -106,14 +106,14 @@ export class AdminTableComponent implements OnInit {
       this.apiService.apiRequest(`/${url}/${this.editedData.id}`,"delete",this.editedData)
         .subscribe(async respond=>{
           this.changes.emit(url);
-          
-          await this.apiService.apiRequest(`/users`, 'get').subscribe((respond:any)=> {
-            this.data = respond.users.filter((admin: any)=> {
-              return admin.usertype != "admin";
+          if(url == "users") {
+            await this.apiService.apiRequest(`/users`, 'get').subscribe((respond:any)=> {
+              this.data = respond.users.filter((admin: any)=> {
+                return admin.usertype != "admin";
+              });
+              console.log(respond.users);
             });
-            console.log(respond.users);
-            
-          })
+          }   
         })
   }
 

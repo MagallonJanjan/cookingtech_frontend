@@ -90,5 +90,9 @@ export class AdminTableComponent implements OnInit {
     this.router.navigate([`edit-recipe/${id}`]);
   }
 
-  
+  epilsesLimit(description:string) {
+    let length = description.length;
+    let tempString = description.slice(0, length);
+    return tempString + "...";
+  }
 }

@@ -108,7 +108,7 @@
                                 <td class="table-secondary">{{bits.name || bits.lastname}}</td>
                                 <td class="table-secondary" *ngIf="!bits.name">{{bits.usertype}}</td>
                                 <td class="table-secondary" *ngIf="!bits.lastname">{{bits.category}}</td>
-                                <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{bits.description}}</td>
+                                <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{epilsesLimit(bits.description)}}</td>
 
                                 <td class="table-secondary">
                                     <button class="btn btn-danger float-right" data-toggle="modal" (click)="getData(bits)"

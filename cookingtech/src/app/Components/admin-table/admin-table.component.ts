@@ -105,7 +105,11 @@ export class AdminTableComponent implements OnInit {
       let url = this.editedData.name?'recipes':'users'
       this.apiService.apiRequest(`/${url}/${this.editedData.id}`,"delete",this.editedData)
         .subscribe(async respond=>{
+          if(url == "recipes") {
+            url = (this.tableTitle == "Pendings")? "pendings": "recipes";
+          }
           this.changes.emit(url);
+          
           if(url == "users") {
             await this.apiService.apiRequest(`/users`, 'get').subscribe((respond:any)=> {
               this.data = respond.users.filter((admin: any)=> {

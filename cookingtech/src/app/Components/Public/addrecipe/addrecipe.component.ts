@@ -21,11 +21,22 @@ export class AddrecipeComponent implements OnInit {
     private dataEnc: EncryptService,
     private cookies: CookieService,
     private route: ActivatedRoute
-  ) { }
+  ) {
+
+    this.route.paramMap.subscribe((params:any) => {
+      this.recipeId = params.get('id');
+      console.log(this.recipeId);
+    });
+   }
 
   addRecipe: any;
   recipeId: any;
+  updatedRecipe:any
+  isEditRecipe = true;
+  
   ngOnInit(): void {
+  
+
     this.addRecipe = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
       description: ['', [Validators.required, Validators.minLength(25)]],
@@ -35,13 +46,41 @@ export class AddrecipeComponent implements OnInit {
       procedures: ['', [Validators.required, Validators.minLength(4)]],
       tag: ['', [Validators.required, Validators.minLength(5)]],
       img_url: ['', [Validators.required]]
-    })
+     });
 
 
-    this.route.paramMap.subscribe( params => {
-        this.recipeId = params.get('id');
-      });
+
+     if(this.recipeId){
+       this.apiRequest.apiRequest(`/recipes/${this.recipeId}`,"get")
+          .subscribe((respond:any)=>{
+            console.log(respond);
+            this.updatedRecipe = respond.recipe[0];
+            this.ingredientsArray = respond.recipe[0].ingredients;
+            this.proceduresArray = respond.recipe[0].procedures;
+            
+
+            this.addRecipe = this.formBuilder.group({
+              name: [this.updatedRecipe.name, [Validators.required, Validators.minLength(6)]],
+              description: [this.updatedRecipe.description, [Validators.required, Validators.minLength(25)]],
+              yield: [this.updatedRecipe.yield, Validators.required],
+              category: [this.updatedRecipe.category, Validators.required],
+              ingredients: ['', [Validators.required, Validators.minLength(3)]],
+              procedures: ['', [Validators.required, Validators.minLength(4)]],
+              tag: [this.updatedRecipe.tag, [Validators.required, Validators.minLength(5)]],
+              img_url: [this.updatedRecipe.img_url, [Validators.required]]
+             });
+
+
+             
+            this.isEditRecipe = false;
+          })
+     }
+      
   }
+
+
+
+ 
 
   ingredientsArray: any[] = [];
   proceduresArray: any[] = [];
@@ -58,8 +97,6 @@ export class AddrecipeComponent implements OnInit {
     (<HTMLInputElement>document.getElementById('procedure')).value = "";
 
   }
-
-
 
   removeIngredientItem(item: any) {
     this.ingredientsArray.splice(this.ingredientsArray.indexOf(item), 1)
@@ -80,7 +117,6 @@ export class AddrecipeComponent implements OnInit {
     this.datas["user_id"] = UserData.user.id;
 
   
-    
     this.apiRequest.apiRequest('/recipes','post', this.datas)
       .subscribe( respond => {
         console.log(respond);
@@ -93,6 +129,10 @@ export class AddrecipeComponent implements OnInit {
         console.log(error);
       })
   }
+
   disableAddButton = true;
   procedures:any;
+
+
+
 }

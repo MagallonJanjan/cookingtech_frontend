@@ -19,8 +19,8 @@
 
 <body>
     <div class="mask w-100">
-        <div class="container">
-            <div class="row pt-5">
+        <div class="container position-fixed" style="margin-left:5.75rem">
+            <div class="row pb-1">
                 <div class="col d-flex justify-content-center pt-5">
                     <form [formGroup]="userLogin" (ngSubmit)="userLogin.valid && onSubmit()">
                         <div class="card pb-5 " style="width: 25rem;">

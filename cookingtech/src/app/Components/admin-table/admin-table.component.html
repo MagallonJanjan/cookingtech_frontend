@@ -1,8 +1,8 @@
 <div>
     <!--update Modal-->
-    <div class="alert alert-success" role="alert">
+    <!-- <div class="alert alert-success" role="alert">
             This is a success alert—check it out!
-          </div>
+          </div> -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -115,7 +115,7 @@
                                 <td class="table-secondary">{{bits.name || bits.lastname}}</td>
                                 <td class="table-secondary" *ngIf="!bits.name">{{bits.usertype}}</td>
                                 <td class="table-secondary" *ngIf="!bits.lastname">{{bits.category}}</td>
-                                <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{bits.description}}</td>
+                                <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{epilsesLimit(bits.description)}}</td>
 
                                 <td class="table-secondary">
                                     <button class="btn btn-danger float-right" data-toggle="modal" (click)="getData(bits)"

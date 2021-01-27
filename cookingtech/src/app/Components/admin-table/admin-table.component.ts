@@ -23,7 +23,6 @@ export class AdminTableComponent implements OnInit {
   recipe:any;
   
   usertypes = [
-    ["",""],
     ["chef_apprentice","chef_apprentice"],
     ["chef_master","chef_master"],
   ];

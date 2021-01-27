@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './viewrecipes.component.html',
   styleUrls: ['./viewrecipes.component.css']
 })
+
 export class ViewrecipesComponent implements OnInit {
   @Input() recipes:any; 
   @Input() category?: any;

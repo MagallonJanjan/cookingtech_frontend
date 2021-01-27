@@ -63,9 +63,9 @@ export class ViewpageBodyComponent implements OnInit {
     
   }
 
-  getAllComments() {
-    this.apiService.apiRequest('')
-  }
+  // getAllComments() {
+  //   this.apiService.apiRequest('')
+  // }
 
   onComment() {
     let cookie = this.cookies.get('__cookingtech');

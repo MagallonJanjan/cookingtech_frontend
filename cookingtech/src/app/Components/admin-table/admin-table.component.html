@@ -1,5 +1,8 @@
 <div>
     <!--update Modal-->
+    <div class="alert alert-success" role="alert">
+            This is a success alert—check it out!
+          </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -16,13 +19,13 @@
                         <p>First Name: {{info.firstname}}</p>
                         <p>Last Name: {{info.lastname}}</p>
                         <div class="form-group">
-                            <form [formGroup]="usertype" (ngSubmit)="editUserStatus(info)">
+                            <form [formGroup]="usertype" >
                             <label for="sel1">Update User Position:</label>
                             <select class="form-control" id="sel1" value="" formControlName="newUserType">
                                 <option *ngFor="let pos of usertypes" [ngValue]="pos[1]" [selected]="info.usertype==pos[1]">{{pos[0]}}</option>
                             </select>
                             <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary" >Save changes</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editUserStatus(info)">Save changes</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                               
                             </div>
@@ -52,7 +55,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" (click)="deleteData()">Continue</button>
+                    <button type="button" class="btn btn-primary" (click)="deleteData()" data-dismiss="modal">Continue</button>
                 </div>
             </div>
         </div>
@@ -84,7 +87,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" (click)="approveButton(recipe)">Approve</button>
+                        <button type="button" class="btn btn-primary" (click)="approveButton(recipe)" data-dismiss="modal">Approve</button>
                     </div>
                 </div>
             </div>

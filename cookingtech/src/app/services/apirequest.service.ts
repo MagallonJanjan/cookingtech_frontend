@@ -25,5 +25,4 @@ export class ApiRequestService {
     }
     return this.http.request(method, url, {body: body, headers: headers});
   }
-
 }

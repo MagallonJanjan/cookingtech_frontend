@@ -1,29 +1,31 @@
 <div class="container-fluid">
   <!-- sidebar -->
   <div class="row">
-    <div class="bg-custom-sidebar position-fixed custom-style-sidebar" *ngIf="showSideBar">
+    <div class="bg-custom-sidebar position-fixed custom-style-sidebar" *ngIf="showSideBar == true">
       <p class="text-right px-2 text-white" (click)="toggleSidebar()"><i class="fa fa-times custom-style-x"></i></p>
       <div class="row">
         <div class="col-md-6 ml-2">
           <div class="img-container ml-5" routerLink="/user-profile">
             <!-- image here -->
           </div>
-          <span class="text-white text-center custom-align ml-5">Kyla</span><br>
-          <small class="text-white text-center custom-align ml-5">chef</small>
+          <div class="custom-align mx-5">
+            <span class="text-white text-center custom-align">{{user.username}}</span><br>
+            <small class="text-white text-center custom-align">{{user.usertype}}</small>
+          </div>
         </div>
       </div>
       <hr class="bg-light">
 
       <div class="container">
         <!-- navigations -->
-        <span class="btn-custom border navigation-items"  routerLink="/recipes"><i class="fa fa-columns pr-2 ml-4"></i>My Recipe</span>
+        <span class="btn-custom border navigation-items"  routerLink="/recipes" *ngIf="user.usertype != 'chef_apprentice'"><i class="fa fa-columns pr-2 ml-4"></i>My Recipe</span>
         <span class="btn-custom border navigation-items"><i class="fa fa-users pr-2 ml-4"></i>My Bookmarks</span>
-        <span class="btn-custom border navigation-items"><i class="fa fa-sign-out pr-2 ml-4"></i>Log Out</span>
+        <span class="btn-custom border navigation-items" (click)="logout()"><i class="fa fa-sign-out pr-2 ml-4"></i>Log Out</span>
       </div>
     </div>
     
     <!-- ghost nav -->
-    <div class="bg-custom-sidebar position-fixed custom-style-sidebar-ghost" style="height: 60.25rem;">
+    <div class="bg-custom-sidebar position-fixed custom-style-sidebar-ghost">
       <p class="text-center text-white" (click)="toggleSidebar()"><i class="fa fa-bars custom-style-x"></i></p>
 
       <div class="row">
@@ -39,7 +41,7 @@
         <!-- navigations -->
         <span class="btn border navigation-items"><i class="fa fa-columns "></i></span>
         <span class="btn border navigation-items"><i class="fa fa-bookmark"></i></span>
-        <span class="btn border navigation-items"><i class="fa fa-sign-out"></i></span>
+        <span class="btn border navigation-items" (click)="logout()"><i class="fa fa-sign-out"></i></span>
       </div>
     </div>
   </div>

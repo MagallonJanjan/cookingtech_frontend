@@ -10,9 +10,11 @@ import { HomeComponent } from './Components/Public/home/home.component';
 import {ViewpageComponent} from './Components/Public/viewpage/viewpage.component';
 import {ViewrecipesComponent} from './Components/Public/viewrecipes/viewrecipes.component';
 import { UserProfileComponent } from './Components/Public/user-profile/user-profile.component';
+import { UserHomeComponent } from './Components/Public/user-home/user-home.component';
 import { IsAdminGuard } from './guards/is-admin.guard';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { IsMasterGuard } from './guards/is-master.guard';
+import { UserhomeComponent } from './Components/Public/userhome/userhome.component';
 
 
 const routes: Routes =
@@ -24,12 +26,13 @@ const routes: Routes =
   {path: 'recipes/:id', component: ViewpageComponent},
   {path: 'recipes/category/:cat', component: ViewpageComponent},
   {path: 'recipes', component: ViewpageComponent},
-  {path: 'user/recipes/:bookmarks', component: ViewpageComponent},
+  {path: 'user/recipes/:bookmarks', component: ViewpageComponent, canActivate: [IsAuthenticatedGuard]},
   {path: 'user/my-recipes/:my-recipes', component: ViewpageComponent},
-  {path: 'edit-recipe/:id', component: AddrecipeComponent},
+  {path: 'edit-recipe/:id', component: AddrecipeComponent, canActivate: [IsAuthenticatedGuard, IsMasterGuard]},
   { path : 'admin', component : AdminComponent, canActivate:[IsAuthenticatedGuard, IsAdminGuard]},
   {path : 'add-recipe', component : AddrecipeComponent, canActivate: [IsAuthenticatedGuard, IsMasterGuard]},
-  {path: 'user-profile', component: UserProfileComponent}
+  {path: 'user-profile/:id', component: UserProfileComponent, canActivate: [IsAuthenticatedGuard]},
+  {path: 'user-home', component : UserHomeComponent,canActivate: [IsAuthenticatedGuard]}
 ];
 
 @NgModule({
@@ -46,5 +49,6 @@ export const routingComponents =
                   AdminComponent,
                   ViewrecipesComponent,
                   AddrecipeComponent,
-                  UserProfileComponent
+                  UserProfileComponent,
+                  UserHomeComponent
                 ]

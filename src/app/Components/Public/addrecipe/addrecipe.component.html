@@ -1,7 +1,7 @@
 <div class="container"><br>
   <form [formGroup]="addRecipe">
-    <h3 class="text-center" *ngIf="!recipeId">Add Recipe</h3>
     <h3 class="text-center" *ngIf="recipeId">Edit Recipe</h3>
+    <h3 class="text-center" *ngIf="!recipeId">Add Recipe</h3>
     <div class="row">
       <div class="col">
         <label for="exampleFormControlTextarea1">Name</label>
@@ -63,14 +63,14 @@
       </div>
       <div class="col">
         <input type="text" class="form-control" formControlName="tag" [ngClass]="{'is-invalid' : addRecipe.get('tag').touched && addRecipe.get('tag').invalid}"
-          placeholder="Tags">
+          placeholder="Tag">
         <div *ngIf="addRecipe.get('tag').touched && addRecipe.get('tag').invalid" id="procedures-feedback" class="invalid-feedback">
           <p *ngIf="addRecipe.get('tag').errors.required">This field is required</p>
           <p *ngIf="addRecipe.get('tag').errors.minlength">Tags must be atleast 5 characters</p>
         </div>
       </div>
     </div><br>
-    <button type="submit" class="btn1 btn-primary" (click)="onSubmit(addRecipe.value)" [disabled]="addRecipe.invalid">Save
+    <button type="submit" class="btn btn-primary saveAll" (click)="onSubmit(addRecipe.value)" [disabled]="addRecipe.invalid">Save
       Recipe</button><br><br><br>
     <div>
       <span></span>
@@ -87,9 +87,6 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">List of Ingredients</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
           <div class="modal-body">
             <div class="list-body">
@@ -104,7 +101,6 @@
                   <tr *ngFor="let data of ingredientsArray">
                     <td>{{data}}</td>
                     <td>
-
                       <button type="submit" class="btn alert-danger btn-sm" (click)="removeIngredientItem(data)">Remove</button>
                     </td>
                   </tr>
@@ -113,10 +109,10 @@
             </div>
           </div>
           <div class="input-group ">
-            <input type="text" class="form-control ingredientInput" formControlName="ingredients" [ngClass]="{'is-invalid' : addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid}"
+            <input type="text" class="form-control ingredientInput" formControlName="ingredients" #ingredients [ngClass]="{'is-invalid' : addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid}"
               id="lingling" placeholder="Ingredient">
             <div class="input-group-append">
-              <button class="btn alert-success mr-3 " type="submit" (click)="addIngredients()">Button</button>
+              <button class="btn alert-success mr-3 " [disabled]="ingredients.value.length < 3" type="submit" (click)="addIngredients()">Add</button>
             </div>
             <div *ngIf="addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid" id="ingredients-feedback"
               class="invalid-feedback">
@@ -137,9 +133,6 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Procedures</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
           <div class="modal-body">
             <div class="procedure-list">
@@ -162,10 +155,10 @@
             </div>
           </div>
           <div class="input-group ">
-            <input type="text" class="form-control ingredientInput" formControlName="procedures" [ngClass]="{'is-invalid' : addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid}"
+            <input type="text" class="form-control ingredientInput" formControlName="procedures" #procedures [ngClass]="{'is-invalid' : addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid}"
               id="procedure" placeholder="Procedure">
             <div class="input-group-append">
-              <button class="btn alert-success mr-3 " type="submit" (click)="addProcedure()">Button</button>
+              <button class="btn alert-success mr-3 " type="submit" [disabled]="procedures.value.length < 4" (click)="addProcedure()">Add</button>
             </div>
             <div *ngIf="addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid" id="ingredients-feedback"
               class="invalid-feedback">

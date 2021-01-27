@@ -42,6 +42,8 @@ export class AdminComponent implements OnInit {
   recipes: any;
   pendings: any;
 
+  admin:any;
+
   showDashboard: boolean;
   //graph components needs declaration
   chartOptions: ChartOptions;

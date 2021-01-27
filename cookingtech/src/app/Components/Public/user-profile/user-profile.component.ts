@@ -15,25 +15,13 @@ export class UserProfileComponent implements OnInit {
     private apiService : ApiRequestService
   ) { }
 
-  user_id: any;
-  user: any;
+  
   showSideBar:boolean = true;
   ngOnInit(): void {
-    this.route.paramMap.subscribe(
-      params => {
-        this.user_id = params.get('id');
-        console.log(this.user_id);
-        
-      }
-    );
-      this.apiService.apiRequest(`/users/${this.user_id}`, "get")
-        .subscribe(
-          respond => {
-            this.user = respond;
-            this.user = this.user.user;
-          }
-        );
+
   }
+
+  
 
   sideBarToggle(data:any) {
     this.showSideBar = data;

@@ -12,6 +12,7 @@ import {
   ApexDataLabels,
   ApexPlotOptions
 } from 'ng-apexcharts';
+import { async } from 'q';
 
 
 //initialized the chart options
@@ -199,8 +200,9 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  getChanges(DataChange:any) { 
-    this.getDataOnclick(DataChange);   
+  async getChanges(DataChange:string) { 
+    await this.getDatas();
+    await this.getDataOnclick(DataChange);  
   }
 
 

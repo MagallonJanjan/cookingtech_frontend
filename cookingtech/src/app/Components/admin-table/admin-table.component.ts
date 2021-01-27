@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {ApiRequestService} from '../../services/apirequest.service';
 import { Router } from '@angular/router';
 import {FormBuilder,FormControl,Validator, Validators} from '@angular/forms';
+import { async } from '@angular/core/testing';
 
 
 @Component({
@@ -46,7 +47,10 @@ export class AdminTableComponent implements OnInit {
       newUserType:[
         "",[Validators.required]
       ]
+  
     })
+  
+    console.log(this.data);
     
   } 
 
@@ -69,6 +73,9 @@ export class AdminTableComponent implements OnInit {
       .subscribe(respond=>{
         console.log(respond);
         this.changes.emit("users");
+
+        
+
       })
   }
 
@@ -88,7 +95,6 @@ export class AdminTableComponent implements OnInit {
     this.apiService.apiRequest(`/recipes/${this.editedData.id}`,"put",this.editedData)
 
       .subscribe(respond=>{
-        // alert("approved");
         console.log(respond);
         this.changes.emit("pendings");
       })
@@ -98,10 +104,16 @@ export class AdminTableComponent implements OnInit {
       this.editedData.id;
       let url = this.editedData.name?'recipes':'users'
       this.apiService.apiRequest(`/${url}/${this.editedData.id}`,"delete",this.editedData)
-        .subscribe(respond=>{
-          // alert("deleted Successfully");
-          console.log(respond);
+        .subscribe(async respond=>{
           this.changes.emit(url);
+          
+          await this.apiService.apiRequest(`/users`, 'get').subscribe((respond:any)=> {
+            this.data = respond.users.filter((admin: any)=> {
+              return admin.usertype != "admin";
+            });
+            console.log(respond.users);
+            
+          })
         })
   }
 

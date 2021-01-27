@@ -38,6 +38,7 @@ export class AdminComponent implements OnInit {
   class: string = "click";
   title: any = "Dashboard";
 
+  authenticatedUser: any;
   users: any;
   recipes: any;
   pendings: any;
@@ -50,7 +51,8 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private apiService: ApiRequestService,
-    private cookies: CookieService
+    private cookies: CookieService,
+    private dataEnc: EncryptService,
   ) {
     this.data = [];
     this.showDashboard = true;
@@ -123,6 +125,9 @@ export class AdminComponent implements OnInit {
 
     //get all data
     this.getDatas();
+
+    // get authenticated user
+    this.getUathenticatedUser();
    
   }
 
@@ -192,6 +197,13 @@ export class AdminComponent implements OnInit {
       this.title = "Pendings";
       return;
     }
+  }
+
+  //get the authenticated user
+  getUathenticatedUser() {
+    this.authenticatedUser = this.dataEnc.decrypt(
+      this.cookies.get('__cookingtech')
+      ).user;
   }
 
   logout() {

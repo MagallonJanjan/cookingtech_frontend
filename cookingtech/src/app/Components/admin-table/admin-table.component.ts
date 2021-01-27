@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ApiRequestService} from '../../services/apirequest.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-table',
@@ -16,6 +17,7 @@ export class AdminTableComponent implements OnInit {
   editedData:any;
 
   info: any;
+  recipe:any;
   
   usertypes = [
     ["",""],
@@ -23,13 +25,16 @@ export class AdminTableComponent implements OnInit {
     ["chef_master","chef_master"],
   ];
 
+
   totalData:any;
   page: number = 1;
 
   showSearch:boolean = false;
 
-  constructor(private apiService:ApiRequestService) {
+  constructor(private apiService:ApiRequestService,
+              private router : Router) {
     this.info = {firstname: "", lastname: "", position: ""}
+    this.recipe ={name:"",description:"",tag:"",ingredients:[],procedures:[],yield:"",category:""}
    }
 
   ngOnInit(): void {
@@ -46,8 +51,14 @@ export class AdminTableComponent implements OnInit {
     this.info = data;
   }
 
+  getRecipeData(data:any){
+    this.recipe=data;
+    console.log(this.recipe);
+    
+  }
+
   approveButton(data:any){
-    this.editedData={...data};
+    this.editedData=data;
     this.editedData.status = true;
     console.log(this.editedData);
     delete this.editedData["user_id"];
@@ -66,7 +77,7 @@ export class AdminTableComponent implements OnInit {
       let url = this.editedData.name?'recipes':'users'
       this.apiService.apiRequest(`/${url}/${this.editedData.id}`,"delete",this.editedData)
         .subscribe(respond=>{
-          alert ("data has deleted");
+          alert("deleted Successfully");
         })
   }
 
@@ -75,7 +86,13 @@ export class AdminTableComponent implements OnInit {
     this.editedData=data;
   }
 
-  editUserData(data:any){
-   
+  editUserData(id:any){
+    this.router.navigate([`edit-recipe/${id}`]);
+  }
+
+  epilsesLimit(description:string) {
+    let length = description.length;
+    let tempString = description.slice(0, length);
+    return tempString + "...";
   }
 }

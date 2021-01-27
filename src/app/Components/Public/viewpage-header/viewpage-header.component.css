@@ -1,0 +1,11 @@
+.logo{
+    height: 5rem;
+    width: 15rem;
+}
+
+.header-index {
+    z-index: 2;
+}
+.search {
+    top: 100px;
+}

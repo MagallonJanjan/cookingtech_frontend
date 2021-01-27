@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ApiRequestService } from '../../../services/apirequest.service';
+import { ActivatedRoute } from '@angular/router';
 
 import { EncryptService } from '../../../services/encrypt.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -18,58 +19,46 @@ export class AddrecipeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private apiRequest: ApiRequestService,
     private dataEnc: EncryptService,
-    private cookies: CookieService
+    private cookies: CookieService,
+    private route: ActivatedRoute
   ) { }
 
   addRecipe: any;
-
+  recipeId: any;
   ngOnInit(): void {
     this.addRecipe = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
       description: ['', [Validators.required, Validators.minLength(25)]],
       yield: ['', Validators.required],
       category: ['', Validators.required],
-      ingredients: ['', [Validators.required, Validators.minLength(4)]],
+      ingredients: ['', [Validators.required, Validators.minLength(3)]],
       procedures: ['', [Validators.required, Validators.minLength(4)]],
       tag: ['', [Validators.required, Validators.minLength(5)]],
       img_url: ['', [Validators.required]]
     })
 
+
+    this.route.paramMap.subscribe( params => {
+        this.recipeId = params.get('id');
+      });
   }
 
   ingredientsArray: any[] = [];
   proceduresArray: any[] = [];
 
 
-  hidden = true;
-  showMe() {
-    this.hidden = !this.hidden;
-  }
-
-  hiddenProcedure = true;
-  showProcedure() {
-    this.hiddenProcedure = !this.hiddenProcedure;
-  }
-
-
   addIngredients() {
     this.ingredientsArray.push(this.addRecipe.value.ingredients);
     (<HTMLInputElement>document.getElementById('lingling')).value = ""
-    this.hidden = true
+    
   }
 
   addProcedure() {
     this.proceduresArray.push(this.addRecipe.value.procedures);
     (<HTMLInputElement>document.getElementById('procedure')).value = "";
-    this.hiddenProcedure = true;
+
   }
 
-
-  // onSave(){
-  //   alert('You are adding a new recipe!');
-  //   this.addRecipe.reset();
-
-  // }
 
 
   removeIngredientItem(item: any) {
@@ -104,4 +93,15 @@ export class AddrecipeComponent implements OnInit {
         console.log(error);
       })
   }
+  disableAddButton = true;
+  procedures:any;
+  
+
+  // inputIngredients = (<HTMLInputElement>document.getElementById("lingling"));
+  // inputProcedure =  (<HTMLInputElement>document.getElementById("procedure"));
+
+  
+   
+  
+
 }

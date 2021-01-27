@@ -199,6 +199,11 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  getChanges(DataChange:any) { 
+    this.getDataOnclick(DataChange);   
+  }
+
+
   //get the authenticated user
   getUathenticatedUser() {
     this.authenticatedUser = this.dataEnc.decrypt(

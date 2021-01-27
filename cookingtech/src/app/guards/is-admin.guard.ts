@@ -26,7 +26,7 @@ export class IsAdminGuard implements CanActivate {
       let cookie = this.cookies.get('__cookingtech');
       if(!cookie) {
         this.router.navigate(['login']);
-        return false;
+        return false;    
       }
       let UserData = this.dataEnc.decrypt(cookie);
       if(UserData.user.usertype != "admin") {

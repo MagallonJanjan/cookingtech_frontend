@@ -63,16 +63,10 @@ export class ViewpageBodyComponent implements OnInit {
     
   }
 
-  // getAllComments() {
-  //   this.apiService.apiRequest('')
-  // }
-
   onComment() {
     let cookie = this.cookies.get('__cookingtech');
     let content = this.contentForm.value;
     let recipe_id = this.recipe.id;
     let user_id = this.dataEnc.decrypt(cookie).user.id;
-
-
   }
 }

@@ -16,17 +16,21 @@
                         <p>First Name: {{info.firstname}}</p>
                         <p>Last Name: {{info.lastname}}</p>
                         <div class="form-group">
+                            <form [formGroup]="usertype" (ngSubmit)="editUserStatus(info)">
                             <label for="sel1">Update User Position:</label>
-                            <select class="form-control" id="sel1" value="">
-                                <option *ngFor="let pos of usertypes" value="pos[1]" [selected]="info.usertype==pos[1]">{{pos[0]}}</option>
+                            <select class="form-control" id="sel1" value="" formControlName="newUserType">
+                                <option *ngFor="let pos of usertypes" [ngValue]="pos[1]" [selected]="info.usertype==pos[1]">{{pos[0]}}</option>
                             </select>
+                            <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" >Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              
+                            </div>
+                        </form>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -66,16 +70,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-primary" role="alert">
-                        <p>Name: {{recipe.name}}</p>
-                        <p>Category: {{recipe.category}}</p>
-                        <p>Yield: {{recipe.yield}}</p>
-                        <p>Tag: {{recipe.tag}}</p>
-                        <p>Description: {{recipe.description}}</p>
-                        <p>Ingredients:</p>
-                        <p *ngFor="let ingredient of recipe.ingredients; let number=index">{{number+1 + "." +
+                        <p> <strong>Name:</strong> {{recipe.name}}</p>
+                        <p> <strong>Category: </strong> {{recipe.category}}</p>
+                        <p> <strong>Yield:</strong>  {{recipe.yield}}</p>
+                        <p> <strong>Tag:</strong> {{recipe.tag}}</p>
+                        <p> <strong> Description:</strong> {{recipe.description}}</p>
+                        <p class="font-weight-bold">Ingredients:</p>
+                        <p class="ml-3" *ngFor="let ingredient of recipe.ingredients; let number=index">{{+ number+1 + "." + 
                             ingredient}}</p>
-                        <p>Procedures:</p>
-                        <p *ngFor="let procedure of recipe.procedures let num =index"> {{num+1 + "." + procedure}} </p>
+                        <p class="font-weight-bold">Procedures:</p>
+                        <p  class="ml-3" *ngFor="let procedure of recipe.procedures let num =index"> {{num+1 + "." + procedure}} </p>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -108,7 +112,7 @@
                                 <td class="table-secondary">{{bits.name || bits.lastname}}</td>
                                 <td class="table-secondary" *ngIf="!bits.name">{{bits.usertype}}</td>
                                 <td class="table-secondary" *ngIf="!bits.lastname">{{bits.category}}</td>
-                                <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{bits.description}}</td>
+                                <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{epilsesLimit(bits.description)}}</td>
 
                                 <td class="table-secondary">
                                     <button class="btn btn-danger float-right" data-toggle="modal" (click)="getData(bits)"

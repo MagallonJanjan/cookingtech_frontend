@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ApiRequestService} from '../../services/apirequest.service';
 import { Router } from '@angular/router';
+import {FormBuilder,FormControl,Validator, Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-admin-table',
@@ -15,6 +17,7 @@ export class AdminTableComponent implements OnInit {
   
   datas: any;
   editedData:any;
+  editedUserData:any;
 
   info: any;
   recipe:any;
@@ -28,11 +31,11 @@ export class AdminTableComponent implements OnInit {
 
   totalData:any;
   page: number = 1;
-
+  usertype:any;
   showSearch:boolean = false;
 
   constructor(private apiService:ApiRequestService,
-              private router : Router) {
+              private router : Router,private formBuilder:FormBuilder) {
     this.info = {firstname: "", lastname: "", position: ""}
     this.recipe ={name:"",description:"",tag:"",ingredients:[],procedures:[],yield:"",category:""}
    }
@@ -40,6 +43,11 @@ export class AdminTableComponent implements OnInit {
   ngOnInit(): void {
     this.totalData = this.data.length;
     this.datas = this.data;
+    this.usertype=this.formBuilder.group({
+      newUserType:[
+        "",[Validators.required]
+      ]
+    })
     
   } 
 
@@ -47,8 +55,25 @@ export class AdminTableComponent implements OnInit {
     this.page = page;
   }
 
+
   getUserData(data:any){
     this.info = data;
+  }
+
+  editUserStatus(data:any){
+    this.editedUserData=data;
+    this.editedUserData.usertype=this.usertype.value.newUserType;
+
+    console.log(this.editedUserData);
+    
+    this.apiService.apiRequest(`/users/${this.editedUserData.id}`,"put",this.editedUserData)
+      .subscribe(respond=>{
+        alert("user position updated");
+        console.log(respond);
+        
+      })
+
+
   }
 
   getRecipeData(data:any){
@@ -90,5 +115,9 @@ export class AdminTableComponent implements OnInit {
     this.router.navigate([`edit-recipe/${id}`]);
   }
 
-  
+  epilsesLimit(description:string) {
+    let length = description.length;
+    let tempString = description.slice(0, length);
+    return tempString + "...";
+  }
 }

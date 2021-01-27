@@ -71,9 +71,11 @@ export class AddrecipeComponent implements OnInit {
              });
 
 
-             
+
             this.isEditRecipe = false;
           })
+
+          this.apiRequest.apiRequest()
      }
       
   }

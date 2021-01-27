@@ -68,12 +68,8 @@ export class AdminTableComponent implements OnInit {
     
     this.apiService.apiRequest(`/users/${this.editedUserData.id}`,"put",this.editedUserData)
       .subscribe(respond=>{
-        // alert("user position updated");
         console.log(respond);
-        
       })
-
-
   }
 
   getRecipeData(data:any){
@@ -116,8 +112,7 @@ export class AdminTableComponent implements OnInit {
   }
 
   epilsesLimit(description:string) {
-    let length = description.length;
-    let tempString = description.slice(0, length);
+    let tempString = description.slice(0, 40);
     return tempString + "...";
   }
 }

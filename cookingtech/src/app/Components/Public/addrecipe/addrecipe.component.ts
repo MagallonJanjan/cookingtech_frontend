@@ -93,4 +93,15 @@ export class AddrecipeComponent implements OnInit {
         console.log(error);
       })
   }
+  disableAddButton = true;
+  procedures:any;
+  
+
+  // inputIngredients = (<HTMLInputElement>document.getElementById("lingling"));
+  // inputProcedure =  (<HTMLInputElement>document.getElementById("procedure"));
+
+  
+   
+  
+
 }

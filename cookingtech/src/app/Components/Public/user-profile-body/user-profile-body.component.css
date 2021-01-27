@@ -1,0 +1,13 @@
+.card{
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+}
+.img-container {
+    width: 130px;
+    height: 130px;
+    border-radius: 200px;
+    border: solid 2px #0066cc;
+}
+.profile-img{
+    margin-top:5%;
+    margin-left: 20%;
+}

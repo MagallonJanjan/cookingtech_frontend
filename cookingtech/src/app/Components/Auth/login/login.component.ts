@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/admin'])
         }
         if (this.kindOfUser.user.usertype === 'chef_master') {
-          this.router.navigate([''])
+          this.router.navigate(['/home'])
         }
         if (this.kindOfUser.user.usertype === 'admin') {
           this.router.navigate(['/admin'])

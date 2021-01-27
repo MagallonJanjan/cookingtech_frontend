@@ -18,6 +18,8 @@ export class IsAdminGuard implements CanActivate {
   ) {
 
   }
+
+  
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {

@@ -15,14 +15,15 @@ import { IsAdminGuard } from './guards/is-admin.guard';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { IsMasterGuard } from './guards/is-master.guard';
 import { UserhomeComponent } from './Components/Public/userhome/userhome.component';
+import { NotAuthGuard } from './guards/not-auth.guard';
 
 
 const routes: Routes =
 [
   { path : '', component : HomeComponent },
-  { path : 'home', component : HomeComponent },
-  { path : 'login', component : LoginComponent },
-  { path : 'register', component : RegisterComponent},
+  { path : 'home', component : UserHomeComponent, canActivate: [IsAuthenticatedGuard]},
+  { path : 'login', component : LoginComponent, canActivate: [NotAuthGuard] },
+  { path : 'register', component : RegisterComponent,canActivate: [NotAuthGuard]},
   {path: 'recipes/:id', component: ViewpageComponent},
   {path: 'recipes/category/:cat', component: ViewpageComponent},
   {path: 'recipes', component: ViewpageComponent},
@@ -32,7 +33,7 @@ const routes: Routes =
   { path : 'admin', component : AdminComponent, canActivate:[IsAuthenticatedGuard, IsAdminGuard]},
   {path : 'add-recipe', component : AddrecipeComponent, canActivate: [IsAuthenticatedGuard, IsMasterGuard]},
   {path: 'user-profile/:id', component: UserProfileComponent, canActivate: [IsAuthenticatedGuard]},
-  {path: 'user-home', component : UserhomeComponent,canActivate: [IsAuthenticatedGuard]}
+  {path: 'user-home', component : UserHomeComponent,canActivate: [IsAuthenticatedGuard]}
 ];
 
 @NgModule({

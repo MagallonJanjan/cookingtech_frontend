@@ -22,8 +22,8 @@
             <div class="img-container ml-5" >
               <!-- image here -->
             </div>
-            <span class="text-white text-center custom-align ml-5">Kyla</span><br>
-            <small class="text-white text-center custom-align ml-5">admin</small>
+            <span class="text-white text-center custom-align ml-5">{{authenticatedUser.username}}</span><br>
+            <small class="text-white text-center custom-align ml-5">{{authenticatedUser.usertype}}</small>
           </div>
         </div>
         <hr class="bg-light">
@@ -137,7 +137,7 @@
           </div>
         </div>
         <!-- this for the tables -->
-        <app-admin-table [data]="data" [tableTitle]="title" *ngIf="!showDashboard"></app-admin-table>
+        <app-admin-table [data]="data" [tableTitle]="title" (changes)="getChanges($event)" *ngIf="!showDashboard"></app-admin-table>
       </div>
     </div>
   </div>

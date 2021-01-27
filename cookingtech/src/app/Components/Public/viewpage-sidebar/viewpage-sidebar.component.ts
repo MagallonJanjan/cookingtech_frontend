@@ -20,6 +20,7 @@ export class ViewpageSidebarComponent implements OnInit {
   cookie: any;
   showSideBar:boolean = true;
   class:string = "click";
+  user: any;
 
   constructor(
     private cookies: CookieService,
@@ -30,6 +31,8 @@ export class ViewpageSidebarComponent implements OnInit {
 
   ngOnInit(): void {
       this.cookie = this.cookies.get('__cookingtech');
+      this.user = this.dataEnc.decrypt(this.cookie).user;
+    
   }
   
   toggleSidebar() {
@@ -43,7 +46,8 @@ export class ViewpageSidebarComponent implements OnInit {
 
   gotoBookmarks() {
     this.route.navigate(['/user/recipes/bookmarks']);
-  }
+  }  
+
 
   logout() {
     //clear all broswer storages

@@ -7,13 +7,16 @@ import { Router } from '@angular/router';
   templateUrl: './viewrecipes.component.html',
   styleUrls: ['./viewrecipes.component.css']
 })
+
 export class ViewrecipesComponent implements OnInit {
   @Input() recipes:any; 
   @Input() category?: any;
+
   
   constructor(private apiService:ApiRequestService,
     private route: Router) {
     console.log(this.recipes);
+    this.category = "All";
   }
   ngOnInit(): void {
   }

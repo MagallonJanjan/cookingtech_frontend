@@ -1,10 +1,11 @@
 .logo{
-    height: 7rem;
+    height: 5rem;
     width: 15rem;
 }
 
 .header-index {
     z-index: 3;
+    height: 100px;
 }
 .search {
     top: 100px;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiRequestService } from '../../../services/apirequest.service';
 
 @Component({
@@ -9,11 +10,18 @@ import { ApiRequestService } from '../../../services/apirequest.service';
 export class UserProfileComponent implements OnInit {
 
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private apiService : ApiRequestService
   ) { }
+
+  
   showSideBar:boolean = true;
   ngOnInit(): void {
+
   }
+
+  
 
   sideBarToggle(data:any) {
     this.showSideBar = data;

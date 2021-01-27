@@ -9,11 +9,11 @@
             </div>
         </div>
         <div class="col pb-3" style="margin-top:5%">
-            <form class="form-group w-100" style="margin-left:-50%">
-                <input class="form-control" type="text" placeholder="First Name"><br>
-                <input class="form-control" type="text" placeholder="Last Name"><br>
-                <input class="form-control" type="email" placeholder="Email"><br>
-                <button class="btn btn-outline-primary" [disabled] = "true" >Save Changes</button><br>
+            <form class="form-group w-100" style="margin-left:-50%" [formGroup]="updatePerson" (ngSubmit)="onUpdate()">
+                <input class="form-control" type="text" formControlName="firstname"><br>
+                <input class="form-control" type="text" formControlName="lastname"><br>
+                <input class="form-control" type="email" formControlName="email"><br>
+                <button class="btn btn-primary">Save Changes</button><br>
             </form>
         </div>
     </div>

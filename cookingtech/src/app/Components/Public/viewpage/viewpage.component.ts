@@ -14,6 +14,7 @@ export class ViewpageComponent implements OnInit {
   id:any;
   category: any;
   cookie: any;
+  
 
   isRecipes:any = true;
   recipes: any;
@@ -51,7 +52,6 @@ export class ViewpageComponent implements OnInit {
       this.apiService.apiRequest(`/recipes/${this.id}`, 'get').subscribe(respond => {
         this.recipes = respond;
         this.isRecipes = false;
-        console.log("I was here");
         
         
       });
@@ -61,7 +61,6 @@ export class ViewpageComponent implements OnInit {
         this.recipes = this.recipes.recipes;
         this.isRecipes = true;
         console.log(this.recipes);
-        console.log("I was here too");
 
       });
     }

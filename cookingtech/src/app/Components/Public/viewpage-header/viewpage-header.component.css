@@ -10,6 +10,12 @@
 .search {
     top: 100px;
 }
+
+/* 
+.search-bar{
+    max-width: 150px;
+    position: relative;
+} */
 .navbar-collapse{
     margin-left: 70%;
 }

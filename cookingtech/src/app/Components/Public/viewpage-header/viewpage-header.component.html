@@ -29,10 +29,10 @@
         <input class="form-control mr-sm-2" id="searchItem" type="search" #item (keyup)="onKey(item.value)" placeholder="Search"
           aria-label="Search">
         <button class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
-        <div class="search-result-container bg-light">
-          <p *ngFor="let value of values" class="search-result">{{value.name}}</p>
-        </div>
       </div>
+      <div class="search-result-container bg-light" >
+          <p *ngFor="let value of values" style="height:2%;" class="search-result" (click)="goToRecipe(value.id)">{{value.name}}</p>
+        </div>
     </form>
   </div>
 </nav>

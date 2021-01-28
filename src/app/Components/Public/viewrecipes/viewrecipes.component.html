@@ -20,8 +20,10 @@
         <small class="text-bold">Category: {{recipe.category}}</small>
       </div>
       <div class="card-footer">
-        <small class="text-muted" *ngIf="category !='My Recipes'">Uploaded by: {{recipe.user.firstname + " "+ " " + recipe.user.lastname}}</small>
-        <button class="btn btn-outline-info" *ngIf="category == 'My Recipes'">Remove Bookmark</button>
+        <small class="text-muted" *ngIf="category != 'My Recipes'">Uploaded by: {{recipe.user.firstname + " "+ " " + recipe.user.lastname}}</small>
+        <button class="btn btn-outline-info" *ngIf="category == 'My Bookmarks'">Remove Bookmark</button>
+        <button class="btn btn-outline-info" *ngIf="category == 'My Recipes'">Edit</button>
+        <button class="btn btn-outline-info" *ngIf="category == 'My Recipes'">Delete</button>
       </div>
     </div>
   </div>

@@ -23,7 +23,7 @@ export class IsAdminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      let cookie = this.cookies.get('__cookingtech');
+      let cookie = window.localStorage.getItem('__cookingtech');
       if(!cookie) {
         this.router.navigate(['login']);
         return false;    

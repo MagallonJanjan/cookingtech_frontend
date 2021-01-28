@@ -61,6 +61,18 @@ export class ViewpageBodyComponent implements OnInit {
     this.isRateDisabled = false
   }
 
+
+  isExisted(data:any, checked:any): boolean {
+    for(let bit of data) {
+      if(bit.recipe_id == checked.recipe_id && bit.user_id == checked.uesr_id) {
+        return true;
+      }
+    } 
+    return false
+  }
+
+
+
   isRateDisabled = true;
 
   addClass(star:any){
@@ -87,8 +99,20 @@ export class ViewpageBodyComponent implements OnInit {
       return;
     }
 
-    let user_id = this.dataEnc.decrypt(this.cookie).user.id;
-    console.log(user_id, this.recipe_id);
+    if(!this.isExisted) {
+      alert("You alreaded added it to your bookmarks!");
+      return;
+    }
+
+    let user_id =this.dataEnc.decrypt(this.cookie).user.id
+    
+
+    this.apiService.apiRequest('/bookmarks',"post", {"user_id": user_id,"recipe_id": this.recipe_id})
+      .subscribe(respond => {
+        console.log(respond);
+        alert("Added to your bookmarks!");
+        
+      });
   }
 
 

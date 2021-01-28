@@ -29,8 +29,8 @@ export class UserProfileBodyComponent implements OnInit {
         this.user_id = params.get('id');
         console.log(this.user_id);
         
-      }
-      );
+      });
+      
       this.apiService.apiRequest(`/users/${this.user_id}`, "get")
         .subscribe(
           respond => {

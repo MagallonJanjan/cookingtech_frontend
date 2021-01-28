@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule , routingComponents } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
 
 import { CommonModule } from '@angular/common';
@@ -67,7 +67,8 @@ import { UserHomeBodyComponent } from './Components/Public/user-home-body/user-h
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    FormsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

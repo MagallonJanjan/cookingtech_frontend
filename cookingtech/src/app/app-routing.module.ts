@@ -28,7 +28,7 @@ const routes: Routes =
   {path: 'recipes/category/:cat', component: ViewpageComponent},
   {path: 'recipes', component: ViewpageComponent},
   {path: 'user/recipes/:bookmarks', component: ViewpageComponent, canActivate: [IsAuthenticatedGuard]},
-  {path: 'user/my-recipes/:my-recipes', component: ViewpageComponent},
+  {path: 'user/my-recipes/:my-recipes', component: ViewpageComponent, canActivate: [IsAuthenticatedGuard, IsMasterGuard]},
   {path: 'edit-recipe/:id', component: AddrecipeComponent, canActivate: [IsAuthenticatedGuard, IsMasterGuard]},
   { path : 'admin', component : AdminComponent, canActivate:[IsAuthenticatedGuard, IsAdminGuard]},
   {path : 'add-recipe', component : AddrecipeComponent, canActivate: [IsAuthenticatedGuard, IsMasterGuard]},

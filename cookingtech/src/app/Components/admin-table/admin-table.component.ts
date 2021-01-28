@@ -115,6 +115,15 @@ export class AdminTableComponent implements OnInit {
           }
           this.changes.emit(url);
           
+          if(url == "pendings") {
+            await this.apiService.apiRequest(`/recipes/status/pendings`, "get")
+              .subscribe((respond:any) => {
+                this.data = respond.pendings.filter((pendings:any)=>{
+                  return pendings.status == false;
+                });
+              });
+          }
+
           if(url == "users") {
             await this.apiService.apiRequest(`/users`, 'get').subscribe((respond:any)=> {
               this.data = respond.users.filter((admin: any)=> {
@@ -141,4 +150,22 @@ export class AdminTableComponent implements OnInit {
   }
 
 
+   filterTable() {
+   var input, filter, table, tr, td, i, txtValue;
+    input = (<HTMLInputElement>document.getElementById('myInput'));
+    filter = input.value.toUpperCase();
+    table = (<HTMLTableElement>document.getElementById('adminTable'))
+    tr = table.getElementsByTagName("tr");
+   for (i = 0; i < tr.length; i++) {
+   td = tr[i].getElementsByTagName("td")[0];
+       if (td) {
+         txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+         } else {
+          tr[i].style.display = "none";
+        }
+       }       
+     }
+ }
 }

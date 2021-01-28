@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-reply',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReplyComponent implements OnInit {
 
+  @Input() reply: any;
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.reply);
+    
   }
 
 }

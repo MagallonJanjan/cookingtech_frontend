@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ApiRequestService} from '../../../services/apirequest.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
  
 @Component({
   selector: 'app-viewrecipes',
@@ -28,11 +29,10 @@ export class ViewrecipesComponent implements OnInit {
 
  //remove bookmarks
  removeBookmark(id:any) {
-   console.log(id);
-   
     this.apiService.apiRequest(`/bookmarks/${id}`, "delete", {}).subscribe(
       respond => {
-        alert("deleted successfully!") ;
+        Swal.fire("Deleted successfully!","success","success") ;
+        window.location.reload();
       }
     );
  }

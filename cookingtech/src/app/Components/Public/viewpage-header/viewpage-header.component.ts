@@ -42,6 +42,12 @@ export class ViewpageHeaderComponent implements OnInit {
         console.log(this.values); 
           
   }
+
+  goToRecipe(){
+    
+  }
+
+
   toggleNavbar(){
     this.showNavbar =! this.showNavbar; 
     this.navBarToggle.emit(this.showNavbar);

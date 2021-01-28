@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light alert-primary position-fixed w-100 header-index">
+<!-- <nav class="navbar navbar-light alert-primary position-fixed w-100 header-index">
   <a class="navbar-brand" href="#">
     <img class="logo" src="../../../../assets/img/home/letters.png" alt="">
   </a>
@@ -21,13 +21,16 @@
           </div>
         </div>
       </div>
-      <div class="search-bar">
-        <input class="form-control mr-sm-2" id="searchItem" type="search" #item (keyup)="onKey(item.value)" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
-        <div class="search-result-container">
-          <p *ngFor="let value of values" class="search-result">{{value.name}}</p>
-        </div>
-      </div>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</nav>
+</nav>  -->
+<nav class="navbar navbar-light alert-primary position-fixed w-100 header-index">
+  <a class="navbar-brand" href="#">
+    <img class="logo" src="../../../../assets/img/home/letters.png" alt="">
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarContent"
     aria-controls="navBarContent" aria-expanded="false" aria-label="Toggle navigation" (click)= "toggleNavbar()">
     <span class="navbar-toggler-icon"></span>

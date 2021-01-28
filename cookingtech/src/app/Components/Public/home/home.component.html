@@ -18,7 +18,7 @@
     </div>
     <form class="form-inline my-2 my-lg-0" style="margin: 2px;">
       <h5 class="btn text-right mx-3" *ngIf="cookie" routerLink="/home"><i class="fa fa-home fa-lg"></i><strong>Home</strong></h5>
-      <h5 class="btn text-right mx-4 " *ngIf="cookie"><i class="fa fa-user "></i> <strong>{{user.username}}</strong></h5>
+      <h5 class="btn text-right mx-4 " ><i class="fa fa-user-circle" *ngIf="cookie" aria-hidden="true"></i> <strong>{{user.username}}</strong></h5>
       <div *ngIf="!cookie">
         <button style="margin-right: 5px;" class="btn btn-outline-info my-2 my-sm-0" type="submit" routerLink="/register">Register</button>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/login">Login</button>
@@ -98,27 +98,32 @@
   </div>
   <div class="card-deck mt-5 mx-3">
     <div class="card w-75">
-      <img class="card-img-top" src="https://www.kawalingpinoy.com/wp-content/uploads/2013/07/eggplant-and-tomato-torta-5.jpg" alt="Card image cap">
+      <img class="card-img-top" src="https://www.kawalingpinoy.com/wp-content/uploads/2013/07/eggplant-and-tomato-torta-5.jpg"
+        alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Eggplant and Tomato Torta</h5>
-        <p class="card-text">This eggplant and tomato torta is filled with fresh veggies and delicious for any meal of the day!</p>
-        <button class="btn btn-outline-success"  routerLink= "recipes/43">See More...</button>
+        <p class="card-text">This eggplant and tomato torta is filled with fresh veggies and delicious for any meal of
+          the day!</p>
+        <button class="btn btn-outline-success" routerLink="recipes/43">See More...</button>
       </div>
     </div>
     <div class="card w-75">
-      <img class="card-img-top" src="https://www.kawalingpinoy.com/wp-content/uploads/2013/06/ginataang-halo-halo-3.jpg" alt="Card image cap">
+      <img class="card-img-top" src="https://www.kawalingpinoy.com/wp-content/uploads/2013/06/ginataang-halo-halo-3.jpg"
+        alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Ginataang Halo Halo</h5>
-        <p class="card-text">Ginataang halo-halo is rich, creamy and loaded with coconut flavor. Made of glutinous rice balls, sago, tropical fruits, and tubers, it makes a delicious snack or dessert. </p>
-        <button class="btn btn-outline-success" routerLink= "recipes/56">See More...</button>
+        <p class="card-text">Ginataang halo-halo is rich, creamy and loaded with coconut flavor. Made of glutinous rice
+          balls, sago, tropical fruits, and tubers, it makes a delicious snack or dessert. </p>
+        <button class="btn btn-outline-success" routerLink="recipes/56">See More...</button>
       </div>
     </div>
     <div class="card w-75">
       <img class="card-img-top" src="https://www.kawalingpinoy.com/wp-content/uploads/2013/03/tinolang-manok-2.jpg" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Tinolang Manok</h5>
-        <p class="card-text">Tinolang Manok is the ultimate comfort food! Made of chicken, green papaya, fresh spinach, and a ginger-flavored broth, this Filipino soup is hearty, healthy, and tasty.</p>
-        <button class="btn btn-outline-success" routerLink= "recipes/50">See More...</button>
+        <p class="card-text">Tinolang Manok is the ultimate comfort food! Made of chicken, green papaya, fresh spinach,
+          and a ginger-flavored broth, this Filipino soup is hearty, healthy, and tasty.</p>
+        <button class="btn btn-outline-success" routerLink="recipes/50">See More...</button>
       </div>
     </div>
   </div>

@@ -27,6 +27,13 @@ export class AddrecipeComponent implements OnInit {
     private location: Location
   ) {
 
+
+    }
+
+
+  ngOnInit(): void {
+
+    //getting recipe Ids
     this.route.paramMap.subscribe((params:any) => {
       this.recipeId = params.get('id');
       console.log(this.recipeId);
@@ -61,11 +68,9 @@ export class AddrecipeComponent implements OnInit {
            
          })
       }
-    }
 
-
-  ngOnInit(): void {
-  
+    
+    // Form for creating recipe
     this.addRecipe = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
       description: ['', [Validators.required, Validators.minLength(25)]],
@@ -149,14 +154,13 @@ export class AddrecipeComponent implements OnInit {
     let UserData = this.dataEnc.decrypt(this.cookie);
     this.datas["user_id"] = UserData.user.id;
 
-    this.isRecipeSave = false;
+    this.isRecipeSave = false
     this.apiRequest.apiRequest('/recipes','post', this.datas)
       .subscribe( respond => {
         console.log(respond);
         Swal.fire("Recipe Added","","success")
         this.location.back();
         this.addRecipe.reset()
-        alert('You added a new recipe!');
         this.isRecipeSave = true;
 
         this.ingredientsArray = [];

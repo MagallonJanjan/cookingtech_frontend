@@ -10,6 +10,8 @@
 <body>
   <nav class="navbar navbar-expand-sm navbar-dark bg-custom-header border position-fixed main-header">
     <a class="navbar-brand" href="#"><strong>CookingTech</strong></a>
+    <a class="navbar  navbar-light " style="margin-left:6%;color:white;" href="" routerLink="/home"><strong>Home</strong></a>
+    <a class="navbar navbar-light " style="margin-left:1px;color:white;" href="#" routerLink="/recipes"><strong>Recipes</strong></a>
   </nav>
 
   <div class="container-fluid">
@@ -19,7 +21,7 @@
         <p class="text-right px-2 text-white" (click)="toggleSidebar()"><i class="fas fa-bars"></i></p>
         <div class="row">
           <div class="col-md-6 ml-2">
-            <div class="img-container ml-5" >
+            <div class="img-container ml-5" style="background-image:url(../../../../assets/img/default.png);background-size: cover;" routerLink="/user-profile">
               <!-- image here -->
             </div>
             <span class="text-white text-center custom-align ml-5">{{authenticatedUser.username}}</span><br>
@@ -44,9 +46,8 @@
 
         <div class="row">
           <div class="col-md-12 ml-3">
-            <div class="img-container-ghost">
+            <div class="img-container-ghost"  style="background-image:url(../../../../assets/img/default.png);background-size: cover;" routerLink="/user-profile">
               <!-- image here -->
-
             </div>
             <hr class="bg-light">
           </div>
@@ -64,6 +65,7 @@
     <!-- content -->
     <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
       <strong>{{title}}</strong>
+      <button class="btn btn-primary float-lg-right" routerLink="/add-recipe" *ngIf="title=='Recipes'" ><i class="fa fa-plus" aria-hidden="true"></i></button><br>
       <hr class="bg-secondary">
       <div class="container">
 
@@ -82,7 +84,7 @@
                 </div>
               </div>
               <div class="col-sm-6 border-top">
-                <h2 class="text-center mt-4">1234</h2>
+                <h2 class="text-center mt-4">{{usersLen}}</h2>
               </div>
             </div>
           </div>
@@ -100,7 +102,7 @@
                 </div>
               </div>
               <div class="col-sm-6 border-top">
-                <h2 class="text-center mt-4">1234</h2>
+                <h2 class="text-center mt-4">{{recipesLen}}</h2>
               </div>
             </div>
           </div>
@@ -117,7 +119,7 @@
                 </div>
               </div>
               <div class="col-sm-6 border-top">
-                <h2 class="text-center mt-4">1234</h2>
+                <h2 class="text-center mt-4">{{pendingsLen}}</h2>
               </div>
             </div>
           </div>

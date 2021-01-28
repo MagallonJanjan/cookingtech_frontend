@@ -112,7 +112,7 @@
                         itemsPerPage: 8,
                         currentPage: page,
                         totalItems: totalData}">
-                                <td class="table-secondary">{{bits.name || bits.lastname}}</td>
+                                <td class="table-secondary">{{bits.name || bits.firstname+" "+bits.lastname}}</td>
                                 <td class="table-secondary" *ngIf="!bits.name">{{bits.usertype}}</td>
                                 <td class="table-secondary" *ngIf="!bits.lastname">{{bits.category}}</td>
                                 <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{epilsesLimit(bits.description)}}</td>

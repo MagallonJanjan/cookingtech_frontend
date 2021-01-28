@@ -79,9 +79,9 @@ export class AddrecipeComponent implements OnInit {
 
           this.apiRequest.apiRequest(`/recipes/${this.recipeId}`,"put",this.addRecipe.value)
               .subscribe((respond:any)=>{
-                  alert('Recipe updated successfully!');
+                  Swal.fire("Recipe Updated Successfully","","success");
               },error =>{
-                alert('Sayop uyy,')
+                Swal.fire("Error"!)
                 console.log(error);
               })
      }
@@ -131,7 +131,6 @@ export class AddrecipeComponent implements OnInit {
         Swal.fire("Recipe Added","","success")
         this.location.back();
         this.addRecipe.reset()
-        alert('You added a new recipe!');
         this.isRecipeSave = true;
 
         this.ingredientsArray = [];

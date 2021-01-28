@@ -11,5 +11,4 @@ export class ViewpageHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

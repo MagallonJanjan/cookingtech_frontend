@@ -14,17 +14,19 @@
 <div class="row" *ngIf="recipes.length > 0">
   <div class="col-md-4 mt-5 cursor" *ngFor="let recipe of recipes">
     <div class="card p-2">
+      <h5 class="card-title text-center">{{(recipe.name || recipe.recipe.name)}}</h5>
       <img class="card-img-top" [src]="recipe.img_url || recipe.recipe.img_url" alt="Card image cap" (click)="getRecipe((recipe.name)?recipe.id: recipe.recipe.id)">
       <div class="card-body">
-        <h5 class="card-title">{{(recipe.name || recipe.recipe.name)}}</h5>
-        <small class="text-bold">Category: {{recipe.category || recipe.recipe.category}}</small>
+        <!-- <small class="card-title text-center"></small> -->
+        <h6 class="text-center">Category: {{recipe.category || recipe.recipe.category}}</h6>
+        <h6 class="text-center"><i class="fa fa-tags" aria-hidden="true"></i> {{recipe.tag}}</h6>
       </div>
       <div class="card-footer">
         <small class="text-muted" *ngIf="category != 'My Recipes'">Uploaded by: {{recipe.user.firstname || recipe.recipe.firstname 
            + " "+ " " + recipe.user.lastname || recipe.recipe.lastname}}</small>
         <button class="btn btn-outline-info" *ngIf="category == 'My Bookmarks'" (click)="removeBookmark(recipe.id)">Remove Bookmark</button>
-        <button class="btn btn-outline-info" *ngIf="category == 'My Recipes'">Edit</button>
-        <button class="btn btn-outline-info" *ngIf="category == 'My Recipes'">Delete</button>
+        <button class="btn btn-outline-info mx-2" *ngIf="category == 'My Recipes'" (click)="editRecipe(recipe.id)">Edit</button>
+        <button class="btn btn-outline-danger"  *ngIf="category == 'My Recipes'" (click)="deleteRecipe(recipe.id)">Delete</button>
       </div>
     </div>
   </div>

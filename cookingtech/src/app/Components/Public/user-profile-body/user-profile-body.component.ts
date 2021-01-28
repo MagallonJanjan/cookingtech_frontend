@@ -50,8 +50,6 @@ export class UserProfileBodyComponent implements OnInit {
     }
     
   
-
-  
   onUpdate(){
     console.log(this.user_id);
     let configUrl = '/users/' + this.user_id;

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ApiRequestService} from '../../../services/apirequest.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
  
 @Component({
   selector: 'app-viewrecipes',
@@ -30,7 +31,7 @@ export class ViewrecipesComponent implements OnInit {
  removeBookmark(id:any) {
     this.apiService.apiRequest(`/bookmarks/${id}`, "delete", {}).subscribe(
       respond => {
-        alert("deleted successfully!") ;
+        Swal.fire("Deleted successfully!","success","success") ;
         window.location.reload();
       }
     );
@@ -39,5 +40,18 @@ export class ViewrecipesComponent implements OnInit {
  capitalize(s:string) {
   if (typeof s !== 'string') return ''
   return s.charAt(0).toUpperCase() + s.slice(1)
+}
+
+
+deleteRecipe(id:any) {
+  this.apiService.apiRequest(`/recipes/${id}`, "delete",{})
+    .subscribe(respond => {
+      Swal.fire("Deleted successfully!","success","success");
+      window.location.reload();
+    });
+}
+
+editRecipe(id:any) {
+
 }
 }

@@ -6,6 +6,7 @@ import { ApiRequestService } from '../../../services/apirequest.service';
 import { CookieService } from 'ngx-cookie-service';
 import { EncryptService } from '../../../services/encrypt.service';
 import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -65,7 +66,7 @@ export class LoginComponent implements OnInit {
         let encCookies = this.dataEnc.encrypt(JSON.stringify(this.kindOfUser));
         window.localStorage.setItem('__cookingtech', encCookies);
       }, error => {
-        alert('This credentials does not match to our records! Please try again.');
+        Swal.fire('This credentials does not match to our records! Please try again.');
         this.isLoginDisabled = true
       }
       )

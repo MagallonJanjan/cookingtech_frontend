@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   user: any;
   cookie: any;
   ngOnInit()  : void {
-    this.cookie = window.localStorage.get('__cookingtech');
+    this.cookie = window.localStorage.getItem('__cookingtech');
     if(this.cookie) {
       this.user = this.dataEnc.decrypt(this.cookie).user; 
     }

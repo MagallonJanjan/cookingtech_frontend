@@ -36,13 +36,7 @@ export class ViewpageBodyComponent implements OnInit {
     this.cookie = window.localStorage.getItem('__cookingtech');
     if(this.cookie) {
       console.log(this.dataEnc.decrypt(this.cookie).user);
-      
-      this.apiService.apiRequest(`/user/bookmarks/${this.dataEnc.decrypt(this.cookie).user.id}`, 'get')
-        .subscribe((respond: any)=> {
-          this.bookmarks = respond.user_bookmarks[0].bookmarks;
-          console.log(this.bookmarks);
-          
-        });
+      this.updateBookmarkContent(this.dataEnc.decrypt(this.cookie).user.id);
     }
 
    this.recipe = this.recipe.recipe[0];
@@ -55,6 +49,9 @@ export class ViewpageBodyComponent implements OnInit {
      content: ['',[Validators.required]]
    });
   }
+
+
+  
   
   countStar(star: any){
     this.selectedValue = star;
@@ -62,15 +59,31 @@ export class ViewpageBodyComponent implements OnInit {
   }
 
 
+
+
+
+  updateBookmarkContent(user_id: any) {
+    this.apiService.apiRequest(`/user/bookmarks/${user_id}`, 'get')
+        .subscribe((respond: any)=> {
+          this.bookmarks = respond.user_bookmarks[0].bookmarks;
+          console.log(this.bookmarks);
+          
+        });
+  }
+
+
+
+
   isExisted(data:any, checked:any): boolean {
     for(let bit of data) {
-      if(bit.recipe_id == checked.recipe_id && bit.user_id == checked.uesr_id) {
+      if(bit.recipe_id === checked.recipe_id && bit.user_id === checked.user_id) {
+        console.log("I was here");
+        
         return true;
       }
     } 
     return false
   }
-
 
 
   isRateDisabled = true;
@@ -83,6 +96,8 @@ export class ViewpageBodyComponent implements OnInit {
     }
    
   }
+
+  
   removeClass(star:any){
     let ndex = "";
     for (let i = star-1;1 >= this.selectedValue; i--){
@@ -92,26 +107,28 @@ export class ViewpageBodyComponent implements OnInit {
     
   }
 
+
+
+
+
+
   addToBookmark() {
     if(!this.cookie) {
       this.router.navigate(['login']);
       this.cookies.set('goto', window.location.href);
       return;
     }
-
-    if(!this.isExisted) {
+    
+    let user_id =this.dataEnc.decrypt(this.cookie).user.id
+    if(this.isExisted(this.bookmarks, {"user_id":user_id, "recipe_id": this.recipe_id})) {
       alert("You alreaded added it to your bookmarks!");
       return;
     }
-
-    let user_id =this.dataEnc.decrypt(this.cookie).user.id
-    
-
     this.apiService.apiRequest('/bookmarks',"post", {"user_id": user_id,"recipe_id": this.recipe_id})
       .subscribe(respond => {
         console.log(respond);
         alert("Added to your bookmarks!");
-        
+        this.updateBookmarkContent(user_id);
       });
   }
 

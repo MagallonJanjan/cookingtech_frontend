@@ -232,7 +232,6 @@ export class AdminComponent implements OnInit {
       this.deleteAllCookies();
       window.location.reload();
       console.log(respond);
-      
     }) 
   }
 }

@@ -17,14 +17,14 @@ import { async } from 'q';
 
 //initialized the chart options
 export type ChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  xaxis: ApexXAxis;
-  grid: ApexGrid;
-  colors: string[];
-  legend: ApexLegend;
+  series?: ApexAxisChartSeries;
+  chart?: ApexChart;
+  dataLabels?: ApexDataLabels;
+  plotOptions?: ApexPlotOptions;
+  xaxis?: ApexXAxis;
+  grid?: ApexGrid;
+  colors?: string[];
+  legend?: ApexLegend;
 }
 
 @Component({

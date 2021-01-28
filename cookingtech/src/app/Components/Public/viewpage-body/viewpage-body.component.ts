@@ -19,6 +19,8 @@ export class ViewpageBodyComponent implements OnInit {
   comments: any;
   replies: any;
   recipe_id: any;
+  bookmarks: any;
+  cookie: any; 
 
   constructor(
     private cookies: CookieService,
@@ -30,11 +32,25 @@ export class ViewpageBodyComponent implements OnInit {
   }
   contentForm: any;
   ngOnInit(): void {
+    //get the user_id first
+    this.cookie = window.localStorage.getItem('__cookingtech');
+    if(this.cookie) {
+      console.log(this.dataEnc.decrypt(this.cookie).user);
+      
+      this.apiService.apiRequest(`/user/bookmarks/${this.dataEnc.decrypt(this.cookie).user.id}`, 'get')
+        .subscribe((respond: any)=> {
+          this.bookmarks = respond.user_bookmarks[0].bookmarks;
+          console.log(this.bookmarks);
+          
+        });
+    }
+
    this.recipe = this.recipe.recipe[0];
    this.comments = this.recipe.comments;
    this.recipe_id = this.recipe.id;
     console.log(this.comments);
     
+
    //form for the comment
    this.contentForm = this.formBuilder.group({
      content: ['',[Validators.required]]
@@ -45,6 +61,18 @@ export class ViewpageBodyComponent implements OnInit {
     this.selectedValue = star;
     this.isRateDisabled = false
   }
+
+
+  isExisted(data:any, checked:any): boolean {
+    for(let bit of data) {
+      if(bit.recipe_id == checked.recipe_id && bit.user_id == checked.uesr_id) {
+        return true;
+      }
+    } 
+    return false
+  }
+
+
 
   isRateDisabled = true;
 
@@ -65,6 +93,30 @@ export class ViewpageBodyComponent implements OnInit {
     
   }
 
+  addToBookmark() {
+    if(!this.cookie) {
+      this.router.navigate(['login']);
+      this.cookies.set('goto', window.location.href);
+      return;
+    }
+
+    if(!this.isExisted) {
+      alert("You already added it to your bookmarks!");
+      return;
+    }
+
+    let user_id =this.dataEnc.decrypt(this.cookie).user.id
+    
+
+    this.apiService.apiRequest('/bookmarks',"post", {"user_id": user_id,"recipe_id": this.recipe_id})
+      .subscribe(respond => {
+        console.log(respond);
+        alert("Added to your bookmarks!");
+        
+      });
+  }
+
+
   getAllComments() {
     this.apiService.apiRequest(`/recipes/${this.recipe_id}`, 'get')
       .subscribe((recipe:any)=> {
@@ -74,16 +126,26 @@ export class ViewpageBodyComponent implements OnInit {
   }
 
   onComment() {
-    let cookie = this.cookies.get('__cookingtech');
-    if(!cookie) {
+
+     this.cookie = window.localStorage.getItem('__cookingtech');
+    if(!this.cookie) {
       this.cookies.set('goto', window.location.href);
       window.location.href = 'login';
     }
-    
     let content = this.contentForm.value;
+   
     let recipe_id = this.recipe.id;
-    let user_id = this.dataEnc.decrypt(cookie).user.id;
+    let user_id = this.dataEnc.decrypt(this.cookie).user.id;
 
+    this.apiService.apiRequest('/comments',"post",{"recipe_id":recipe_id,"user_id":user_id,"content":content})
+            .subscribe(respond=>{
+                alert('Comment added successfully!');
+                //this.router.navigate(['/recipes'])
+            },error =>{
+                console.log(error);
+                alert('Sayop bro :)!');
+            })
+    this.contentForm.reset();
 
   }
 }

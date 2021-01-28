@@ -2,13 +2,13 @@
   <a class="navbar-brand" href="#">
     <img class="logo" src="../../../../assets/img/home/letters.png" alt="">
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarContent"
-    aria-controls="navBarContent" aria-expanded="false" aria-label="Toggle navigation" (click)= "toggleNavbar()">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarContent" aria-controls="navBarContent"
+    aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
   </button>
 
 
-  <div class="collapse navbar-collapse p-3" id="navBarContent" *ngIf = "showNavbar == true">
+  <div class="collapse navbar-collapse p-3" id="navBarContent" *ngIf="showNavbar == true">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <button class="btn btn-secondary dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -25,9 +25,14 @@
     </ul>
     <br>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control w-75 mr-sm-1" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+      <div class="search-bar">
+        <input class="form-control mr-sm-2" id="searchItem" type="search" #item (keyup)="onKey(item.value)" placeholder="Search"
+          aria-label="Search">
+        <button class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
+        <div class="search-result-container bg-light">
+          <p *ngFor="let value of values" class="search-result">{{value.name}}</p>
+        </div>
+      </div>
     </form>
   </div>
 </nav>
-

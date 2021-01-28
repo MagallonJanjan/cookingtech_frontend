@@ -30,9 +30,8 @@ export class ViewpageSidebarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-      this.cookie = this.cookies.get('__cookingtech');
+      this.cookie = window.localStorage.getItem('__cookingtech');
       this.user = this.dataEnc.decrypt(this.cookie).user;
-    
   }
   
   toggleSidebar() {
@@ -64,6 +63,7 @@ export class ViewpageSidebarComponent implements OnInit {
     //clear all broswer storages
     this.apiService.apiRequest('/users/logout',"post",{}).subscribe(respond => {
       window.localStorage.removeItem('token');
+      window.localStorage.removeItem('__cookingtech');
       this.deleteAllCookies();
       window.location.reload();
       console.log(respond);

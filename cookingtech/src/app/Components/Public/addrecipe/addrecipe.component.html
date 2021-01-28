@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 </head>
 <div class="container"><br>
   <form [formGroup]="addRecipe">
@@ -73,111 +73,119 @@
         </div>
       </div>
     </div><br>
-    <div class="row">
-    <button type="submit" class="btn btn-primary saveAll" (click)="onSubmit(addRecipe.value)"  routerLink="/admin" [disabled]="addRecipe.invalid">Save
+    <button class="btn btn-info editAll" *ngIf="recipeId" [hidden]="!isUpdateSave" [disabled]="isEditRecipe" (click)="newUpdate()">Edit
       Recipe</button>
-  </div>
-    <div>
-      <span></span>
-      <span>
-        <p></p>
-      </span>
-    </div>
+    <button class="btn btn-info loadingSave" type="button" [hidden]="isUpdateSave">
+      <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+      Please wait...
+    </button>
+    <button class="btn btn-danger cancel" *ngIf="recipeId" [disabled]="isCancel" routerLink="/admin">Cancel</button>
 
 
-    <!-- View Ingredient Modal -->
-    <div class="modal fade" id="viewIngredient" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">List of Ingredients</h5>
-          </div>
-          <div class="modal-body">
-            <div class="list-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Ingredient</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let data of ingredientsArray">
-                    <td>{{data}}</td>
-                    <td>
-                      <button type="submit" class="btn alert-danger btn-sm" (click)="removeIngredientItem(data)">Remove</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="input-group ">
-            <input type="text" class="form-control ingredientInput" formControlName="ingredients" #ingredients [ngClass]="{'is-invalid' : addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid}"
-              id="lingling" placeholder="Ingredient">
-            <div class="input-group-append">
-              <button class="btn alert-success mr-3 " [disabled]="ingredients.value.length < 3" type="submit" (click)="addIngredients()">Add</button>
-            </div>
-            <div *ngIf="addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid" id="ingredients-feedback"
-              class="invalid-feedback">
-              <p *ngIf="addRecipe.get('ingredients').errors.required">This field is required</p>
-              <p *ngIf="addRecipe.get('ingredients').errors.minlength">Ingredient must be atleast 3 characters</p>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- View Procedure Modal -->
-    <div class="modal fade" id="viewProcedure" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Procedures</h5>
-          </div>
-          <div class="modal-body">
-            <div class="procedure-list">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Procedure</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let data of proceduresArray">
-                    <td>{{data}}</td>
-                    <td>
-                      <button type="submit" class="btn alert-danger btn-sm" (click)="removeProcedureItem(data)">Remove</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="input-group ">
-            <input type="text" class="form-control ingredientInput" formControlName="procedures" #procedures [ngClass]="{'is-invalid' : addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid}"
-              id="procedure" placeholder="Procedure">
-            <div class="input-group-append">
-              <button class="btn alert-success mr-3 " type="submit" [disabled]="procedures.value.length < 4" (click)="addProcedure()">Add</button>
-            </div>
-            <div *ngIf="addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid" id="ingredients-feedback"
-              class="invalid-feedback">
-              <p *ngIf="addRecipe.get('procedures').errors.required">This field is required</p>
-              <p *ngIf="addRecipe.get('procedures').errors.minlength">Procedure must be atleast 4 characters</p>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <button type="submit" class="btn btn-primary saveAll" [hidden]="!isRecipeSave" *ngIf="!recipeId" (click)="onSubmit(addRecipe.value)"
+      [disabled]="addRecipe.invalid">Save
+      Recipe</button>
   </form>
+  <div>
+    <span></span>
+    <span>
+      <p></p>
+    </span>
+  </div>
+
+
+  <!-- View Ingredient Modal -->
+  <div class="modal fade" id="viewIngredient" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">List of Ingredients</h5>
+        </div>
+        <div class="modal-body">
+          <div class="list-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Ingredient</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of ingredientsArray">
+                  <td>{{data}}</td>
+                  <td>
+                    <button type="submit" class="btn alert-danger btn-sm" (click)="removeIngredientItem(data)">Remove</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="input-group ">
+          <input type="text" class="form-control ingredientInput" formControlName="ingredients" #ingredients [ngClass]="{'is-invalid' : addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid}"
+            id="lingling" placeholder="Ingredient">
+          <div class="input-group-append">
+            <button class="btn alert-success mr-3 " [disabled]="ingredients.value.length < 3" type="submit" (click)="addIngredients()">Add</button>
+          </div>
+          <div *ngIf="addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid" id="ingredients-feedback"
+            class="invalid-feedback">
+            <p *ngIf="addRecipe.get('ingredients').errors.required">This field is required</p>
+            <p *ngIf="addRecipe.get('ingredients').errors.minlength">Ingredient must be atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- View Procedure Modal -->
+  <div class="modal fade" id="viewProcedure" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Procedures</h5>
+        </div>
+        <div class="modal-body">
+          <div class="procedure-list">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Procedure</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of proceduresArray">
+                  <td>{{data}}</td>
+                  <td>
+                    <button type="submit" class="btn alert-danger btn-sm" (click)="removeProcedureItem(data)">Remove</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="input-group ">
+          <input type="text" class="form-control ingredientInput" formControlName="procedures" #procedures [ngClass]="{'is-invalid' : addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid}"
+            id="procedure" placeholder="Procedure">
+          <div class="input-group-append">
+            <button class="btn alert-success mr-3 " type="submit" [disabled]="procedures.value.length < 4" (click)="addProcedure()">Add</button>
+          </div>
+          <div *ngIf="addRecipe.get('procedures').touched && addRecipe.get('procedures').invalid" id="ingredients-feedback"
+            class="invalid-feedback">
+            <p *ngIf="addRecipe.get('procedures').errors.required">This field is required</p>
+            <p *ngIf="addRecipe.get('procedures').errors.minlength">Procedure must be atleast 4 characters</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

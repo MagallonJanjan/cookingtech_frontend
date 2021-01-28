@@ -31,16 +31,41 @@ export class AddrecipeComponent implements OnInit {
       this.recipeId = params.get('id');
       console.log(this.recipeId);
     });
-   }
 
-  addRecipe: any;
-  recipeId: any;
-  updatedRecipe:any
-  isEditRecipe = true;
-  
+    if(this.recipeId){
+      this.apiRequest.apiRequest(`/recipes/${this.recipeId}`,"get")
+         .subscribe((respond:any)=>{
+           console.log(respond);
+           this.updatedRecipe = respond.recipe[0];
+           this.ingredientsArray = respond.recipe[0].ingredients;
+           this.proceduresArray = respond.recipe[0].procedures;
+           console.log(respond.recipe[0]);
+    
+           
+           
+           this.addRecipe = this.formBuilder.group({
+             name: [this.updatedRecipe.name,[Validators.required, Validators.minLength(6)]],
+             description: [this.updatedRecipe.description, [Validators.required, Validators.minLength(25)]],
+             yield: [this.updatedRecipe.yield, Validators.required],
+             category: [this.updatedRecipe.category, Validators.required],
+             ingredients: ['', [Validators.required, Validators.minLength(3)]],
+             procedures: ['', [Validators.required, Validators.minLength(4)]],
+             tag: [this.updatedRecipe.tag, [Validators.required, Validators.minLength(5)]],
+             img_url: [this.updatedRecipe.img_url, [Validators.required]]
+            });
+
+          
+           this.isEditRecipe = false;
+           this.recipeToUpdate = this.addRecipe.value;
+           console.log(this.addRecipe.value);
+           
+         })
+      }
+    }
+
+
   ngOnInit(): void {
   
-
     this.addRecipe = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
       description: ['', [Validators.required, Validators.minLength(25)]],
@@ -51,43 +76,43 @@ export class AddrecipeComponent implements OnInit {
       tag: ['', [Validators.required, Validators.minLength(5)]],
       img_url: ['', [Validators.required]]
      });
-
-
-
-     if(this.recipeId){
-       this.apiRequest.apiRequest(`/recipes/${this.recipeId}`,"get")
-          .subscribe((respond:any)=>{
-            console.log(respond);
-            this.updatedRecipe = respond.recipe[0];
-            this.ingredientsArray = respond.recipe[0].ingredients;
-            this.proceduresArray = respond.recipe[0].procedures;
-            
-
-            this.addRecipe = this.formBuilder.group({
-              name: [this.updatedRecipe.name,[Validators.required, Validators.minLength(6)]],
-              description: [this.updatedRecipe.description, [Validators.required, Validators.minLength(25)]],
-              yield: [this.updatedRecipe.yield, Validators.required],
-              category: [this.updatedRecipe.category, Validators.required],
-              ingredients: ['', [Validators.required, Validators.minLength(3)]],
-              procedures: ['', [Validators.required, Validators.minLength(4)]],
-              tag: [this.updatedRecipe.tag, [Validators.required, Validators.minLength(5)]],
-              img_url: [this.updatedRecipe.img_url, [Validators.required]]
-             });
-
-            this.isEditRecipe = false;
-          })
-
-          this.apiRequest.apiRequest(`/recipes/${this.recipeId}`,"put",this.addRecipe.value)
-              .subscribe((respond:any)=>{
-                  alert('Recipe updated successfully!');
-              },error =>{
-                alert('Sayop uyy,')
-                console.log(error);
-              })
-     }
       
   }
 
+  addRecipe: any;
+  recipeId: any;
+  updatedRecipe:any
+  isEditRecipe = true;
+  recipeToUpdate:any;
+  isUpdateSave = true;
+  isCancel = false;
+
+
+  newUpdate(){
+
+    this.isUpdateSave = false;
+    this.isCancel = true;
+
+    this.recipeToUpdate.ingredients = this.ingredientsArray;
+    this.recipeToUpdate.procedures = this.proceduresArray;
+
+    this.apiRequest.apiRequest(`/recipes/${this.recipeId}`,"put", this.recipeToUpdate)
+    .subscribe((respond:any)=>{
+        alert('Recipe updated successfully!');
+        this.isUpdateSave = true;
+        console.log(respond);
+        this.isCancel = false;
+        
+    },
+      error =>{
+        alert('Sayop uyy')
+        this.isUpdateSave = true;
+        console.log(error);
+        this.isCancel = false;
+    })
+  }
+
+  
   ingredientsArray: any[] = [];
   proceduresArray: any[] = [];
 
@@ -115,12 +140,13 @@ export class AddrecipeComponent implements OnInit {
 
   isRecipeSave = true;
   datas:any;
+  cookie: any;
   onSubmit(data : any){ 
     this.addRecipe.value.ingredients = this.ingredientsArray;
     this.addRecipe.value.procedures = this.proceduresArray;
     this.datas = this.addRecipe.value;
-    let cookie = this.cookies.get('__cookingtech');
-    let UserData = this.dataEnc.decrypt(cookie);
+    this.cookie = window.localStorage.getItem('__cookingtech');
+    let UserData = this.dataEnc.decrypt(this.cookie);
     this.datas["user_id"] = UserData.user.id;
 
     this.isRecipeSave = false;

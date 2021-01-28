@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ApiRequestService } from '../../../services/apirequest.service';
 import { CookieService } from 'ngx-cookie-service';
 import { EncryptService } from '../../../services/encrypt.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
     private validation: ApiRequestService,
     private router: Router,
     private cookies: CookieService,
-    private dataEnc: EncryptService) { }
+    private dataEnc: EncryptService,
+    private location: Location) { }
   userLogin: any
 
   ngOnInit(): void {
@@ -45,6 +47,11 @@ export class LoginComponent implements OnInit {
           alert("");
           return;
         }
+        let goto = this.cookies.get('goto');
+        if(goto) {
+          this.location.back();
+        }
+
         if (this.kindOfUser.user.usertype === 'chef_apprentice') {
           this.router.navigate(['/admin'])
         }
@@ -56,7 +63,7 @@ export class LoginComponent implements OnInit {
         }
         window.localStorage.setItem('token', this.kindOfUser.token);
         let encCookies = this.dataEnc.encrypt(JSON.stringify(this.kindOfUser));
-        this.cookies.set('__cookingtech', encCookies);
+        window.localStorage.setItem('__cookingtech', encCookies);
       }, error => {
         alert('This credentials does not match to our records! Please try again.');
         this.isLoginDisabled = true

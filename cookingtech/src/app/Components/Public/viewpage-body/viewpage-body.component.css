@@ -28,6 +28,13 @@ p {
   cursor: pointer;
 }
 
+.cursor {
+  cursor: pointer;
+}
+.cursor:hover {
+  color: white;
+}
+
 .custom-style-x:hover {
   color: gray;
 }

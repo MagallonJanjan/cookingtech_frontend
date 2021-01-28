@@ -14,6 +14,7 @@ export class ViewpageComponent implements OnInit {
   id:any;
   category: any;
   cookie: any;
+  
 
   isRecipes:any = true;
   recipes: any;

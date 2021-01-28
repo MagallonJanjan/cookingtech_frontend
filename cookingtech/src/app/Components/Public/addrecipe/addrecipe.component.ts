@@ -113,12 +113,13 @@ export class AddrecipeComponent implements OnInit {
 
   isRecipeSave = true;
   datas:any;
+  cookie: any;
   onSubmit(data : any){ 
     this.addRecipe.value.ingredients = this.ingredientsArray;
     this.addRecipe.value.procedures = this.proceduresArray;
     this.datas = this.addRecipe.value;
-    let cookie = this.cookies.get('__cookingtech');
-    let UserData = this.dataEnc.decrypt(cookie);
+    this.cookie = window.localStorage.getItem('__cookingtech');
+    let UserData = this.dataEnc.decrypt(this.cookie);
     this.datas["user_id"] = UserData.user.id;
 
     this.isRecipeSave = false;

@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { ApiRequestService } from '../../../services/apirequest.service';
 
 @Component({
   selector: 'app-viewpage-header',
@@ -8,13 +9,21 @@ import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 export class ViewpageHeaderComponent implements OnInit {
   @Output() navBarToggle = new EventEmitter<boolean>();
 
-
   showNavbar: boolean = false;
-  constructor() { }
+  constructor(
+    private apiService: ApiRequestService
+  ) { }
 
+
+
+  recipes: any;
   cookie: any;
   ngOnInit(): void {
     this.cookie = window.localStorage.getItem('token');
+    this.apiService.apiRequest('/recipes', 'get')
+      .subscribe((respond:any)=> {
+        this.recipes = respond;
+      });
   }
   toggleNavbar(){
     this.showNavbar =! this.showNavbar; 

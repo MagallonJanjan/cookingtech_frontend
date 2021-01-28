@@ -41,4 +41,17 @@ export class ViewrecipesComponent implements OnInit {
   if (typeof s !== 'string') return ''
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
+
+
+deleteRecipe(id:any) {
+  this.apiService.apiRequest(`/recipes/${id}`, "delete",{})
+    .subscribe(respond => {
+      Swal.fire("Deleted successfully!","success","success");
+      window.location.reload();
+    });
+}
+
+editRecipe(id:any) {
+
+}
 }

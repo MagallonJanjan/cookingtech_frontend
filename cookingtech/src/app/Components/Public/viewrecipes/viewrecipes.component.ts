@@ -31,7 +31,7 @@ export class ViewrecipesComponent implements OnInit {
  removeBookmark(id:any) {
     this.apiService.apiRequest(`/bookmarks/${id}`, "delete", {}).subscribe(
       respond => {
-        Swal.fire("Deleted successfully!","success","success") ;
+        Swal.fire("Bookmark Removed!","success","success") ;
         window.location.reload();
       }
     );

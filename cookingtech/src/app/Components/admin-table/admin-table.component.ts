@@ -150,7 +150,7 @@ export class AdminTableComponent implements OnInit {
   }
 
 
-   filterTable() {
+   filterTable(){
    var input, filter, table, tr, td, i, txtValue;
     input = (<HTMLInputElement>document.getElementById('myInput'));
     filter = input.value.toUpperCase();
@@ -167,5 +167,13 @@ export class AdminTableComponent implements OnInit {
         }
        }       
      }
+ }
+
+ resetPassword(user:any){
+   user = this.users.id;
+   console.log(user);
+
+   this.apiService.apiRequest(`/users/${user}`, {})
+   
  }
 }

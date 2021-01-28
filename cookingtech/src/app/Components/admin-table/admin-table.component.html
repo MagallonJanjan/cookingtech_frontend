@@ -20,7 +20,8 @@
                             <select class="form-control" id="sel1" value="" formControlName="newUserType">
                                 <option *ngFor="let pos of usertypes" [ngValue]="pos[1]" [selected]="info.usertype==pos[1]">{{pos[0]}}</option>
                             </select>
-                            <div class="modal-footer">
+                            <div  class="modal-footer">
+                                <button class="btn btn-info" (click)="resetPassword(users.id)">Reset Password</button>
                                     <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editUserStatus(info)">Save changes</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                               

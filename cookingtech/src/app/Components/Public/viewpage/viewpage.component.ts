@@ -31,7 +31,7 @@ export class ViewpageComponent implements OnInit {
   user:any;
   ngOnInit(): void {
     //get the cookies and possible encrypt it into data
-    this.cookie = this.cookies.get('__cookingtech');
+    this.cookie = window.localStorage.getItem('__cookingtech');
     
     if(this.cookie) {
       this.user = this.dataEnc.decrypt(this.cookie).user;
@@ -52,6 +52,8 @@ export class ViewpageComponent implements OnInit {
           this.recipes = respond.user_bookmarks[0].bookmarks;
           this.isRecipes = true;
           this.category = "My Bookmarks";
+          console.log(this.recipes);
+          
           return;
         });
     }

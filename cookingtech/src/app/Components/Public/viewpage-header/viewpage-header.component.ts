@@ -31,7 +31,8 @@ export class ViewpageHeaderComponent implements OnInit {
   name:any;
 
   onKey(item:any) {
-     
+        item = (item=="")?"~!$^*(*":item;
+        
         item = item.toLowerCase();
         this.values = this.recipes.filter((recipe:any)=> {
           return recipe.name.toLowerCase().includes(item);

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiRequestService} from '../../../services/apirequest.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-viewpage-header',
@@ -7,11 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewpageHeaderComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(
+    private apiService : ApiRequestService
+  ) { }
+  
+  recipes: any;
   cookie: any;
   ngOnInit(): void {
     this.cookie = window.localStorage.getItem('token');
+
+    this.apiService.apiRequest('/recipes', "get")
+        .subscribe((respond:any)=>{
+          this.recipes = respond;
+          console.log(this.recipes);
+         
+        })
+
+
+  }
+  values:any;
+  name:any;
+
+  onKey(item:any) {
+     
+        item = item.toLowerCase();
+        this.values = this.recipes.filter((recipe:any)=> {
+          return recipe.name.toLowerCase().includes(item);
+        });
+        console.log(this.values); 
+          
   }
 
 }

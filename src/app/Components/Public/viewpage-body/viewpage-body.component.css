@@ -16,7 +16,7 @@ p {
 .custom-style-sidebar {
   height: 100%;
   width: 220px;
-  margin-top: 58px;
+  /* margin-top: 58px; */
   z-index: 1;
 }
 

@@ -66,9 +66,11 @@ MustMatch(controlName: string, matchingControlName: string) {
 
 configUrl = '/users';
 
+spinner = true;
 onSubmit() {
   this.submitted = true;
   // stop here if form is invalid
+  this.spinner = false;
   if (this.user.invalid) {
     return;
   }
@@ -80,7 +82,8 @@ onSubmit() {
   errors=> {
     console.log(errors.error.errors);
   });
-  this.user.reset();
+
+ 
 
 }
 }

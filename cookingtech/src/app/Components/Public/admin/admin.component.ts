@@ -12,6 +12,7 @@ import {
   ApexDataLabels,
   ApexPlotOptions
 } from 'ng-apexcharts';
+import { async } from 'q';
 
 
 //initialized the chart options
@@ -38,9 +39,12 @@ export class AdminComponent implements OnInit {
   class: string = "click";
   title: any = "Dashboard";
 
+  authenticatedUser: any;
   users: any;
   recipes: any;
   pendings: any;
+
+  admin:any;
 
   showDashboard: boolean;
   //graph components needs declaration
@@ -48,7 +52,8 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private apiService: ApiRequestService,
-    private cookies: CookieService
+    private cookies: CookieService,
+    private dataEnc: EncryptService,
   ) {
     this.data = [];
     this.showDashboard = true;
@@ -121,6 +126,9 @@ export class AdminComponent implements OnInit {
 
     //get all data
     this.getDatas();
+
+    // get authenticated user
+    this.getUathenticatedUser();
    
   }
 
@@ -192,11 +200,35 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  async getChanges(DataChange:string) { 
+    await this.getDatas();
+    await this.getDataOnclick(DataChange);  
+  }
+
+
+  //get the authenticated user
+  getUathenticatedUser() {
+    this.authenticatedUser = this.dataEnc.decrypt(
+      this.cookies.get('__cookingtech')
+      ).user;
+  }
+
+  deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
+
   logout() {
     //clear all broswer storages
     this.apiService.apiRequest('/users/logout',"post",{}).subscribe(respond => {
       window.localStorage.removeItem('token');
-      this.cookies.delete('__cookingtech');
+      this.deleteAllCookies();
       window.location.reload();
       console.log(respond);
       

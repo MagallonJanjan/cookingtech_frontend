@@ -1,5 +1,8 @@
 <div>
     <!--update Modal-->
+    <!-- <div class="alert alert-success" role="alert">
+            This is a success alert—check it out!
+          </div> -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -16,17 +19,21 @@
                         <p>First Name: {{info.firstname}}</p>
                         <p>Last Name: {{info.lastname}}</p>
                         <div class="form-group">
+                            <form [formGroup]="usertype" >
                             <label for="sel1">Update User Position:</label>
-                            <select class="form-control" id="sel1" value="">
-                                <option *ngFor="let pos of usertypes" value="pos[1]" [selected]="info.usertype==pos[1]">{{pos[0]}}</option>
+                            <select class="form-control" id="sel1" value="" formControlName="newUserType">
+                                <option *ngFor="let pos of usertypes" [ngValue]="pos[1]" [selected]="info.usertype==pos[1]">{{pos[0]}}</option>
                             </select>
+                            <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editUserStatus(info)">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              
+                            </div>
+                        </form>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -43,12 +50,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-danger" role="alert">
-                        Are you sure you want to delete this user?
+                        Are you sure you want to delete this item?
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" (click)="deleteData()">Continue</button>
+                    <button type="button" class="btn btn-primary" (click)="deleteData()" data-dismiss="modal">Continue</button>
                 </div>
             </div>
         </div>
@@ -66,21 +73,21 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-primary" role="alert">
-                        <p>Name: {{recipe.name}}</p>
-                        <p>Category: {{recipe.category}}</p>
-                        <p>Yield: {{recipe.yield}}</p>
-                        <p>Tag: {{recipe.tag}}</p>
-                        <p>Description: {{recipe.description}}</p>
-                        <p>Ingredients:</p>
-                        <p *ngFor="let ingredient of recipe.ingredients; let number=index">{{number+1 + "." +
+                        <p> <strong>Name:</strong> {{recipe.name}}</p>
+                        <p> <strong>Category: </strong> {{recipe.category}}</p>
+                        <p> <strong>Yield:</strong>  {{recipe.yield}}</p>
+                        <p> <strong>Tag:</strong> {{recipe.tag}}</p>
+                        <p> <strong> Description:</strong> {{recipe.description}}</p>
+                        <p class="font-weight-bold">Ingredients:</p>
+                        <p class="ml-3" *ngFor="let ingredient of recipe.ingredients; let number=index">{{number+1 + "." + 
                             ingredient}}</p>
-                        <p>Procedures:</p>
-                        <p *ngFor="let procedure of recipe.procedures let num =index"> {{num+1 + "." + procedure}} </p>
+                        <p class="font-weight-bold">Procedures:</p>
+                        <p  class="ml-3" *ngFor="let procedure of recipe.procedures let num =index"> {{num+1 + "." + procedure}} </p>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" (click)="approveButton(recipe)">Approve</button>
+                        <button type="button" class="btn btn-primary" (click)="approveButton(recipe)" data-dismiss="modal">Approve</button>
                     </div>
                 </div>
             </div>
@@ -102,7 +109,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let bits of data | paginate: { id: 'test',
-                        itemsPerPage: 10,
+                        itemsPerPage: 8,
                         currentPage: page,
                         totalItems: totalData}">
                                 <td class="table-secondary">{{bits.name || bits.lastname}}</td>
@@ -113,10 +120,13 @@
                                 <td class="table-secondary">
                                     <button class="btn btn-danger float-right" data-toggle="modal" (click)="getData(bits)"
                                         data-target="#exampleModal1">Delete</button>
+
                                     <button type="submit" (click)="getUserData(bits)" *ngIf="( bits.lastname)"
                                         data-toggle="modal" data-target="#exampleModal" class="float-right btn btn-info mr-2">View</button>
+
                                     <a><button type="submit" (click)="editUserData(bits.id)" *ngIf="(!bits.lastname && bits.status)"
                                             data-toggle="modal"  class="float-right btn btn-info mr-2">Edit</button></a>
+
                                     <button type="submit" (click)="getRecipeData(bits)" *ngIf="( !bits.status && !bits.lastname )"
                                         data-toggle="modal" data-target="#exampleModal2" class="float-right btn btn-info mr-2">View</button>
 

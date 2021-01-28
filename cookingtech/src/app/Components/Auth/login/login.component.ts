@@ -33,10 +33,12 @@ export class LoginComponent implements OnInit {
 
 
   kindOfUser: any;
+  isLoginDisabled = true
   onSubmit(): void {
-
+    this.isLoginDisabled = false
     this.validation.apiRequest('/users/login', "post", this.userLogin.value)
       .subscribe(userToken => {
+       
         console.log(userToken);
         this.kindOfUser = userToken;
         if (this.kindOfUser.errors) {
@@ -47,7 +49,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/admin'])
         }
         if (this.kindOfUser.user.usertype === 'chef_master') {
-          this.router.navigate([''])
+          this.router.navigate(['/home'])
         }
         if (this.kindOfUser.user.usertype === 'admin') {
           this.router.navigate(['/admin'])
@@ -57,6 +59,7 @@ export class LoginComponent implements OnInit {
         this.cookies.set('__cookingtech', encCookies);
       }, error => {
         alert('This credentials does not match to our records! Please try again.');
+        this.isLoginDisabled = true
       }
       )
   }

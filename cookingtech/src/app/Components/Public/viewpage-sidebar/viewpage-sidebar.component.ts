@@ -20,6 +20,7 @@ export class ViewpageSidebarComponent implements OnInit {
   cookie: any;
   showSideBar:boolean = true;
   class:string = "click";
+  user: any;
 
   constructor(
     private cookies: CookieService,
@@ -30,6 +31,8 @@ export class ViewpageSidebarComponent implements OnInit {
 
   ngOnInit(): void {
       this.cookie = this.cookies.get('__cookingtech');
+      this.user = this.dataEnc.decrypt(this.cookie).user;
+    
   }
   
   toggleSidebar() {
@@ -43,13 +46,25 @@ export class ViewpageSidebarComponent implements OnInit {
 
   gotoBookmarks() {
     this.route.navigate(['/user/recipes/bookmarks']);
-  }
+  }  
+
+ deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
+
 
   logout() {
     //clear all broswer storages
     this.apiService.apiRequest('/users/logout',"post",{}).subscribe(respond => {
       window.localStorage.removeItem('token');
-      this.cookies.delete('__cookingtech');
+      this.deleteAllCookies();
       window.location.reload();
       console.log(respond);
     }) 

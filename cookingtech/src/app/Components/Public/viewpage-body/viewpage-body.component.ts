@@ -33,11 +33,14 @@ export class ViewpageBodyComponent implements OnInit {
   }
   contentForm: any;
   ngOnInit(): void {
-    //get the uesr_id first
+    //get the user_id first
     this.cookie = window.localStorage.getItem('__cookingtech');
     this.recipe = this.recipe.recipe[0];
     this.comments = this.recipe.comments;
     this.recipe_id = this.recipe.id;
+
+    this.comments = this.recipe.comments;
+    
 
     if (this.cookie) {
       console.log(this.dataEnc.decrypt(this.cookie).user);
@@ -79,6 +82,14 @@ export class ViewpageBodyComponent implements OnInit {
         this.ratings = response.recipe[0].ratings;
         console.log(response);
       });
+  }
+
+  updateComment() {
+    this.apiService.apiRequest(`/recipes/${this.recipe_id}`, "get")
+      .subscribe((respond:any)=> {
+        this.comments = respond.recipe[0].comments;
+      });
+
   }
 
 
@@ -152,14 +163,21 @@ export class ViewpageBodyComponent implements OnInit {
     }
 
     let content = this.contentForm.value;
+   
     let recipe_id = this.recipe.id;
     let user_id = this.dataEnc.decrypt(this.cookie1).user.id;
-
-    // this.apiService.apiRequest(`/comments`,"post", {"recipe_id": })
-
-
+    let data = {
+      "content": content.content,
+      "user_id": user_id,
+      "recipe_id": recipe_id
+    };
+    console.log(data);
+    this.apiService.apiRequest(`/comments`,"post", data)
+      .subscribe(respond=> {
+        console.log(respond);
+        this.updateComment();
+      });
   }
-
 
   isRatingExisted(RatingData:any, rating: any) {
     for(let rate of RatingData ) {
@@ -193,5 +211,11 @@ export class ViewpageBodyComponent implements OnInit {
           this.updateRatings(this.recipe_id);
         }
       );
+  }
+
+
+
+  submitted() {
+    this.updateComment();
   }
 }

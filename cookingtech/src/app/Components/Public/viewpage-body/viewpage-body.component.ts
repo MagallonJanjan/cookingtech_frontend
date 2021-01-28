@@ -115,11 +115,6 @@ export class ViewpageBodyComponent implements OnInit {
 
   }
 
-
-
-
-
-
   addToBookmark() {
     if (!this.cookie) {
       this.router.navigate(['login']);
@@ -184,7 +179,7 @@ export class ViewpageBodyComponent implements OnInit {
       return;
     }
     let user_id = this.dataEnc.decrypt(this.cookie).user.id;
-    let rating = {"user_id": user_id, "recipe_id": this.recipe_id, "star": this.selectedValue};
+    let rating = {"user_id": user_id, "recipe_id": this.recipe_id, "stars": this.selectedValue};
     
     if(this.isRatingExisted(this.ratings, rating)) {
       alert("You already rated this recipe!");

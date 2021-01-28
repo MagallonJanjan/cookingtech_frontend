@@ -18,8 +18,11 @@
       </ul>
     </div>
     <form class="form-inline my-2 my-lg-0" style="margin: 2px;">
-      <button style="margin-right: 5px;" class="btn btn-outline-info my-2 my-sm-0" type="submit" routerLink="/register">Register</button>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/login">Login</button>
+      <h5 class="btn text-right mx-4" *ngIf="cookie"><a>{{user.username}}</a></h5>
+      <div *ngIf="!cookie">
+        <button style="margin-right: 5px;" class="btn btn-outline-info my-2 my-sm-0" type="submit" routerLink="/register">Register</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/login">Login</button>
+      </div>
     </form>
   </nav>
 
@@ -99,7 +102,7 @@
       <div class="card-body">
         <h5 class="card-title">Veggie Quiche Muffins</h5>
         <p class="card-text">A very healthy breakfast for all ages.</p>
-        <button class="btn btn-outline-success" routerLink="/viewpage">See More...</button>
+        <button class="btn btn-outline-success" routerLink="/recipes">See More...</button>
       </div>
     </div>
     <div class="card">

@@ -1,3 +1,6 @@
+<head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+</head>
 <div class="container"><br>
   <form [formGroup]="addRecipe">
     <h3 class="text-center" *ngIf="recipeId">Edit Recipe</h3>
@@ -72,11 +75,16 @@
     </div><br>
     <button class="btn btn-info editAll" *ngIf="recipeId" [disabled]="isEditRecipe">Edit Recipe</button>
     <button class="btn btn-danger cancel" *ngIf="recipeId" routerLink="/admin">Cancel</button>
+    
 
-    <button type="submit" class="btn btn-primary saveAll" *ngIf="!recipeId" (click)="onSubmit(addRecipe.value)" [disabled]="addRecipe.invalid">Save
-      Recipe</button><br><br><br>
-      
-    <div>
+    <button type="submit" class="btn btn-primary saveAll" [hidden]="!isRecipeSave" *ngIf="!recipeId" (click)="onSubmit(addRecipe.value)" [disabled]="addRecipe.invalid">Save
+      Recipe</button>
+      <button class="btn btn-primary loadingSave" type="button" [hidden]="isRecipeSave">
+          <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+         Please wait...
+        </button>
+      <button class="btn btn-danger cancel" *ngIf="!recipeId" routerLink="/admin">Cancel</button>
+    <div><br><br><br>
       <span></span>
       <span>
         <p></p>

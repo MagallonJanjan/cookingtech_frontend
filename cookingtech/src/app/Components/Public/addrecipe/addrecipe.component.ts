@@ -75,7 +75,7 @@ export class AddrecipeComponent implements OnInit {
             this.isEditRecipe = false;
           })
 
-          this.apiRequest.apiRequest()
+          // this.apiRequest.apiRequest()
      }
       
   }
@@ -109,6 +109,7 @@ export class AddrecipeComponent implements OnInit {
   }
 
 
+  isRecipeSave = true;
   datas:any;
   onSubmit(data : any){ 
     this.addRecipe.value.ingredients = this.ingredientsArray;
@@ -118,12 +119,13 @@ export class AddrecipeComponent implements OnInit {
     let UserData = this.dataEnc.decrypt(cookie);
     this.datas["user_id"] = UserData.user.id;
 
-  
+    this.isRecipeSave = false;
     this.apiRequest.apiRequest('/recipes','post', this.datas)
       .subscribe( respond => {
         console.log(respond);
-        alert('You are adding a new recipe!');
-        this.addRecipe.reset()
+        alert('You added a new recipe!');
+        this.addRecipe.reset();
+        this.isRecipeSave = true;
 
         this.ingredientsArray = [];
         this.proceduresArray = [];
@@ -134,7 +136,4 @@ export class AddrecipeComponent implements OnInit {
 
   disableAddButton = true;
   procedures:any;
-
-
-
 }

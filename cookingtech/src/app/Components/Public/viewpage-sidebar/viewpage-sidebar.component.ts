@@ -20,7 +20,7 @@ export class ViewpageSidebarComponent implements OnInit {
   cookie: any;
   showSideBar:boolean = true;
   class:string = "click";
-  usertype: any;
+  user: any;
 
   constructor(
     private cookies: CookieService,
@@ -31,9 +31,8 @@ export class ViewpageSidebarComponent implements OnInit {
 
   ngOnInit(): void {
       this.cookie = this.cookies.get('__cookingtech');
-
-      this.usertype = this.dataEnc.decrypt(this.cookie).user.usertype;
-      console.log(this.usertype);
+      this.user = this.dataEnc.decrypt(this.cookie).user;
+    
   }
   
   toggleSidebar() {

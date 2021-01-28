@@ -32,7 +32,7 @@ export class ViewpageBodyComponent implements OnInit {
   }
   contentForm: any;
   ngOnInit(): void {
-    //get the uesr_id first
+    //get the user_id first
     this.cookie = window.localStorage.getItem('__cookingtech');
     if(this.cookie) {
       console.log(this.dataEnc.decrypt(this.cookie).user);
@@ -50,6 +50,7 @@ export class ViewpageBodyComponent implements OnInit {
    this.recipe_id = this.recipe.id;
     console.log(this.comments);
     
+
    //form for the comment
    this.contentForm = this.formBuilder.group({
      content: ['',[Validators.required]]
@@ -100,7 +101,7 @@ export class ViewpageBodyComponent implements OnInit {
     }
 
     if(!this.isExisted) {
-      alert("You alreaded added it to your bookmarks!");
+      alert("You already added it to your bookmarks!");
       return;
     }
 
@@ -125,16 +126,26 @@ export class ViewpageBodyComponent implements OnInit {
   }
 
   onComment() {
-    let cookie = window.localStorage.get('__cookingtech');
-    if(!cookie) {
+
+     this.cookie = window.localStorage.getItem('__cookingtech');
+    if(!this.cookie) {
       this.cookies.set('goto', window.location.href);
       window.location.href = 'login';
     }
-    
     let content = this.contentForm.value;
+   
     let recipe_id = this.recipe.id;
-    let user_id = this.dataEnc.decrypt(cookie).user.id;
+    let user_id = this.dataEnc.decrypt(this.cookie).user.id;
 
+    this.apiService.apiRequest('/comments',"post",{"recipe_id":recipe_id,"user_id":user_id,"content":content})
+            .subscribe(respond=>{
+                alert('Comment added successfully!');
+                //this.router.navigate(['/recipes'])
+            },error =>{
+                console.log(error);
+                alert('Sayop bro :)!');
+            })
+    this.contentForm.reset();
 
   }
 }

@@ -37,8 +37,10 @@ export class AddrecipeComponent implements OnInit {
            this.updatedRecipe = respond.recipe[0];
            this.ingredientsArray = respond.recipe[0].ingredients;
            this.proceduresArray = respond.recipe[0].procedures;
+           console.log(respond.recipe[0]);
+    
            
-
+           
            this.addRecipe = this.formBuilder.group({
              name: [this.updatedRecipe.name,[Validators.required, Validators.minLength(6)]],
              description: [this.updatedRecipe.description, [Validators.required, Validators.minLength(25)]],
@@ -50,12 +52,15 @@ export class AddrecipeComponent implements OnInit {
              img_url: [this.updatedRecipe.img_url, [Validators.required]]
             });
 
+          
            this.isEditRecipe = false;
            this.recipeToUpdate = this.addRecipe.value;
+           console.log(this.addRecipe.value);
            
          })
+      }
     }
-   }
+
 
   ngOnInit(): void {
   
@@ -78,28 +83,34 @@ export class AddrecipeComponent implements OnInit {
   isEditRecipe = true;
   recipeToUpdate:any;
   isUpdateSave = true;
+  isCancel = false;
+
 
   newUpdate(){
+
     this.isUpdateSave = false;
-    console.log(this.recipeToUpdate)
-    console.log(this.updatedRecipe);
-    
+    this.isCancel = true;
+
     this.recipeToUpdate.ingredients = this.ingredientsArray;
     this.recipeToUpdate.procedures = this.proceduresArray;
-    //this.recipeToUpdate = this.updatedRecipe;
 
-    this.apiRequest.apiRequest(`/recipes/${this.recipeId}`,"put",this.recipeToUpdate)
+    this.apiRequest.apiRequest(`/recipes/${this.recipeId}`,"put", this.recipeToUpdate)
     .subscribe((respond:any)=>{
         alert('Recipe updated successfully!');
         this.isUpdateSave = true;
-    },error =>{
-      alert('Sayop uyy,')
-      this.isUpdateSave = true;
-      console.log(error);
+        console.log(respond);
+        this.isCancel = false;
+        
+    },
+      error =>{
+        alert('Sayop uyy')
+        this.isUpdateSave = true;
+        console.log(error);
+        this.isCancel = false;
     })
-
   }
 
+  
   ingredientsArray: any[] = [];
   proceduresArray: any[] = [];
 

@@ -78,7 +78,7 @@
         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
        Please wait...
       </button>
-    <button class="btn btn-danger cancel" *ngIf="recipeId" routerLink="/admin">Close</button>
+    <button class="btn btn-danger cancel" *ngIf="recipeId" [disabled]="isCancel" routerLink="/admin">Cancel</button>
     
 
     <button type="submit" class="btn btn-primary saveAll" [hidden]="!isRecipeSave" *ngIf="!recipeId" (click)="onSubmit(addRecipe.value)" [disabled]="addRecipe.invalid">Save

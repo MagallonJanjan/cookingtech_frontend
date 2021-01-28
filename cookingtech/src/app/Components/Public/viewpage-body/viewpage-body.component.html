@@ -34,7 +34,7 @@
         <div class="row">
           <div class="col">
             <form class="form-inline" [formGroup]="contentForm" (ngSubmit)="onComment()">
-                <input class="form-control w-50" type="text" formControlName="content" placeholder="Write your comment here..." id="content">
+                <input class="form-control w-50" type="text" formControlName="content"  placeholder="Write your comment here..." id="content">
                 <div *ngIf="contentForm.get('content').touched && contentForm.get('content').invalid" class="invalid-feedback">
                     <p *ngIf="contentForm.get('content').errors.required">Content of the recipe is required</p>
                   </div>

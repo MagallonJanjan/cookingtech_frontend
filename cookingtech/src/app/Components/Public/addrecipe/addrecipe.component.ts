@@ -110,7 +110,7 @@ export class AddrecipeComponent implements OnInit {
         
     },
       error =>{
-        alert('Sayop uyy')
+        Swal.fire('Failed to Update!');
         this.isUpdateSave = true;
         console.log(error);
         this.isCancel = false;

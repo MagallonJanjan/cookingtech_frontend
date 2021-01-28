@@ -169,11 +169,14 @@ export class AdminTableComponent implements OnInit {
      }
  }
 
- resetPassword(user:any){
-   user = this.users.id;
-   console.log(user);
+ user:any
+ resetPassword(){
+   this.user = this.user.value.id;
+   console.log(this.user);
 
-   this.apiService.apiRequest(`/users/${user}`, {})
-   
- }
+  // this.apiService.apiRequest(`/users/${this.user}`,{"password":})
+  //     .subscribe((respond:any)=>{
+
+  //     })   
+  }
 }

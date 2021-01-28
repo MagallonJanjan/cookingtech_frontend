@@ -26,6 +26,16 @@ export class ViewrecipesComponent implements OnInit {
     this.route.navigate([`/recipes/${id}`]);
  }
 
+ //remove bookmarks
+ removeBookmark(id:any) {
+    this.apiService.apiRequest(`/bookmarks/${id}`, "delete", {}).subscribe(
+      respond => {
+        alert("deleted successfully!") ;
+        window.location.reload();
+      }
+    );
+ }
+
  capitalize(s:string) {
   if (typeof s !== 'string') return ''
   return s.charAt(0).toUpperCase() + s.slice(1)

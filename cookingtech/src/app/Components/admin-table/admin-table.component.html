@@ -82,7 +82,7 @@
                         <p class="ml-3" *ngFor="let ingredient of recipe.ingredients; let number=index">{{number+1 + "." + 
                             ingredient}}</p>
                         <p class="font-weight-bold">Procedures:</p>
-                        <p  class="ml-3" *ngFor="let procedure of recipe.procedures let num =index"> {{num+1 + "." + procedure}} </p>
+                        <p  class="ml-3" *ngFor="let procedure of recipe.procedures let num =index"> {{procedure}} </p>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -112,7 +112,7 @@
                         itemsPerPage: 8,
                         currentPage: page,
                         totalItems: totalData}">
-                                <td class="table-secondary">{{bits.name || bits.lastname}}</td>
+                                <td class="table-secondary">{{bits.name || bits.firstname+" "+bits.lastname}}</td>
                                 <td class="table-secondary" *ngIf="!bits.name">{{bits.usertype}}</td>
                                 <td class="table-secondary" *ngIf="!bits.lastname">{{bits.category}}</td>
                                 <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{epilsesLimit(bits.description)}}</td>

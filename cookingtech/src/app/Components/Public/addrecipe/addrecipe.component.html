@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 </head>
 <div class="container"><br>
   <form [formGroup]="addRecipe">
@@ -19,6 +19,8 @@
         <label for="exampleFormControlTextarea1">Description</label>
         <textarea class="form-control" formControlName="description" [ngClass]="{'is-invalid' : addRecipe.get('description').touched && addRecipe.get('description').invalid}"
           id="exampleFormControlTextarea1" rows="1">
+
+
 
           </textarea>
         <div *ngIf="addRecipe.get('description').touched && addRecipe.get('description').invalid" class="invalid-feedback">
@@ -74,16 +76,17 @@
       </div>
     </div><br>
     <button class="btn btn-info editAll" *ngIf="recipeId" [disabled]="isEditRecipe">Edit Recipe</button>
-    <button class="btn btn-danger cancel" *ngIf="recipeId" routerLink="/admin">Close</button>
-    
+    <button class="btn btn-danger cancel" *ngIf="recipeId" routerLink="/admin">Cancel</button>
 
-    <button type="submit" class="btn btn-primary saveAll" [hidden]="!isRecipeSave" *ngIf="!recipeId" (click)="onSubmit(addRecipe.value)" [disabled]="addRecipe.invalid">Save
+
+    <button type="submit" class="btn btn-primary saveAll" [hidden]="!isRecipeSave" *ngIf="!recipeId" (click)="onSubmit(addRecipe.value)"
+      [disabled]="addRecipe.invalid">Save
       Recipe</button>
-      <button class="btn btn-primary loadingSave" type="button" [hidden]="isRecipeSave">
-          <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-         Please wait...
-        </button>
-      <button class="btn btn-danger cancel" *ngIf="!recipeId" routerLink="/admin">Close</button>
+    <button class="btn btn-primary loadingSave" type="button" [hidden]="isRecipeSave">
+      <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+      Please wait...
+    </button>
+    <button class="btn btn-danger cancel" *ngIf="!recipeId" routerLink="/admin">Close</button>
     <div><br><br><br>
       <span></span>
       <span>
@@ -121,7 +124,8 @@
             </div>
           </div>
           <div class="input-group ">
-            <input type="text" class="form-control ingredientInput" formControlName="ingredients" #ingredients [ngClass]="{'is-invalid' : addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid}"
+            <input type="text" class="form-control ingredientInput" formControlName="ingredients" #ingredients
+              [ngClass]="{'is-invalid' : addRecipe.get('ingredients').touched && addRecipe.get('ingredients').invalid}"
               id="lingling" placeholder="Ingredient">
             <div class="input-group-append">
               <button class="btn alert-success mr-3 " [disabled]="ingredients.value.length < 3" type="submit" (click)="addIngredients()">Add</button>

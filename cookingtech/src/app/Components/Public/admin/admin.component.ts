@@ -61,6 +61,12 @@ export class AdminComponent implements OnInit {
     private dataEnc: EncryptService,
   ) {
     this.data = [];
+    this.apiService.apiRequest('/graph', 'get')
+      .subscribe((respond:any)=> {
+        console.log(respond);
+        
+      })
+
     this.showDashboard = true;
     this.chartOptions = {
       series: [

@@ -115,6 +115,15 @@ export class AdminTableComponent implements OnInit {
           }
           this.changes.emit(url);
           
+          if(url == "pendings") {
+            await this.apiService.apiRequest(`/recipes/status/pendings`, "get")
+              .subscribe((respond:any) => {
+                this.data = respond.pendings.filter((pendings:any)=>{
+                  return pendings.status == false;
+                });
+              });
+          }
+
           if(url == "users") {
             await this.apiService.apiRequest(`/users`, 'get').subscribe((respond:any)=> {
               this.data = respond.users.filter((admin: any)=> {

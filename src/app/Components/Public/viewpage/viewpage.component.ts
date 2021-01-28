@@ -52,6 +52,8 @@ export class ViewpageComponent implements OnInit {
           this.recipes = respond.user_bookmarks[0].bookmarks;
           this.isRecipes = true;
           this.category = "My Bookmarks";
+          console.log(this.recipes);
+          
           return;
         });
     }

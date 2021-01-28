@@ -72,7 +72,19 @@ export class AdminComponent implements OnInit {
 
     this.apiService.apiRequest('/graph', 'get')
       .subscribe((respond: any) => {
-        this.chartOptions = {
+        
+        console.log(respond);
+        this.data = respond.filter((recipe: any) => {
+          return recipe.ratings.length > 0;
+        });
+        this.data = this.getGraphData(this.data).slice(0, 5);
+        console.log(this.data[0].value);
+
+        this.chartOptions.series[0].data = [this.data[0].value, this.data[1].value, this.data[2].value, this.data[3].value, this.data[4].value];
+        this.chartOptions.xaxis.categories = [this.data[0].name, this.data[1].name, this.data[2].name, this.data[3].name, this.data[4].name]
+      });
+     
+      this.chartOptions = {
           series: [
             {
               name: "Ratings",
@@ -132,16 +144,8 @@ export class AdminComponent implements OnInit {
             }
           }
         }
-        console.log(respond);
-        this.data = respond.filter((recipe: any) => {
-          return recipe.ratings.length > 0;
-        });
-        this.data = this.getGraphData(this.data).slice(0, 5);
-        console.log(this.data[0].value);
-
-        this.chartOptions.series[0].data = [this.data[0].value, this.data[1].value, this.data[2].value, this.data[3].value, this.data[4].value];
-        this.chartOptions.xaxis.categories = [this.data[0].name, this.data[1].name, this.data[2].name, this.data[3].name, this.data[4].name]
-      });
+      
+      
   }
 
   ngOnInit(): void {

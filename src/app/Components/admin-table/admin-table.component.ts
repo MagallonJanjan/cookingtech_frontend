@@ -3,6 +3,7 @@ import {ApiRequestService} from '../../services/apirequest.service';
 import { Router } from '@angular/router';
 import {FormBuilder,FormControl,Validator, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
+import { EncryptService } from "../../services/encrypt.service";
 
 
 
@@ -37,7 +38,8 @@ export class AdminTableComponent implements OnInit {
 
   constructor(private apiService:ApiRequestService,
             private router : Router,
-            private formBuilder:FormBuilder,) {
+            private formBuilder:FormBuilder,
+            private dataEnc: EncryptService) {
     this.info = {firstname: "", lastname: "", position: ""}
     this.recipe ={name:"",description:"",tag:"",ingredients:[],procedures:[],yield:"",category:""}
    }
@@ -171,12 +173,12 @@ export class AdminTableComponent implements OnInit {
 
  user:any
  resetPassword(){
-   this.user = this.user.value.id;
-   console.log(this.user);
+   this.user = window.localStorage.getItem('__cookingtech')
+  let user_id = this.dataEnc.decrypt(this.user).user.id;
 
-  // this.apiService.apiRequest(`/users/${this.user}`,{"password":})
-  //     .subscribe((respond:any)=>{
-
-  //     })   
+  this.apiService.apiRequest(`/users/${user_id}`,"put",{"password":"password"})
+      .subscribe((respond:any)=>{
+        Swal.fire("Password Reseted!");
+      })   
   }
 }

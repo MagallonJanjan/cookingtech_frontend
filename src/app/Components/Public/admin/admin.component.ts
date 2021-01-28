@@ -44,7 +44,7 @@ export class AdminComponent implements OnInit {
   recipes: any;
   pendings: any;
 
-  chartOptions: ChartOptions;
+  chartOptions?: ChartOptions;
   usersLen: any;
   recipesLen: any;
   pendingsLen: any;
@@ -140,7 +140,7 @@ export class AdminComponent implements OnInit {
         console.log(this.data[0].value);
 
         this.chartOptions.series[0].data = [this.data[0].value, this.data[1].value, this.data[2].value, this.data[3].value, this.data[4].value];
-        this.chartOptions.xaxis.categories = [this.data[0].name, this.data[1].name, this.data[2].name, this.data[3].name, this.data[4].name];
+        this.chartOptions.xaxis.categories = [this.data[0].name, this.data[1].name, this.data[2].name, this.data[3].name, this.data[4].name]
       });
   }
 

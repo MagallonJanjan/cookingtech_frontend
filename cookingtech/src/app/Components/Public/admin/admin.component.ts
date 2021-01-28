@@ -44,6 +44,11 @@ export class AdminComponent implements OnInit {
   recipes: any;
   pendings: any;
 
+
+  usersLen: any;
+  recipesLen:any;
+  pendingsLen: any;
+
   admin:any;
 
   showDashboard: boolean;
@@ -142,6 +147,7 @@ export class AdminComponent implements OnInit {
      .subscribe(
        respond => {
          this.users = respond;
+         this.usersLen = this.users.users.length;
          console.log(this.users);
          
        }
@@ -152,6 +158,7 @@ export class AdminComponent implements OnInit {
      .subscribe(
        respond => {
          this.pendings = respond;
+         this.pendingsLen = this.pendings.pendings.length;
          console.log(this.pendings);
          
        }
@@ -162,6 +169,7 @@ export class AdminComponent implements OnInit {
      .subscribe(
        respond => {
          this.recipes = respond;
+         this.recipesLen = this.recipes.length;
          console.log(this.recipes);
        }
      )

@@ -32,7 +32,7 @@
     <div class="row">
       <div class="col">
         <label for="exampleFormControlTextarea1">Yield</label>
-        <input type="number" class="form-control" formControlName="yield" [ngClass]="{'is-invalid' : addRecipe.get('yield').touched && addRecipe.get('yield').invalid}"
+        <input type="number" min="1" class="form-control" formControlName="yield" [ngClass]="{'is-invalid' : addRecipe.get('yield').touched && addRecipe.get('yield').invalid}"
           placeholder="Yield ">
         <div *ngIf="addRecipe.get('yield').touched && addRecipe.get('yield').invalid" class="invalid-feedback">
           <p *ngIf="addRecipe.get('yield').errors.required">This field is required</p>
@@ -84,13 +84,13 @@
     
 
     <button type="submit" class="btn btn-primary saveAll" [hidden]="!isRecipeSave" *ngIf="!recipeId" (click)="onSubmit(addRecipe.value)"
-      [disabled]="addRecipe.invalid">Save
+      [disabled]="addRecipe.invalid || ingredientsArray.length < 1 || proceduresArray.length < 1">Save
       Recipe</button>
     <button class="btn btn-primary loadingSave" type="button" [hidden]="isRecipeSave">
       <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
       Please wait...
     </button>
-    <button class="btn btn-danger cancel" *ngIf="!recipeId" routerLink="/admin">Close</button>
+    <button class="btn btn-danger cancel" *ngIf="!recipeId" routerLink="/admin">Cancel</button>
     <div><br><br><br>
       <span></span>
       <span>

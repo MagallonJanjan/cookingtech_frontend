@@ -1,5 +1,10 @@
-<div class="col-12 top background" style="margin-top:105px;">
-  <div class="card-recipe text-center my-5">
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="col-12 background">
+  <div class="card-recipe text-center">
     <div class="card-header">
       <h3>{{recipe.name}}</h3>
       <small>By:{{recipe.user.username}}</small><br>
@@ -50,7 +55,7 @@
                 (onkeypress)="addClass(star)" (onkeypress)="removeClass(star)"> <i class="fa fa-star fa-lg"></i>
               </li>
             </ul>
-            <button class="btn btn-outline-info" [disabled]="isRateDisabled">Rate</button>
+            <button class="btn btn-outline-info" [disabled]="isRateDisabled" (click)="submitRate()">Rate</button>
           </div>
         </div>
       </div>

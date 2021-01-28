@@ -1,8 +1,4 @@
 <div>
-    <!--update Modal-->
-    <!-- <div class="alert alert-success" role="alert">
-            This is a success alert—check it out!
-          </div> -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -71,6 +67,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+               
                 <div class="modal-body">
                     <div class="alert alert-primary" role="alert">
                         <p> <strong>Name:</strong> {{recipe.name}}</p>
@@ -82,7 +79,7 @@
                         <p class="ml-3" *ngFor="let ingredient of recipe.ingredients; let number=index">{{number+1 + "." + 
                             ingredient}}</p>
                         <p class="font-weight-bold">Procedures:</p>
-                        <p  class="ml-3" *ngFor="let procedure of recipe.procedures let num =index"> {{num+1 + "." + procedure}} </p>
+                        <p  class="ml-3" *ngFor="let procedure of recipe.procedures let num =index"> {{procedure}} </p>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -92,6 +89,7 @@
                 </div>
             </div>
         </div>
+        
         <table class="w-100" *ngIf="data.length > 0">
             <div class="row w-100">
                 <div class="table-responsive-xl bg-light w-100">
@@ -109,10 +107,10 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let bits of data | paginate: { id: 'test',
-                        itemsPerPage: 10,
+                        itemsPerPage: 8,
                         currentPage: page,
                         totalItems: totalData}">
-                                <td class="table-secondary">{{bits.name || bits.lastname}}</td>
+                                <td class="table-secondary">{{bits.name || bits.firstname+" "+bits.lastname}}</td>
                                 <td class="table-secondary" *ngIf="!bits.name">{{bits.usertype}}</td>
                                 <td class="table-secondary" *ngIf="!bits.lastname">{{bits.category}}</td>
                                 <td class="table-secondary" *ngIf="!bits.lastname && !bits.status">{{epilsesLimit(bits.description)}}</td>

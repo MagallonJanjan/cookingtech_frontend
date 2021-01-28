@@ -44,6 +44,11 @@ export class AdminComponent implements OnInit {
   recipes: any;
   pendings: any;
 
+
+  usersLen: any;
+  recipesLen:any;
+  pendingsLen: any;
+
   admin:any;
 
   showDashboard: boolean;
@@ -142,6 +147,7 @@ export class AdminComponent implements OnInit {
      .subscribe(
        respond => {
          this.users = respond;
+         this.usersLen = this.users.users.length;
          console.log(this.users);
          
        }
@@ -152,6 +158,7 @@ export class AdminComponent implements OnInit {
      .subscribe(
        respond => {
          this.pendings = respond;
+         this.pendingsLen = this.pendings.pendings.length;
          console.log(this.pendings);
          
        }
@@ -162,6 +169,7 @@ export class AdminComponent implements OnInit {
      .subscribe(
        respond => {
          this.recipes = respond;
+         this.recipesLen = this.recipes.length;
          console.log(this.recipes);
        }
      )
@@ -207,20 +215,31 @@ export class AdminComponent implements OnInit {
 
 
   //get the authenticated user
+  cookie:any;
   getUathenticatedUser() {
-    this.authenticatedUser = this.dataEnc.decrypt(
-      this.cookies.get('__cookingtech')
-      ).user;
+    this.cookie = window.localStorage.getItem('__cookingtech');
+    this.authenticatedUser = this.dataEnc.decrypt(this.cookie).user;
   }
+
+  deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
 
   logout() {
     //clear all broswer storages
     this.apiService.apiRequest('/users/logout',"post",{}).subscribe(respond => {
       window.localStorage.removeItem('token');
-      this.cookies.delete('__cookingtech');
+      window.localStorage.removeItem('__cookingtech');
+      this.deleteAllCookies();
       window.location.reload();
       console.log(respond);
-      
     }) 
   }
 }

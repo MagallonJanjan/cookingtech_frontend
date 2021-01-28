@@ -50,8 +50,6 @@ export class UserProfileBodyComponent implements OnInit {
     }
     
   
-
-  
   onUpdate(){
     console.log(this.user_id);
     let configUrl = '/users/' + this.user_id;
@@ -61,6 +59,9 @@ export class UserProfileBodyComponent implements OnInit {
             .subscribe(respond =>{
              
               alert('Okay na')
+            },error=>{
+              alert("Something went wrong! Please try again");
+              console.log(error);
             })
   
 

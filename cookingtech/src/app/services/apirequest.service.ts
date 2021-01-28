@@ -11,6 +11,7 @@ export class ApiRequestService {
   
   apiRequest(url:string, method:string, body?: any) {
     let baseUrl = 'http://cookingtech.herokuapp.com/api';
+    // let baseUrl = 'http://localhost:8000/api';
     let token = window.localStorage.getItem('token');
     let headers = new HttpHeaders({
       Authorization: `Bearer ${token}` 

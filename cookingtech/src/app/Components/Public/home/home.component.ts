@@ -15,15 +15,17 @@ export class HomeComponent implements OnInit {
 
   user: any;
   cookie: any;
+  show: boolean = true;
   ngOnInit()  : void {
-    this.cookie = this.cookies.get('__cookingtech');
+    this.cookie = window.localStorage.getItem('__cookingtech');
     if(this.cookie) {
       this.user = this.dataEnc.decrypt(this.cookie).user; 
+      this.show = false;
+    }else {
+      this.show =true;
     }
+
   }
-
-  
-
   onkeyUp(){
     
   }

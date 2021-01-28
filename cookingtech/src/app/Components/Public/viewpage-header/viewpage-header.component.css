@@ -10,3 +10,10 @@
 .search {
     top: 100px;
 }
+.navbar-collapse{
+    margin-left: 70%;
+}
+.navbar-collapse{
+    background-color: #4981CE;
+}
+/*sample css for search bar*/

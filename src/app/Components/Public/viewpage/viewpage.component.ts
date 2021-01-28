@@ -31,8 +31,9 @@ export class ViewpageComponent implements OnInit {
   ngOnInit(): void {
     //get the cookies and possible encrypt it into data
     this.cookie = this.cookies.get('__cookingtech');
-    let user = this.dataEnc.decrypt(this.cookie).user;
-
+    if(this.cookie) {
+      let user = this.dataEnc.decrypt(this.cookie).user;
+    }
     //get the router parameters
     this.route.paramMap.subscribe(params=> {
       this.id = params.get('id');

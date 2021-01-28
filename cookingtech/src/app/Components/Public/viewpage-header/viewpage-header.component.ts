@@ -13,5 +13,4 @@ export class ViewpageHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.cookie = window.localStorage.getItem('token');
   }
-
 }

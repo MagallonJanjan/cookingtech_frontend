@@ -4,8 +4,10 @@ import { EncryptService } from '../../../services/encrypt.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
-import { ApiRequestService } from '../../../services/apirequest.service'
+import { ApiRequestService } from '../../../services/apirequest.service';
 
+import Swal from 'sweetalert2';
+ 
 @Component({
   selector: 'app-viewpage-body',
   templateUrl: './viewpage-body.component.html',
@@ -135,15 +137,19 @@ export class ViewpageBodyComponent implements OnInit {
 
     let user_id = this.dataEnc.decrypt(this.cookie).user.id
     if (this.isExistedBookmark(this.bookmarks, { "user_id": user_id, "recipe_id": this.recipe_id })) {
-      alert("You alreaded added it to your bookmarks!");
+     Swal.fire("You alreaded added it to your bookmarks!");
       return;
     }
     this.apiService.apiRequest('/bookmarks', "post", { "user_id": user_id, "recipe_id": this.recipe_id })
       .subscribe(respond => {
         console.log(respond);
-        alert("Added to your bookmarks!");
+        Swal.fire("Added to your bookmarks!");
         this.updateBookmarkContent(user_id);
       });
+  }
+
+  deleteToBookmark(){
+    
   }
 
 

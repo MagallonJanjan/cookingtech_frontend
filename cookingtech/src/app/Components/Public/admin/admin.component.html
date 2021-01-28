@@ -21,7 +21,7 @@
         <p class="text-right px-2 text-white" (click)="toggleSidebar()"><i class="fas fa-bars"></i></p>
         <div class="row">
           <div class="col-md-6 ml-2">
-            <div class="img-container ml-5" >
+            <div class="img-container ml-5" style="background-image:url(../../../../assets/img/default.png);background-size: cover;" routerLink="/user-profile">
               <!-- image here -->
             </div>
             <span class="text-white text-center custom-align ml-5">{{authenticatedUser.username}}</span><br>
@@ -46,9 +46,8 @@
 
         <div class="row">
           <div class="col-md-12 ml-3">
-            <div class="img-container-ghost">
+            <div class="img-container-ghost"  style="background-image:url(../../../../assets/img/default.png);background-size: cover;" routerLink="/user-profile">
               <!-- image here -->
-
             </div>
             <hr class="bg-light">
           </div>
@@ -66,6 +65,7 @@
     <!-- content -->
     <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
       <strong>{{title}}</strong>
+      <button class="btn btn-primary float-lg-right" routerLink="/add-recipe" *ngIf="title=='Recipes'" ><i class="fa fa-plus" aria-hidden="true"></i></button><br>
       <hr class="bg-secondary">
       <div class="container">
 

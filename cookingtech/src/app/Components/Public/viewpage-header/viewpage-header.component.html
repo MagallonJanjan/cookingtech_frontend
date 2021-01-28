@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light alert-primary position-fixed w-100 header-index">
+<!-- <nav class="navbar navbar-light alert-primary position-fixed w-100 header-index">
   <a class="navbar-brand" href="#">
     <img class="logo" src="../../../../assets/img/home/letters.png" alt="">
   </a>
@@ -26,3 +26,37 @@
     </form>
   </div>
 </nav>
+</nav> -->
+<nav class="navbar navbar-light alert-primary position-fixed w-100 header-index">
+  <a class="navbar-brand" href="#">
+    <img class="logo" src="../../../../assets/img/home/letters.png" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarContent"
+    aria-controls="navBarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-light alert-primary navbar-collapse p-3" id="navBarContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Category
+        </button>
+        <br><br>
+        <div class="dropdown-menu w-75" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/recipes/category/soup">Soup</a>
+          <a class="dropdown-item" href="/recipes/category/breakfast">Breakfast</a>
+          <a class="dropdown-item" href="/recipes/category/desert">Desserts</a>
+        </div>
+      </li>
+    </ul>
+    <br>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control w-75 mr-sm-1" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</nav>
+

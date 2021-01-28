@@ -2,7 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {ApiRequestService} from '../../services/apirequest.service';
 import { Router } from '@angular/router';
 import {FormBuilder,FormControl,Validator, Validators} from '@angular/forms';
-import { async } from '@angular/core/testing';
+import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -35,7 +36,8 @@ export class AdminTableComponent implements OnInit {
   showSearch:boolean = false;
 
   constructor(private apiService:ApiRequestService,
-              private router : Router,private formBuilder:FormBuilder) {
+            private router : Router,
+            private formBuilder:FormBuilder,) {
     this.info = {firstname: "", lastname: "", position: ""}
     this.recipe ={name:"",description:"",tag:"",ingredients:[],procedures:[],yield:"",category:""}
    }
@@ -71,6 +73,7 @@ export class AdminTableComponent implements OnInit {
     
     this.apiService.apiRequest(`/users/${this.editedUserData.id}`,"put",this.editedUserData)
       .subscribe(respond=>{
+        Swal.fire("Edited Successfully!");
         console.log(respond);
         this.changes.emit("users");
 
@@ -95,6 +98,7 @@ export class AdminTableComponent implements OnInit {
     this.apiService.apiRequest(`/recipes/${this.editedData.id}`,"put",this.editedData)
 
       .subscribe(respond=>{
+        Swal.fire("Approved!");
         console.log(respond);
         this.changes.emit("pendings");
       })
@@ -105,6 +109,7 @@ export class AdminTableComponent implements OnInit {
       let url = this.editedData.name?'recipes':'users'
       this.apiService.apiRequest(`/${url}/${this.editedData.id}`,"delete",this.editedData)
         .subscribe(async respond=>{
+          Swal.fire("Deleted Successfully!"," ","success");
           if(url == "recipes") {
             url = (this.tableTitle == "Pendings")? "pendings": "recipes";
           }
@@ -123,6 +128,7 @@ export class AdminTableComponent implements OnInit {
 
   getData(data:any){
     this.editedData=data;
+    
   }
 
   editUserData(id:any){
@@ -133,4 +139,6 @@ export class AdminTableComponent implements OnInit {
     let tempString = description.slice(0, 40);
     return tempString + "...";
   }
+
+
 }

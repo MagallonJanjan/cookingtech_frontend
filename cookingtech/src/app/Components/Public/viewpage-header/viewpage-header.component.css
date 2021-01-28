@@ -16,3 +16,10 @@
     max-width: 150px;
     position: relative;
 } */
+.navbar-collapse{
+    margin-left: 70%;
+}
+.navbar-collapse{
+    background-color: #4981CE;
+}
+/*sample css for search bar*/

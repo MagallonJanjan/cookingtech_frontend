@@ -8,6 +8,8 @@ import { Location} from '@angular/common';
 import { EncryptService } from '../../../services/encrypt.service';
 import { CookieService } from 'ngx-cookie-service';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-addrecipe',
   templateUrl: './addrecipe.component.html',
@@ -151,7 +153,7 @@ export class AddrecipeComponent implements OnInit {
     this.apiRequest.apiRequest('/recipes','post', this.datas)
       .subscribe( respond => {
         console.log(respond);
-        alert('You are adding a new recipe!');
+        Swal.fire("Recipe Added","","success")
         this.location.back();
         this.addRecipe.reset()
         alert('You added a new recipe!');

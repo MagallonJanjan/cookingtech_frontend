@@ -1,12 +1,12 @@
 .custom-style-sidebar {
-  /* height: 20rem;  */
+  /* height: 100%; */
   width: 220px;
   z-index: 2;
-  top: 6.55rem;
+  top: 5.90rem;
 }
 
 .custom-style-sidebar-ghost {
-  top: 6.55rem;
+  top: 6.1rem;
   width: 85px;
   z-index: 1;
 }
@@ -26,7 +26,7 @@
 .bg-custom-sidebar {
   background-color: royalblue;
   margin-top: 0;
-  height: 34.50rem;
+  height: 36rem;
 }
 
 .main-header {

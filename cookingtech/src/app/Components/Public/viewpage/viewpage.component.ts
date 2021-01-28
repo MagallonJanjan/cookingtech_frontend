@@ -28,11 +28,14 @@ export class ViewpageComponent implements OnInit {
     private dataEnc: EncryptService
   ) { }
 
+  user:any;
   ngOnInit(): void {
     //get the cookies and possible encrypt it into data
     this.cookie = this.cookies.get('__cookingtech');
-    let user = this.dataEnc.decrypt(this.cookie).user;
-
+    
+    if(this.cookie) {
+      this.user = this.dataEnc.decrypt(this.cookie).user;
+    }
     //get the router parameters
     this.route.paramMap.subscribe(params=> {
       this.id = params.get('id');
@@ -44,7 +47,7 @@ export class ViewpageComponent implements OnInit {
 
     //chect the parameters of the url
     if(this.bookmarks){
-      this.apiService.apiRequest(`/user/bookmarks/${user.id}`, "get")
+      this.apiService.apiRequest(`/user/bookmarks/${this.user.id}`, "get")
         .subscribe((respond:any) => {
           this.recipes = respond.user_bookmarks[0].bookmarks;
           this.isRecipes = true;
@@ -54,7 +57,7 @@ export class ViewpageComponent implements OnInit {
     }
 
     if(this.myRecipes) {
-      this.apiService.apiRequest(`/user/my-recipes/${user.id}`, "get")
+      this.apiService.apiRequest(`/user/my-recipes/${this.user.id}`, "get")
         .subscribe((respond:any)=> {
           this.recipes =  respond.user[0].recipes;
           this.isRecipes = true;

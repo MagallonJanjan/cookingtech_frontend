@@ -1,3 +1,6 @@
+<head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+</head>
 <div class="container"><br>
   <form [formGroup]="addRecipe">
     <h3 class="text-center" *ngIf="recipeId">Edit Recipe</h3>
@@ -38,7 +41,7 @@
         <select class="custom-select my-1 mr-sm-2" formControlName="category" [ngClass]="{'is-invalid' : addRecipe.get('category').touched && addRecipe.get('category').invalid}">
           <option value="soup" selected>Soup</option>
           <option value="breakfast">Breakfast</option>
-          <option value="desert">Deserts</option>
+          <option value="desert">Dessert</option>
         </select>
 
       </div>
@@ -70,11 +73,18 @@
         </div>
       </div>
     </div><br>
-    <div class="row">
-    <button type="submit" class="btn btn-primary saveAll" (click)="onSubmit(addRecipe.value)"  routerLink="/admin" [disabled]="addRecipe.invalid">Save
+    <button class="btn btn-info editAll" *ngIf="recipeId" [disabled]="isEditRecipe">Edit Recipe</button>
+    <button class="btn btn-danger cancel" *ngIf="recipeId" routerLink="/admin">Cancel</button>
+    
+
+    <button type="submit" class="btn btn-primary saveAll" [hidden]="!isRecipeSave" *ngIf="!recipeId" (click)="onSubmit(addRecipe.value)" [disabled]="addRecipe.invalid">Save
       Recipe</button>
-  </div>
-    <div>
+      <button class="btn btn-primary loadingSave" type="button" [hidden]="isRecipeSave">
+          <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+         Please wait...
+        </button>
+      <button class="btn btn-danger cancel" *ngIf="!recipeId" routerLink="/admin">Close</button>
+    <div><br><br><br>
       <span></span>
       <span>
         <p></p>
@@ -123,7 +133,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Save changes</button>
+            <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -169,7 +179,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Save changes</button>
+            <button type="button" class="btn btn-primary" style="margin-right: 25px;" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

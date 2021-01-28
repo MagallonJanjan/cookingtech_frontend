@@ -19,7 +19,7 @@
       <div class="card-body">
         <!-- <small class="card-title text-center"></small> -->
         <h6 class="text-center">Category: {{recipe.category}}</h6>
-        <h6 class="text-center">Tags: {{recipe.tag}}</h6>
+        <h6 class="text-center"><i class="fa fa-tags" aria-hidden="true"></i> {{recipe.tag}}</h6>
       </div>
       <div class="card-footer">
         <small class="text-muted" *ngIf="category != 'My Recipes'">Uploaded by: {{recipe.user.firstname + " "+ " " + recipe.user.lastname}}</small>

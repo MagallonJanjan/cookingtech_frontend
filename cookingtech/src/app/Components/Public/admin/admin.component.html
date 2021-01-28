@@ -66,6 +66,7 @@
     <!-- content -->
     <div class="content" [ngClass]="{'content-v2' : !showSideBar}">
       <strong>{{title}}</strong>
+      <button class="btn btn-primary float-lg-right" routerLink="/add-recipe" *ngIf="title=='Recipes'" ><i class="fa fa-plus" aria-hidden="true"></i></button><br>
       <hr class="bg-secondary">
       <div class="container">
 

@@ -49,7 +49,10 @@ export class AdminTableComponent implements OnInit {
       newUserType:[
         "",[Validators.required]
       ]
+  
     })
+  
+    console.log(this.data);
     
   } 
 
@@ -73,6 +76,9 @@ export class AdminTableComponent implements OnInit {
         Swal.fire("Edited Successfully!");
         console.log(respond);
         this.changes.emit("users");
+
+        
+
       })
   }
 
@@ -102,10 +108,21 @@ export class AdminTableComponent implements OnInit {
       this.editedData.id;
       let url = this.editedData.name?'recipes':'users'
       this.apiService.apiRequest(`/${url}/${this.editedData.id}`,"delete",this.editedData)
-        .subscribe(respond=>{
-         Swal.fire("Deleted Successfully");
-          console.log(respond);
+        .subscribe(async respond=>{
+          Swal.fire("Deleted Successfully!"," ","success");
+          if(url == "recipes") {
+            url = (this.tableTitle == "Pendings")? "pendings": "recipes";
+          }
           this.changes.emit(url);
+          
+          if(url == "users") {
+            await this.apiService.apiRequest(`/users`, 'get').subscribe((respond:any)=> {
+              this.data = respond.users.filter((admin: any)=> {
+                return admin.usertype != "admin";
+              });
+              console.log(respond.users);
+            });
+          }   
         })
   }
 
@@ -123,4 +140,6 @@ export class AdminTableComponent implements OnInit {
     let tempString = description.slice(0, 40);
     return tempString + "...";
   }
+
+
 }

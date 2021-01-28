@@ -70,8 +70,10 @@
         </div>
       </div>
     </div><br>
-    <button type="submit" class="btn btn-primary saveAll" (click)="onSubmit(addRecipe.value)" [disabled]="addRecipe.invalid">Save
-      Recipe</button><br><br><br>
+    <div class="row">
+    <button type="submit" class="btn btn-primary saveAll" (click)="onSubmit(addRecipe.value)"  routerLink="/admin" [disabled]="addRecipe.invalid">Save
+      Recipe</button>
+  </div>
     <div>
       <span></span>
       <span>

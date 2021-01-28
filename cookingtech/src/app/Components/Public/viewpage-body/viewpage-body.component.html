@@ -3,13 +3,18 @@
 <br>
 <br>
 <br>
-<div class="col-12 background">
-  <div class="card-recipe text-center">
+<a href="" routerLink="/recipes"><i class="fa fa-arrow-left" aria-hidden="true" ></i></a>
+
+
+
+
+<div class="col-12">
+  <div class="card-recipe text-center background">
     <div class="card-header">
       <h3>{{recipe.name}}</h3>
       <small>By:{{recipe.user.username}}</small><br>
-      <small>Yield:{{recipe.yield +" "}}</small>
-      <small> Category:{{recipe.category}}</small>
+      <small><strong>Yield:</strong> {{recipe.yield +" "}}</small>
+      <small style="margin-left:5px;"> <strong>Category:</strong> {{" "+recipe.category}}</small>
     </div>
     <div class="row">
       <div class="col mt-2">

@@ -3,12 +3,21 @@
 <br>
 <br>
 <br>
+
+<button class="btn btn-outline-secondary float-right" routerLink="/recipes" *ngIf="category=='My Bookmarks'">Recipes</button>
+
+<!-- <a href="/recipes/category/desert"class="btn btn-outline-primary float-right ml-1" >Desserts</a>
+<a href="/recipes/category/breakfast" class="btn btn-outline-primary float-right  ml-1" >Breakfast</a>
+<a href="/recipes/category/soup"class="btn btn-outline-primary float-right  ml-1">Soup</a>
+<a href="/recipes"class="btn btn-outline-primary float-right ml-1" >All</a> -->
+<br>
+<br>
 <div class="float-right">
-  <button class="btn btn-outline-primary" *ngIf ="category == 'My Recipes'" routerLink="/add-recipe">Add Recipe</button>
-</div>
-<br>
-<br>
+    <button class="btn btn-outline-secondary" *ngIf ="category == 'My Recipes'" routerLink="/add-recipe">Add Recipe</button>
+  </div>
+
 <h3>{{capitalize(category)}}</h3>
+
 <hr>
 <h3 class="text-center p-4" *ngIf="!(recipes.length > 0)">No Recipes yet!</h3>
 <div class="row" *ngIf="recipes.length > 0">

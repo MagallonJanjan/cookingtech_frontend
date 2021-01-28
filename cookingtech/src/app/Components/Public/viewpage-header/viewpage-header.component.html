@@ -53,10 +53,17 @@
       </li>
     </ul>
     <br>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control w-75 mr-sm-1" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-    </form>
+<form class="form-inline my-2 my-lg-0">
+    <div class="search-bar">
+      <input class="form-control mr-sm-2" id="searchItem" type="search" #item (keyup)="onKey(item.value)" placeholder="Search"
+        aria-label="Search">
+      <button class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
+    </div>
+    <div class="search-result-container bg-light" >
+        <p *ngFor="let value of values" style="height:2%;" class="search-result">{{value.name}}</p>
+      </div>
+  </form>
+
   </div>
 </nav>
 

@@ -42,11 +42,6 @@ export class ViewpageComponent implements OnInit {
       
     });
 
-
-    // this.route.paramMap.subscribe(params=> {
-    // });
-
-    
     //chect the parameters of the url
     if(this.bookmarks){
       this.apiService.apiRequest(`/user/bookmarks/${user.id}`, "get")

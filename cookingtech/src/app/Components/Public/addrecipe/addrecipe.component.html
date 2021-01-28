@@ -73,7 +73,11 @@
         </div>
       </div>
     </div><br>
-    <button class="btn btn-info editAll" *ngIf="recipeId" [disabled]="isEditRecipe">Edit Recipe</button>
+    <button class="btn btn-info editAll" *ngIf="recipeId" [hidden]="!isUpdateSave" [disabled]="isEditRecipe" (click)="newUpdate()">Edit Recipe</button>
+    <button class="btn btn-info loadingSave" type="button" [hidden]="isUpdateSave">
+        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+       Please wait...
+      </button>
     <button class="btn btn-danger cancel" *ngIf="recipeId" routerLink="/admin">Close</button>
     
 

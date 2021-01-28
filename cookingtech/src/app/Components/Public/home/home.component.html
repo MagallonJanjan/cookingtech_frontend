@@ -18,8 +18,12 @@
       </ul>
     </div>
     <form class="form-inline my-2 my-lg-0" style="margin: 2px;">
-      <button style="margin-right: 5px;" class="btn btn-outline-info my-2 my-sm-0" type="submit" routerLink="/register">Register</button>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/login">Login</button>
+        
+      <h5 class="btn text-right mx-4 " *ngIf="cookie" ><i class="fa fa-user "></i> <strong>{{user.username}}</strong></h5>
+      <div *ngIf="!cookie">
+        <button style="margin-right: 5px;" class="btn btn-outline-info my-2 my-sm-0" type="submit" routerLink="/register">Register</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/login">Login</button>
+      </div>
     </form>
   </nav>
 

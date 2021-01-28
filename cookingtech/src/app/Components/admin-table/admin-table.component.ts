@@ -126,7 +126,6 @@ export class AdminTableComponent implements OnInit {
         })
   }
 
- 
   getData(data:any){
     this.editedData=data;
     

@@ -109,7 +109,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let bits of data | paginate: { id: 'test',
-                        itemsPerPage: 10,
+                        itemsPerPage: 8,
                         currentPage: page,
                         totalItems: totalData}">
                                 <td class="table-secondary">{{bits.name || bits.lastname}}</td>

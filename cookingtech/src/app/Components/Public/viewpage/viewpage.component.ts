@@ -18,6 +18,8 @@ export class ViewpageComponent implements OnInit {
   isRecipes:any = true;
   recipes: any;
   showSideBar:boolean = true;
+  bookmarks: any;
+  myRecipes: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,40 +31,69 @@ export class ViewpageComponent implements OnInit {
   ngOnInit(): void {
     //get the cookies and possible encrypt it into data
     this.cookie = this.cookies.get('__cookingtech');
+    let user = this.dataEnc.decrypt(this.cookie).user;
 
     //get the router parameters
     this.route.paramMap.subscribe(params=> {
       this.id = params.get('id');
-
-    });
-
-    this.route.paramMap.subscribe(params=> {
       this.category = params.get('cat');
+      this.bookmarks = params.get('bookmarks');
+      this.myRecipes = params.get('my-recipes');
+      
     });
 
-    if(!this.id && !this.category) {
+
+    // this.route.paramMap.subscribe(params=> {
+    // });
+
+    
+    //chect the parameters of the url
+    if(this.bookmarks){
+      this.apiService.apiRequest(`/user/bookmarks/${user.id}`, "get")
+        .subscribe((respond:any) => {
+          this.recipes = respond.user_bookmarks[0].bookmarks;
+          this.isRecipes = true;
+          this.category = "My Bookmarks";
+          return;
+        });
+    }
+
+    if(this.myRecipes) {
+      this.apiService.apiRequest(`/user/my-recipes/${user.id}`, "get")
+        .subscribe((respond:any)=> {
+          this.recipes =  respond.user[0].recipes;
+          this.isRecipes = true;
+          this.category = "My Recipes";
+          return;
+        } );
+    }
+
+    if(!this.id && !this.category && !this.myRecipes && !this.bookmarks) {
       this.apiService.apiRequest('/recipes', "get").subscribe(respond => {
         this.recipes = respond||[];
         this.isRecipes = true;
         console.log(this.recipes);
-        
+        this.category = "All";
+        return;
       });
-    }else if(this.id && !this.category) {
+
+    }
+    if(this.id && !this.category && !this.myRecipes && !this.bookmarks) {
       this.apiService.apiRequest(`/recipes/${this.id}`, 'get').subscribe(respond => {
         this.recipes = respond;
         this.isRecipes = false;
         console.log("I was here");
-        
-        
+        return;
       });
-    }else if(this.category && !this.id) {
+
+    }if(this.category && !this.id && !this.bookmarks && !this.myRecipes) {
       this.apiService.apiRequest(`/recipes/category/${this.category}`, 'get').subscribe(respond => {
         this.recipes = respond || [];
         this.recipes = this.recipes.recipes;
         this.isRecipes = true;
         console.log(this.recipes);
         console.log("I was here too");
-
+        return;
       });
     }
   }

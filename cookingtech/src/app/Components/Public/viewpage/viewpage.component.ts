@@ -18,6 +18,7 @@ export class ViewpageComponent implements OnInit {
   isRecipes:any = true;
   recipes: any;
   showSideBar:boolean = true;
+  showNavbar : boolean = true;
   bookmarks: any;
   myRecipes: any;
 
@@ -98,5 +99,8 @@ export class ViewpageComponent implements OnInit {
   
   sideBarToggle(data:any) {
     this.showSideBar = data;
+  }
+  sideNavbar(navbar:any){
+    this.showNavbar = navbar;
   }
 }

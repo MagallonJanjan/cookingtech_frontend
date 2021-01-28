@@ -60,6 +60,8 @@
         </div>
       </div>
     </div>
-    <app-comment *ngFor="let comment of comments"></app-comment>
+    <app-comment *ngFor="let comment of comments" [comment]="comment" (submitted)="submitted()">
+    </app-comment>
+    <!-- <app-comment></app-comment> -->
   </div>
 </div>

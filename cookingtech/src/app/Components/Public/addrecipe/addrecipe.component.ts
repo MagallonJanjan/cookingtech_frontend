@@ -60,7 +60,7 @@ export class AddrecipeComponent implements OnInit {
             
 
             this.addRecipe = this.formBuilder.group({
-              name: [this.updatedRecipe.name, [Validators.required, Validators.minLength(6)]],
+              name: [this.updatedRecipe.name,[Validators.required, Validators.minLength(6)]],
               description: [this.updatedRecipe.description, [Validators.required, Validators.minLength(25)]],
               yield: [this.updatedRecipe.yield, Validators.required],
               category: [this.updatedRecipe.category, Validators.required],
@@ -70,19 +70,19 @@ export class AddrecipeComponent implements OnInit {
               img_url: [this.updatedRecipe.img_url, [Validators.required]]
              });
 
-
-
             this.isEditRecipe = false;
           })
 
-          // this.apiRequest.apiRequest()
+          this.apiRequest.apiRequest(`/recipes/${this.recipeId}`,"put",this.addRecipe.value)
+              .subscribe((respond:any)=>{
+                  alert('Recipe updated successfully!');
+              },error =>{
+                alert('Sayop uyy,')
+                console.log(error);
+              })
      }
       
   }
-
-
-
- 
 
   ingredientsArray: any[] = [];
   proceduresArray: any[] = [];

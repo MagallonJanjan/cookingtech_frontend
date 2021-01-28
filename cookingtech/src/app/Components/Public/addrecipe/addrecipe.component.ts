@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ApiRequestService } from '../../../services/apirequest.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location} from '@angular/common';
 
 import { EncryptService } from '../../../services/encrypt.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -22,7 +23,8 @@ export class AddrecipeComponent implements OnInit {
     private apiRequest: ApiRequestService,
     private dataEnc: EncryptService,
     private cookies: CookieService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   addRecipe: any;
@@ -107,6 +109,7 @@ export class AddrecipeComponent implements OnInit {
       .subscribe(respond => {
         console.log(respond);
         Swal.fire("Recipe Added","","success")
+        this.location.back();
         this.addRecipe.reset()
 
         this.ingredientsArray = [];
@@ -118,9 +121,6 @@ export class AddrecipeComponent implements OnInit {
   disableAddButton = true;
   procedures: any;
 
-
-  // inputIngredients = (<HTMLInputElement>document.getElementById("lingling"));
-  // inputProcedure =  (<HTMLInputElement>document.getElementById("procedure"));
 
 
 

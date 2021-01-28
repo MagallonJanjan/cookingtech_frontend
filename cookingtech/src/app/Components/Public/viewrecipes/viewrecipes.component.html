@@ -4,12 +4,11 @@
 <br>
 <br>
 <div class="float-right">
-  <button class="btn btn-outline-primary" routerLink="/add-recipe">Add Recipe</button>
+  <button class="btn btn-outline-primary" *ngIf ="category == 'My Recipes'" routerLink="/add-recipe">Add Recipe</button>
 </div>
 <br>
 <br>
 <h3>{{capitalize(category)}}</h3>
-<!-- <h3><u>My Recipes</u></h3> -->
 <hr>
 <h3 class="text-center p-4" *ngIf="!(recipes.length > 0)">No Recipes yet!</h3>
 <div class="row" *ngIf="recipes.length > 0">
@@ -23,8 +22,8 @@
         <h6 class="text-center">Tags: {{recipe.tag}}</h6>
       </div>
       <div class="card-footer">
-        <small class="text-muted text-center ml-2">Uploaded by: {{recipe.user.firstname + " "+ " " + recipe.user.lastname}}</small>
-        <!-- <button class="btn btn-outline-info">View</button> -->
+        <small class="text-muted" *ngIf="category != 'My Recipes'">Uploaded by: {{recipe.user.firstname + " "+ " " + recipe.user.lastname}}</small>
+        <button class="btn btn-outline-info" *ngIf="category == 'My Bookmarks'">Remove Bookmark</button>
       </div>
     </div>
   </div>

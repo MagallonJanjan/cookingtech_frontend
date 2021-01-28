@@ -16,7 +16,7 @@
             <img class="card-img-top" [src]="recipe.img_url" alt="">
           </div>
           <div class="mt-3 py-3">
-            <span class="text-center"><i class="fa fa-bookmark-o fa-2x"></i></span>
+            <span class="text-center cursor" (click)="addToBookmark()"><i class="fa fa-bookmark-o fa-2x"></i></span>
             <div class="text-left ml-4">
               <h4>Ingredients: </h4>
               <p *ngFor="let ingredient of recipe.ingredients">{{ingredient}}</p>

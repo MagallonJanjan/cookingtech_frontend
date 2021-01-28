@@ -25,8 +25,8 @@
         <small class="text-muted" *ngIf="category != 'My Recipes'">Uploaded by: {{recipe.user.firstname || recipe.recipe.firstname 
            + " "+ " " + recipe.user.lastname || recipe.recipe.lastname}}</small>
         <button class="btn btn-outline-info" *ngIf="category == 'My Bookmarks'" (click)="removeBookmark(recipe.id)">Remove Bookmark</button>
-        <button class="btn btn-outline-info" *ngIf="category == 'My Recipes'">Edit</button>
-        <button class="btn btn-outline-info"  *ngIf="category == 'My Recipes'">Delete</button>
+        <button class="btn btn-outline-info mx-2" *ngIf="category == 'My Recipes'" (click)="editRecipe(recipe.id)">Edit</button>
+        <button class="btn btn-outline-danger"  *ngIf="category == 'My Recipes'" (click)="deleteRecipe(recipe.id)">Delete</button>
       </div>
     </div>
   </div>

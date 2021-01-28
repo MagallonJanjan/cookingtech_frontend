@@ -18,7 +18,7 @@ export class NotAuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let cookie = this.cookies.get('__cookingtech');
+    let cookie =window.localStorage.getItem('__cookingtech');
     if(cookie) {
       this.route.back();
       return false;

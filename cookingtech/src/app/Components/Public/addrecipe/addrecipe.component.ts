@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ApiRequestService } from '../../../services/apirequest.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location} from '@angular/common';
 
 import { EncryptService } from '../../../services/encrypt.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -20,7 +21,8 @@ export class AddrecipeComponent implements OnInit {
     private apiRequest: ApiRequestService,
     private dataEnc: EncryptService,
     private cookies: CookieService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {
 
     this.route.paramMap.subscribe((params:any) => {
@@ -125,20 +127,23 @@ export class AddrecipeComponent implements OnInit {
 
   isRecipeSave = true;
   datas:any;
+  cookie: any;
   onSubmit(data : any){ 
     this.addRecipe.value.ingredients = this.ingredientsArray;
     this.addRecipe.value.procedures = this.proceduresArray;
     this.datas = this.addRecipe.value;
-    let cookie = this.cookies.get('__cookingtech');
-    let UserData = this.dataEnc.decrypt(cookie);
+    this.cookie = window.localStorage.getItem('__cookingtech');
+    let UserData = this.dataEnc.decrypt(this.cookie);
     this.datas["user_id"] = UserData.user.id;
 
     this.isRecipeSave = false;
     this.apiRequest.apiRequest('/recipes','post', this.datas)
       .subscribe( respond => {
         console.log(respond);
+        alert('You are adding a new recipe!');
+        this.location.back();
+        this.addRecipe.reset()
         alert('You added a new recipe!');
-        this.addRecipe.reset();
         this.isRecipeSave = true;
 
         this.ingredientsArray = [];
